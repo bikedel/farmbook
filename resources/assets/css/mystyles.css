@@ -1,0 +1,114 @@
+body {
+
+
+	margin-top:80px;
+	padding-left:30px;
+	padding-right:30px;
+}
+
+
+
+.container{
+
+ width: 100% !Important;
+}
+
+.table {
+
+ width: 100% !Important;
+
+
+}
+
+#users-table {
+ width: 100% !Important;
+
+}
+
+#datatable {
+    width: 100% !Important;
+}
+
+#logo {
+
+	margin-right:10px;
+	
+}
+
+tr:selected {
+  background-color: white;
+  color:red;
+}
+tr:hover {
+
+
+}
+
+
+
+tbody tr.selected td {
+  background-color: #ff6700;
+
+}
+
+
+.highlight {
+background-color: #ff6700;
+
+}
+
+table.display {
+margin: 0 auto;
+width: 100%;
+clear: both;
+border-collapse: collapse;
+table-layout: fixed; // ***********add this 
+word-wrap:break-word; // ***********and this 
+
+}
+
+.light {
+
+	opacity:.9;
+}
+
+
+#strAmount ,
+#strHomePhoneNo,
+#strWorkPhoneNo,
+#strCellPhoneNo,
+#EMAIL,
+#strSqMeters,
+#dtmRegDate,
+#strSurname,
+#strFirstName {
+
+ font-size: 120%;
+}
+
+#freeholds_length {
+	float: right;
+
+}
+
+
+.dataTables_processing {
+    position: absolute;
+    top: -20px;
+    margin-top: -40px;
+    width: 150px;
+    text-align: center;
+    left: 45%;
+  
+ transform:translate(0px, -150px);
+/*Firefox*/
+-moz-transform:translate(0px, -150px);
+/*Microsoft Internet Explorer*/
+-ms-transform:translate(0px, -150px);
+/*Chrome, Safari*/
+-webkit-transform:translate(0px, -150px);
+/*Opera*/
+-o-transform:translate(0px, -150px);
+}
+
+
