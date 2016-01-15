@@ -21,7 +21,10 @@ class Admin
      {
         return redirect('datatables');
     }
-    return $next($request);
+    //dd("go away - not admin");
+   return redirect('auth/login');
+
+
 
 }
 }

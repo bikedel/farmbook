@@ -3,14 +3,14 @@
 @section('content')
 <br>
 <div class='row'>
-<div class="col-xs-4">
+    <div class="col-xs-4">
 
-<input id="s_name" type="text" name="firstname" class="form-control hidden" placeholder="Search Name">
+        <input id="s_name" type="text" name="firstname" class="form-control hidden" placeholder="Search Name">
+    </div>
+
 </div>
 
-</div>
-
- <br>
+<br>
 <table class="table table-striped table-bordered" id="users-table" >
     <thead>
         <tr>
@@ -19,12 +19,19 @@
             <th>Name</th>
             <th>UserName</th>
             <th>Email</th>
-
-
-
+            <th>Admin</th>
+            <th>Suburb</th>
         </tr>
     </thead>
 </table>
+
+
+
+<br>
+
+  <a class="btn btn-warning btn-ms" href="{{ url('/auth/register') }}">Add User</a>
+
+
 
 @stop
 
@@ -60,22 +67,22 @@ $(function() {
 
 
         { data: 'id', name: 'id' },
-                 { data: "id", sortable: false, searchable: false, render: function(data, type, full, meta){
-              
-           
-            var myshow_url = '<a href="../hello/'+data+'"    class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Show</a>';
+        { data: "id", sortable: false, searchable: false, render: function(data, type, full, meta){
+
+
+            var myshow_url = '<a href="../public/hello/'+data+'"    class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Show</a>';
             return myshow_url;
         }
-        },
-        { data: 'name', name: 'name' },
-         { data: 'username', name: 'username' },
-        { data: 'email', name: 'email' },
+    },
+    { data: 'name', name: 'name' },
+    { data: 'username', name: 'username' },
+    { data: 'email', name: 'email' },
+    { data: 'admin', name: 'admin' },
+    { data: 'suburb', name: 'suburb' },
 
 
 
 
- 
-  
     
 
     ],

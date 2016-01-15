@@ -45,7 +45,7 @@ $(document).ready(function() {
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
-      document.getElementById('strAmount').value =  Number(salesprice).toLocaleString('en') ;
+      document.getElementById('strAmount').value =  priceFormat(salesprice);
       document.getElementById('strSqMeters').value =  (sqmeters);
 
       document.getElementById('strFirstName').value =  strFirstName ;
@@ -54,7 +54,7 @@ $(document).ready(function() {
       document.getElementById('strWorkPhoneNo').value =  phoneFormat(strWorkPhoneNo);
       document.getElementById('strCellPhoneNo').value =  phoneFormat(strCellPhoneNo) ; 
       document.getElementById('EMAIL').value =  EMAIL ;
-  });
+    });
 
 
 }); // end closure
@@ -86,12 +86,12 @@ function clear_fields() {
 
 
 function display_row($row) {
-   console.log("display row "+$row);
-   var table = new $.fn.dataTable.Api( '#freeholds' );
-   var data = table.rows($row).data();
+ console.log("display row "+$row);
+ var table = new $.fn.dataTable.Api( '#freeholds' );
+ var data = table.rows($row).data();
 
-   table.row(($row)).select();
-   document.getElementById('mrec').value = Number($row) +1 ;
+ table.row(($row)).select();
+ document.getElementById('mrec').value = Number($row) +1 ;
 
      //var aPos = table.fnGetPosition( this );
      setCookie("rowindex", $row, 30);
@@ -120,7 +120,7 @@ function display_row($row) {
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
-      document.getElementById('strAmount').value =  Number(salesprice).toLocaleString('en') ;
+      document.getElementById('strAmount').value = priceFormat(salesprice);
       document.getElementById('strSqMeters').value =  sqmeters;
       document.getElementById('strFirstName').value =  strFirstName ;
       document.getElementById('strSurname').value =  strSurname ;
@@ -129,48 +129,74 @@ function display_row($row) {
       document.getElementById('strWorkPhoneNo').value =  phoneFormat(strWorkPhoneNo) ;
       document.getElementById('strCellPhoneNo').value =  phoneFormat(strCellPhoneNo) ; 
       document.getElementById('EMAIL').value =  EMAIL ;
-  }
-
-
-
-  function setCookie(cname,cvalue,exdays) {
-    var d = new Date();
-   // d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    d.setTime(d.getTime() + (exdays*60*1000));
-    var expires = "expires=" + d.toGMTString();
-    document.cookie = cname+"="+cvalue+"; "+expires;
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
     }
-    return "";
+
+
+
+    function setCookie(cname,cvalue,exdays) {
+      var d = new Date();
+   // d.setTime(d.getTime() + (exdays*24*60*60*1000));
+   d.setTime(d.getTime() + (exdays*60*1000));
+   var expires = "expires=" + d.toGMTString();
+   document.cookie = cname+"="+cvalue+"; "+expires;
+ }
+
+ function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1);
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
 function checkCookie() {
-    var user=getCookie("rowindex");
-    if (user != "") {
+  var user=getCookie("rowindex");
+  if (user != "") {
         //alert("Row index =  " + user);
         return user;
-    } else {
+      } else {
       // user = prompt("Please enter row index :","");
       user = 0;
       if (user != "" && user != null) {
-         setCookie("rowindex", user, 30);
+       setCookie("rowindex", user, 30);
      }
+   }
  }
+
+
+ function phoneFormat(phone) {
+
+  var n = phone.length;
+
+
+  phone = phone.replace(/[^0-9]/g, '');
+
+  if (n>9){
+   phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+ } else {
+  phone = "0"+phone;
+  phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+}
+
+//phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+
+return phone;
 }
 
 
-function phoneFormat(phone) {
-    phone = phone.replace(/[^0-9]/g, '');
-    phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-    return phone;
+
+function priceFormat(price) {
+console.log(price);
+price = price.replace(/[^0-9]/g, '');
+console.log(price);
+price = Number(price).toLocaleString('en') ;
+
+console.log(price);
+return "R "+price
+
 }

@@ -11,92 +11,64 @@
 |
 */
 
-Route::any('myAjaxCallURI', 'MainController@getAjax');
+// ajax call from view without reload
+//Route::any('myAjaxCallURI', 'MainController@getAjax');
+
+Route::get('/',  'SuburbController@index' );
+
+Route::get('/suburb',  'SuburbController@getSuburb' );
+
+Route::post('/suburb',  'SuburbController@setSuburb' );
 
 
 
-Route::get('/', ['middleware' => ['auth'], function () {
+// admin page
+// Route::get('/admin', function () {
+//	return view('pages.admin');
+//});
 
+//admin
+//Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
+//	return "this page requires that you be logged in and an Admin";
+//}]);
 
-    $user = Auth::user()->name;
-    $userId = Auth::user()->id;
-
-    // get suburbs
-
-	//$suburbs = App\Suburb::all(['id', 'name']); //->where('user_id',$userId)->get();
-	$streets = App\Street::all(['id', 'name']);
-
-    $suburbs = DB::table('user_suburbs')
-    ->join('suburbs',"suburbs.id" ,'=','user_suburbs.suburb_id')
-    ->select("suburbs.id","name")->distinct()
-    ->where('user_id',$userId)->distinct('suburbs.name')->get();
-
-
-//dd($sub);
-	return View::make('pages.home', compact('user','suburbs','streets'));
-
-	//return view('pages.home');
-}]);
-
-Route::get('/admin', function () {
-	return view('pages.admin');
-});
-
-Route::get('/users/{user}', function ( $user) {
-	$mp = \App\User::find($user);
-	return ($mp);
-});
-
-
+Route::get('protected', ['middleware' => ['auth','admin'], 'uses' => 'DatatablesController@getIndex']);
+//Route::get('/users/{user}', function ( $user) {
+//	$mp = \App\User::find($user);
+//	return ($mp);
+//});
 
 Route::get('/hello/{name}',  'DatatablesController@show' );
 
-
-
-
-
 Route::get('/notes',  'FreeholdsController@update' );
 
+//Route::get('notes/{numErf}', function ($numErf) {
+//
+//	$mp = DB::table('tblErfNumbers')->where('id', $numErf)->first();
+//	dd($mp,$numErf,$mp);
+//	return view('datatables.edit',compact('mp'));
+//});
 
+Route::get('/street',  'StreetsController@checkButton' );
 
+Route::post('/street',  'StreetsController@update' );
 
-Route::get('notes/{numErf}', function ($numErf) {
-
-	$mp = DB::table('tblErfNumbers')->where('id', $numErf)->first();
-	dd($mp,$numErf,$mp);
-	return view('datatables.edit',compact('mp'));
-});
-
-
-
-Route::get('/street',  'StreetsController@index' );
-
-Route::post('/street',  'StreetsController@edit' );
 
 Route::resource('update', 'DatatablesController');
 
-
 Route::get('destroy/{id}',  'DatatablesController@destroy' );
+
+Route::get('addsuburb/{id}',  'SuburbController@show' );
 
 Route::controller('datatables', 'DatatablesController', [
 	'anyData'  => 'datatables.data',
 	'getIndex' => 'datatables',
 	]);
 
-
 Route::controller('freeholds', 'FreeholdsController', [
 	'anyData'  => 'freeholds.data',
 	'getIndex' => 'freeholds',
 	]);
-
-
-//admin
-Route::get('protected', ['middleware' => ['auth', 'admin'], function() {
-	return "this page requires that you be logged in and an Admin";
-}]);
-
-
-
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

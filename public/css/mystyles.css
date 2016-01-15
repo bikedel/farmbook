@@ -85,6 +85,9 @@ word-wrap:break-word; // ***********and this
 #strSurname,
 #strFirstName,
 #memNotes,
+#strStreetNo,
+#strStreetName,
+#strBondHolder,
 #comment{
 
  font-size: 120%;
@@ -120,19 +123,38 @@ margin-top: 10px;
 
 }
 
+
+input[type=radio] {
+ 
+    border: 1px;
+    width: 40px;
+    height: 1em;
+
+
+ font-size: 140%;
+padding:0;
+
+}
+
+#freeholds_paginate  {
+
+
+}
+
 #freeholds_length {
 
-	color:#333;
-}
-#saerch{
-
-
 }
 
-#reset {
+#reset{
 
-	float:right;
+float:left;
+
+
+
+
 }
+
+
 
 h1 span {
 
@@ -143,5 +165,12 @@ h1 span {
 
 input[type="text"]:read-only { 
 
-background-color:lightgreen;
+background-color:lightblue;
 opacity:.4; }
+
+
+#strOwners.owner {
+
+background-color:lightblue;
+
+}

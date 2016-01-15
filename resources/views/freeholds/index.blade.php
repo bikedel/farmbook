@@ -7,27 +7,36 @@
 
 
 <div class="row" id="search">
-
-
-    <div class="col-xs-2">
-
-      <input id="s_numErf" type="text" name="firstname" class="form-control input-sm" placeholder="Search Erf">
-    </div>
-    <div class="col-xs-2">
-      <input id="s_strStreetName" type="text" name="firstname" class="form-control input-sm" placeholder="Search Street">
-    </div>
-    <div class="col-xs-2">
-      <input id="s_owner" type="text" name="firstname" class="form-control input-sm" placeholder="Search Owner">
-    </div>
-    <div class="col-xs-2">
-      <input id="s_id" type="text" name="firstname" class="form-control input-sm " placeholder="Search Id">
-    </div>
-    <div class="col-xs-4">
-      <input id="reset" type="button" class="btn btn-info btn-sm" value="Reset ">
-    </div>
+<div class="col-xs-2">
 
 
 
+        <a href="#" id="reset" class="btn btn-info ">
+          <span class="glyphicon glyphicon-refresh"></span> Refresh Data
+        </a>
+
+
+</div>
+
+  <div class="col-xs-2">
+    <input id="s_numErf" type="text" name="firstname" class="form-control input-sm" placeholder="Search Erf">
+  </div>
+  <div class="col-xs-3">
+    <input id="s_strStreetName" type="text" name="firstname" class="form-control input-sm" placeholder="Search Street">
+  </div>
+  <div class="col-xs-3">
+    <input id="s_owner" type="text" name="firstname" class="form-control input-sm" placeholder="Search Owner">
+  </div>
+  <div class="col-xs-2">
+    <input id="s_id" type="text" name="firstname" class="form-control input-sm " placeholder="Search Id">
+  </div>
+
+
+
+
+
+</div>
+<div class="row">
 
 </div>
 <br>
@@ -170,7 +179,7 @@
 
 <div class='row'>
   <div class="update form-group  col-xs-12 pull-right">
-    {!! Form::submit('Update',  array('class'=>'btn btn-info btn-sm')) !!}
+    {!! Form::submit('Update',  array('class'=>'btn btn-info')) !!}
   </div>
 </div>
 
@@ -195,7 +204,7 @@ $(document).ready(function() {
   var table = $('#freeholds').DataTable({
     dom: 'Bfrtip',
     dom: 'Bflrtip',
-    sDom: '<"top">rpt<"bottom"lir><"clear">',
+    sDom: '<"top">Brpt<"bottom"lir><"clear">',
     pagingType: 'full',
     processing: true,
     bProcessing:true,
@@ -212,65 +221,77 @@ $(document).ready(function() {
     lengthChange: true,
     paging:true,
     keys:true,
-     scrollY: 195,
-     iDisplayLength: 10,
+    scrollY: 195,
+    iDisplayLength: 10,
     lengthMenu: [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]],
     fnStateSave: function (oSettings, oData) {
       alert("saving state");
       localStorage.setItem('DataTables_' + window.location.pathname, JSON.stringify(oData));
     },
     fnStateLoad: function (oSettings) {
-      var data = localStorage.getItem('DataTables_' + window.location.pathname);
-      return JSON.parse(data);
-    },
+     alert("restoring state");
+     var data = localStorage.getItem('DataTables_' + window.location.pathname);
+     return JSON.parse(data);
+   },
 
-    ajax: { url: '{!! route('freeholds.data') !!}',
-           type: 'GET'},
-    columns: [
+   ajax: { url: '{!! route('freeholds.data') !!}',
+   type: 'GET'},
+   columns: [
 
-    { data: 'numErf', sortable: false, searchable: false, render: function(data, type, full, meta){
-      var myshow_url = '<a href="../public/notes/'+data+'" class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Notes</a>';
-      return myshow_url; }
-    },
+   { data: 'numErf', sortable: false, searchable: false, render: function(data, type, full, meta){
+    var myshow_url = '<a href="../public/notes/'+data+'" class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Notes</a>';
+    return myshow_url; }
+  },
 
-    { data: 'numErf', name: 'numErf' },
+  { data: 'numErf', name: 'numErf' },
 
-    { data: 'strStreetNo', name: 'strStreetNo' },
-    { data: 'strStreetName', name: 'strStreetName' },
-
-
-    { data: 'dtmRegDate', name: 'dtmRegDate' },
-    { data: 'strAmount', name: 'strAmount' },
-
-    { data: 'strOwners', name: 'strOwners' },  
-    { data: 'ID', sortable: false, searchable: false, render: function(data, type, full, meta){
-      var myshow_url = '<a href="../public/hello/'+data+'" class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Contact</a>';
-      return myshow_url; }
-    },  
-    { data: 'strIdentity', name: 'strIdentity' },    
-
-    { data: 'memNotes', name: 'memNotes' , visible: false , sortable: false , targers: [9] },   
-
-    { data: 'strFirstName', name: 'strFirstName' },   
-    { data: 'strSurname', name: 'strSurname' },   
+  { data: 'strStreetNo', name: 'strStreetNo' },
+  { data: 'strStreetName', name: 'strStreetName' },
 
 
-    { data: 'strHomePhoneNo', name: 'strHomePhoneNo' },  
-    { data: 'strWorkPhoneNo', name: 'strWorkPhoneNo' },  
-    { data: 'strCellPhoneNo', name: 'strCellPhoneNo' },  
-    { data: 'EMAIL', name: 'EMAIL' },    
+  { data: 'dtmRegDate', name: 'dtmRegDate' },
+  { data: 'strAmount', name: 'strAmount' },
 
-    ],
+  { data: 'strOwners', name: 'strOwners' },  
+  { data: 'ID', sortable: false, searchable: false, render: function(data, type, full, meta){
+    var myshow_url = '<a href="../public/hello/'+data+'" class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Contact</a>';
+    return myshow_url; }
+  },  
+  { data: 'strIdentity', name: 'strIdentity' },    
+
+  { data: 'memNotes', name: 'memNotes' , visible: false , sortable: false , targers: [9] },   
+
+  { data: 'strFirstName', name: 'strFirstName' },   
+  { data: 'strSurname', name: 'strSurname' },   
+
+
+  { data: 'strHomePhoneNo', name: 'strHomePhoneNo' },  
+  { data: 'strWorkPhoneNo', name: 'strWorkPhoneNo' },  
+  { data: 'strCellPhoneNo', name: 'strCellPhoneNo' },  
+  { data: 'EMAIL', name: 'EMAIL' },    
+
+  ],
 
     buttons: [
-    ],
+            {
+                extend: 'print',
+                exportOptions: {
+                    columns: ':visible'
+                }
+            },
+            'colvis'
+        ],
+        columnDefs: [ {
+            targets: -1,
+            visible: false
+        } ],
 
 
 
-    initComplete: function(settings, json) {
-     console.log( 'DataTables has finished its initialisation.' );
-     document.getElementById("reset").style.visibility = "visible";
-     rowindex = checkCookie()
+  initComplete: function(settings, json) {
+   console.log( 'DataTables has finished its initialisation.' );
+   document.getElementById("reset").style.visibility = "visible";
+   rowindex = checkCookie()
 
         // table.rows().deselect();
        // this.api().row(rowindex, { page: 'current' }).select();
@@ -296,7 +317,7 @@ $(document).ready(function() {
 
 $('#s_numErf').on( 'keyup', function () {
   table.columns(1).search( this.value ).draw();
-document.getElementById("reset").style.visibility = "visible";
+  document.getElementById("reset").style.visibility = "visible";
 } );
 
 
@@ -350,7 +371,7 @@ $('#reset').click(function(){
   document.getElementById('s_numErf').value = "";
   document.getElementById('s_strStreetName').value = "";
   document.getElementById('s_owner').value = "";
- 
+
   document.getElementById('s_id').value = "";
 
   table .search( '' )
@@ -360,9 +381,12 @@ $('#reset').click(function(){
   $rowIndex = 0;
   table.rows().deselect();
   document.getElementById('mrec').value = $rowIndex +1 ;
-  setTimeout(function() {  display_row(0); }, 3000);
+  
 
-  setCookie("rowindex", 1, 30);
+  // select row
+  //setTimeout(function() {  display_row(0); }, 3000);
+  //setCookie("rowindex", 1, 30);
+
  // if (this.value == 'Search'){
  //  this.value = "Reset";
  //} else {
@@ -397,7 +421,7 @@ $('#next').click(function(){
 
          table.row($rowIndex).deselect();
          $rowIndex++
- table.row(($rowIndex)).select();
+         table.row(($rowIndex)).select();
         // table.row(($rowIndex)).select();
         
         display_row($rowIndex);
@@ -456,7 +480,7 @@ table
   var info = table.page.info();
 
   clear_fields();
-table.rows().deselect();
+  table.rows().deselect();
 
   //$rowIndex--
   //table.row(($rowIndex)).select();
@@ -476,7 +500,7 @@ table.rows().deselect();
 } )
 
 .on( 'mouseenter', 'td', function () {
-  var colIdx = table.cell(this).index().column;
+  //var colIdx = table.cell(this).index().column;
 
          //   $( table.cells().nodes() ).removeClass( 'highlight' );
         //    $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
@@ -490,6 +514,7 @@ table.rows().deselect();
 </script>
 @endpush
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
 <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/keytable/2.1.0/js/dataTables.keyTable.min.js"></script>
 

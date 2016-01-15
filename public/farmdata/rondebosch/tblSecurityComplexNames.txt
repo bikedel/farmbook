@@ -1,2 +1,0 @@
-"ID","strComplexName"
-12,"NA"

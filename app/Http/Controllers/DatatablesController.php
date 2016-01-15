@@ -13,7 +13,7 @@ use Input;
 use App\User;
 use Redirect;
 use Route;
-
+use DB;
 use Auth;
 
 class DatatablesController extends Controller
@@ -60,7 +60,16 @@ class DatatablesController extends Controller
           // $array = json_decode(json_encode($mp), true);
 		 	$mp = $mp[0];
 
-		 	return View('datatables.edit',compact('mp'));
+		 	$userId = $current_params;
+
+		 	$suburbs = DB::table('user_suburbs')
+		 	->join('suburbs',"suburbs.id" ,'=','user_suburbs.suburb_id')
+		 	->select("suburbs.id","name","database")->distinct()
+		 	->where('user_id',$userId)->distinct('suburbs.name')->get();
+
+//dd($suburbs,$userId);
+
+		 	return View('datatables.edit',compact('mp','suburbs'));
 		 //	return view('datatables.edit');
 		 }
 
@@ -89,6 +98,7 @@ class DatatablesController extends Controller
 			$id = $request->input('id');
 			$email = $request->input('email');
 			$admin = $request->input('admin');
+			$suburb = $request->input('suburb');
 //dd($request,$id,$current_params);
 //$user->update(['name' => $email]);
 
@@ -98,6 +108,7 @@ class DatatablesController extends Controller
 			$user->username = $username;
 			$user->email = $email;
 			$user->admin = $admin;
+			$user->suburb = $suburb;
 			$user->save();
 
 			$user->touch();
@@ -126,5 +137,9 @@ class DatatablesController extends Controller
 
 			return Redirect::route('datatables');
 		}
+
+
+
+
 
 	}

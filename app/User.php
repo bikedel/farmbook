@@ -34,7 +34,7 @@ CanResetPasswordContract
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'suburb','password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -48,6 +48,13 @@ CanResetPasswordContract
     {
 
     return $this->admin; // this looks for an admin column in your users table
-}
+    }
+
+
+    public function getDatabase()
+    {
+
+    return $this->suburb; // this looks for an admin column in your users table
+    }
 
 }

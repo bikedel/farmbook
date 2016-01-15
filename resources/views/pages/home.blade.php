@@ -5,31 +5,74 @@
 
 <div class="container">
 	<div class="row">
-		<br><br>
+		<br>
 		<div class="list-group col-xs-12">
-			<h1>Welcome <span>{{ $user }}</span></h1>
-			<h2>Select Suburb</h2>
+			
+			
 			{!! Form::open([ 'url' => 'street', 'method' => 'get']) !!}
-			<div id="suburb" class="form-group">
-				<select class="form-control" id="suburb_id" name="suburb_id" onchange=GetSelectedTextValue(this)>
-					@foreach($suburbs as $suburb)
-					<option value="{{$suburb->id}}">{{$suburb->name}}</option>
-					@endforeach
-				</select>
+			
+			<div id="suburb" class="form-group ">
+
+
 				<br>
 
-				<div id="street" class="form-group hidden">
+				<div id="street" class="form-group ">
+
+					<div class="radio">
+						<label><input id="street_r" type="radio" name="optradio" value="1" checked>Street Name</label>
+					</div>
+
 					<select class="form-control" id="street_id" name="street_id" onchange=GetSelectedTextValue(this)>
 						@foreach($streets as $street)
-						<option value="{{$street->name}}">{{$street->name}}</option>
+						<option value="{{$street->strStreetName}}">{{$street->strStreetName}}</option>
 						@endforeach
 					</select>
 				</div>
+
+				
+				<div class="radio">
+					<label><input id="erf_r" type="radio" name="optradio" value="2">Erf Number</label>
+				</div>
+				<div id="erf" class="form-group ">
+					<select class="form-control" id="erf" name="erf" onchange=GetSelectedTextValue(this)>
+						@foreach($erfs as $erf)
+						<option value="{{$erf->numErf}}">{{$erf->numErf}}</option>
+						@endforeach
+					</select>
+				</div>
+				
+
+				<div class="radio">
+					<label><input id="id_r" type="radio" name="optradio" value="3">Id Number</label>
+				</div>
+				<div id="ids" class="form-group ">
+					<select class="form-control" id="id" name="id" onchange=GetSelectedTextValue(this)>
+						@foreach($ids as $id)
+						<option value="{{$id->strIDNumber}}">{{$id->strIDNumber}}</option>
+						@endforeach
+					</select>
+				</div>
+
+
+				<div class="radio">
+					<label><input id="surname_r" type="radio" name="optradio" value="4">Surname</label>
+				</div>
+				<div id="ids" class="form-group ">
+					<select class="form-control" id="surname" name="surname" onchange=GetSelectedTextValue(this)>
+						@foreach($surnames as $surname)
+						<option value="{{$surname->strSurname}}">{{$surname->strSurname}}</option>
+						@endforeach
+					</select>
+				</div>
+
 			</div>
+			<br>
+			<div class="col-xs-12">
 
 
-			{!! Form::submit('Go',  array('class'=>'btn btn-info ')) !!}
-
+				<input type="submit" name="action" value="View" class="btn btn-info">
+                <input type="submit" name="action" value="Print" class="btn btn-info">
+			</div>
 
 
 			
@@ -40,7 +83,7 @@
 </div>
 
 <div class="col-xs-4">
-	<input id="reset" type="button" class="btn btn-info btn-sm" value="aJax call " data-link="{{ url('/myAjaxCallURI') }}" data-token="{{ csrf_token() }}">
+	<input id="reset" type="button" class="btn btn-info btn-sm hidden" value="aJax call " data-link="{{ url('/myAjaxCallURI') }}" data-token="{{ csrf_token() }}">
 </div>
 
 
@@ -50,28 +93,33 @@
 
 $(document).ready(function() {
 
-	$('#reset').click(function(){
-		event.preventDefault();
-		var that = document.getElementById("suburb_id");
-		//var sub = that.options[that.selectedIndex].innerHTML;
-		var sub = that.selectedIndex;
-		var myurl = $(this).attr("data-link");
-		console.log('calling...');
-		$.ajax({
-			url: myurl,
-			type: 'post',
-       // data: $('form').serialize(), // Remember that you need to have your csrf token included
-       data: {'email':sub, '_token': $('input[name=_token]').val()},
-       dataType: 'json',
-       success: function( _response ){
-            console.log(_response);// Handle your response..
-            alert(_response);
-        },
-        error: function( _response ){
-           console.log('fail'); // Handle error
-       }
-   });
-	});
+   
+
+	document.getElementById("street_id").addEventListener("change", myFunction1);
+	document.getElementById("erf").addEventListener("change", myFunction2);
+	document.getElementById("id").addEventListener("change", myFunction3);
+	document.getElementById("surname").addEventListener("change", myFunction4);
+
+
+	function myFunction1() {
+		var x = document.getElementById("street_r");
+		x.checked = true;
+	
+	}
+	function myFunction2() {
+		var x = document.getElementById("erf_r");
+		x.checked = true;
+	}
+	function myFunction3() {
+		var x = document.getElementById("id_r");
+		x.checked = true;
+	}
+	function myFunction4() {
+		var x = document.getElementById("surname_r");
+		x.checked = true;
+	}
+
+
 
 });
 
@@ -90,9 +138,5 @@ function GetSelectedTextValue(ddlFruits) {
    	url = url.replace(':id', '21');
    	window.location.href = url;
    }
-
-
-
-
 
    </script>

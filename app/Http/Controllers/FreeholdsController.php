@@ -72,15 +72,30 @@ class FreeholdsController extends Controller
         // $freehold = Freehold::select('*')->where('numErf', '>', '90000')->get();
 
 
+//$otf = new App\Database\OTF(['database' => 'plumstead_farmbook']);
+
+    $userDB = Auth::user()->suburb;
+   $otf = new \App\Database\OTF(['database' => $userDB]);
+    $db = DB::connection($userDB);
 
 
 
 
-			$freehold = Freehold::Join('tblErfNumbers','freeholds.numErf','=','tblErfNumbers.id')
-			->Join('tblSuburbContactNumbers','freeholds.strIdentity','=','tblSuburbContactNumbers.strIDNumber')
-			->orderBy('strStreetName', 'asc')
-			->orderBy('strStreetNo', 'asc')
-			->select('*')->get();
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".numErf";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+
+        $freehold =  $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+        ->orderBy('strStreetName', 'asc')
+        ->orderBy('strStreetNo', 'asc')
+        ->select('*');
+     
+
+
+
+
+
 
 
 			return Datatables::of($freehold)
@@ -94,6 +109,12 @@ class FreeholdsController extends Controller
 
 		public function update(Request $request)
 		{
+
+
+    $userDB = Auth::user()->suburb;
+   $otf = new \App\Database\OTF(['database' => $userDB]);
+    $db = DB::connection($userDB);
+    //dd($db);
 			$input = $request;
 
 			$numErf = Input::get('numErf');
@@ -105,16 +126,16 @@ class FreeholdsController extends Controller
 			$EMAIL = Input::get('EMAIL');
 
 
-			$result = DB::table('tblErfNumbers')->where('id', $numErf)->get();
+			$result = $db->table('tblErfNumbers')->where('numErf', $numErf)->get();
 
 
 			if ($result) {
 
-				$affected = DB::table('tblErfNumbers')
-				->where('id', $numErf)
+				$affected = $db->table('tblErfNumbers')
+				->where('numErf', $numErf)
 				->update(array('memNotes' => $comment));
 
-				$affected2 = DB::table('tblSuburbContactNumbers')
+				$affected2 = $db->table('tblSuburbContactNumbers')
 				->where('strIDNumber', $strIdentity)
 				->update(array('strCellPhoneNo' => $strCellPhoneNo,
 					'strHomePhoneNo' => $strHomePhoneNo,

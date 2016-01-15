@@ -1,6 +1,0 @@
-"lngEmpID","strEmpName","strEmpPassword"
-1,"Tina","Tina Mal0710"
-2,"Janis","Penelope"
-3,"Otilia","Sancho"
-4,"Arnold","PropertY"
-5,"Loren","steven"

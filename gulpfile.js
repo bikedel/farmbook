@@ -1,4 +1,5 @@
 var elixir = require('laravel-elixir');
+require('laravel-elixir-livereload');
 
 /*
  |--------------------------------------------------------------------------
@@ -13,20 +14,23 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.styles([
-        "app.css",
+        
         "bootstrap.min.css",
         "buttons.dataTables.min.css",
         "dataTables.bootstrap.min.css",
         "select.dataTables.min.css", 
         "dark_theme.css",
         "mystyles.css"
-    ], 'public/css/all.css', 'public/css');
+    ], 'public/css/all.css', 'public/css').livereload();
+   // mix.version(["css/all.css"]);
 });
 
 
 
 elixir(function(mix) {
     mix.scripts([
+
+        "freehold_search.js",
         "jquery-1.11.3.min.js",
         "bootstrap.min.js",
         "jquery.dataTables.min.js",
@@ -34,5 +38,10 @@ elixir(function(mix) {
         "dataTables.buttons.min.js",
         "dataTables.select.min.js"
         
-    ], 'public/js/all.js', 'public/js');
+    ], 'public/js/all.js', 'public/js').livereload();
+  //  mix.version(["js/all.js"]);
 });
+
+//console.log(elixir);
+
+

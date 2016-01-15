@@ -14,21 +14,30 @@ class MainController extends Controller
 {
 
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+
+    }
+
+
+
     // return json from ajax call
 
     public function getAjax(Request $request) {
     // Do your stuff with the request..
 
-$input = Input::get('email');
-     $got = $request;
+        $input = Input::get('email');
+        $got = $request;
 
 
-     $sub = DB::table('suburbs')->find(1);
+        $sub = DB::table('suburbs')->find(1);
 
 
       //  return response()->json(['return' => 'some data']);
 
- return response()->json( $input);
+        return response()->json( $input);
 
     }
 

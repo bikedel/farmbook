@@ -45,7 +45,7 @@ $(document).ready(function() {
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
-      document.getElementById('strAmount').value =  Number(salesprice).toLocaleString('en') ;
+      document.getElementById('strAmount').value =0;// Number(salesprice).toLocaleString('en') ;
       document.getElementById('strSqMeters').value =  (sqmeters);
 
       document.getElementById('strFirstName').value =  strFirstName ;
@@ -120,7 +120,7 @@ function display_row($row) {
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
-      document.getElementById('strAmount').value =  Number(salesprice).toLocaleString('en') ;
+      document.getElementById('strAmount').value =  0;//Number(salesprice).toLocaleString('en') ;
       document.getElementById('strSqMeters').value =  sqmeters;
       document.getElementById('strFirstName').value =  strFirstName ;
       document.getElementById('strSurname').value =  strSurname ;

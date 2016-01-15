@@ -8,14 +8,14 @@
 				<div class="panel-heading">Register</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
+					<div class="alert alert-danger">
+						<strong>Whoops!</strong> There were some problems with your input.<br><br>
+						<ul>
+							@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+							@endforeach
+						</ul>
+					</div>
 					@endif
 
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
@@ -34,6 +34,15 @@
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
 							</div>
 						</div>
+
+						<div class="form-group">
+							<label class="col-md-4 control-label">Farmbook</label>
+							<div class="col-md-6">
+								{!! Form::select('getsuburb', App\Suburb::lists('database'), null, ['class'=> 'form-control col-md-6', 'onchange'=>'document.getElementById("text_content").value=this.options[this.selectedIndex].text']) !!}
+							</div>
+						</div>
+
+<input type="hidden" name="suburb" id="text_content" value="" />
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
@@ -63,3 +72,17 @@
 	</div>
 </div>
 @endsection
+
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+$(document).ready(function() {
+
+
+
+});
+	function GetSelectedTextValue(ddlFruits) {
+		var selectedText = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
+		var selectedValue = ddlFruits.value;
+   }
+</script>
