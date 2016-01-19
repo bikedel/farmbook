@@ -70,6 +70,12 @@ ul  {
 			{!! Form::label('name', 'Street Name : ')  !!}
 			{!! Form::text('strStreetName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strStreetName', 'readonly' => 'true']) !!}<br>
 
+			{!! Form::label('name', 'Complex No : ')  !!}
+			{!! Form::text('strComplexNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strComplexNo' , 'readonly' => 'true']) !!}<br>
+
+			{!! Form::label('name', 'Complex Name : ')  !!}
+			{!! Form::text('strComplexName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strComplexName', 'readonly' => 'true']) !!}<br>
+
 
 			{!! Form::label('name', 'Identity : ')  !!}
 			{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>

@@ -21,10 +21,13 @@
   <div class="col-xs-2">
     <input id="s_numErf" type="text" name="firstname" class="form-control input-sm" placeholder="Search Erf">
   </div>
-  <div class="col-xs-3">
-    <input id="s_strStreetName" type="text" name="firstname" class="form-control input-sm" placeholder="Search Street">
+  <div class="col-xs-2">
+    <input id="s_strStreetName" type="text" name="firstname" class="form-control input-sm" placeholder="Search Street Name">
   </div>
-  <div class="col-xs-3">
+  <div class="col-xs-2">
+    <input id="s_strComplexName" type="text" name="firstname" class="form-control input-sm" placeholder="Search Complex Name">
+  </div>
+  <div class="col-xs-2">
     <input id="s_owner" type="text" name="firstname" class="form-control input-sm" placeholder="Search Owner">
   </div>
   <div class="col-xs-2">
@@ -46,19 +49,21 @@
   <thead>
     <tr>
 
-     <th></th>
+  
 
      <th>Erf</th>
 
      <th>Street No</th>
      <th>Street Name</th>
 
+     <th>Complex No</th>
+     <th>Complex Name</th>
 
      <th>Reg Date</th>
      <th>Amount</th>
 
      <th>Owners</th>
-     <th></th>
+ 
      <th>Identity</th>
 
      <th>notes</th>
@@ -238,25 +243,21 @@ $(document).ready(function() {
    type: 'GET'},
    columns: [
 
-   { data: 'numErf', sortable: false, searchable: false, render: function(data, type, full, meta){
-    var myshow_url = '<a href="../public/notes/'+data+'" class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Notes</a>';
-    return myshow_url; }
-  },
+
 
   { data: 'numErf', name: 'numErf' },
 
   { data: 'strStreetNo', name: 'strStreetNo' },
   { data: 'strStreetName', name: 'strStreetName' },
 
+  { data: 'strComplexNo', name: 'strComplexNo' },
+  { data: 'strComplexName', name: 'strComplexName' },
 
   { data: 'dtmRegDate', name: 'dtmRegDate' },
   { data: 'strAmount', name: 'strAmount' },
 
   { data: 'strOwners', name: 'strOwners' },  
-  { data: 'ID', sortable: false, searchable: false, render: function(data, type, full, meta){
-    var myshow_url = '<a href="../public/hello/'+data+'" class="btn btn-info" data-method="show" data-reveal-id="myModal'+data+'" data-name="'+name+'">Contact</a>';
-    return myshow_url; }
-  },  
+
   { data: 'strIdentity', name: 'strIdentity' },    
 
   { data: 'memNotes', name: 'memNotes' , visible: false , sortable: false , targers: [9] },   
@@ -273,12 +274,12 @@ $(document).ready(function() {
   ],
 
     buttons: [
-            {
-                extend: 'print',
-                exportOptions: {
-                    columns: ':visible'
-                }
-            },
+        //    {
+        //       // extend: 'print',
+        //        exportOptions: {
+        //            columns: ':visible'
+        //        }
+        //    },
             'colvis'
         ],
         columnDefs: [ {
@@ -316,14 +317,14 @@ $(document).ready(function() {
 //Searches
 
 $('#s_numErf').on( 'keyup', function () {
-  table.columns(1).search( this.value ).draw();
+  table.columns(0).search( this.value ).draw();
   document.getElementById("reset").style.visibility = "visible";
 } );
 
 
 // #myInput is a <input type="text"> element
 $('#s_strStreetName').on( 'keyup', function () {
-  table.columns(3).search( this.value ).draw();
+  table.columns(2).search( this.value ).draw();
   $rowIndex = 0;
   //document.getElementById('mrec').value = $rowIndex +1 ;
   table.row($rowIndex).select();
@@ -331,6 +332,19 @@ $('#s_strStreetName').on( 'keyup', function () {
   document.getElementById("reset").style.visibility = "visible";
 
 } );
+
+$('#s_strComplexName').on( 'keyup', function () {
+  table.columns(4).search( this.value ).draw();
+  $rowIndex = 0;
+  //document.getElementById('mrec').value = $rowIndex +1 ;
+  table.row($rowIndex).select();
+  setTimeout(function() {  display_row(0); }, 1500);
+  document.getElementById("reset").style.visibility = "visible";
+
+} );
+
+
+
 
 $('#s_amount').on( 'keyup', function () {
   table.columns(5).search( this.value ).draw();
@@ -340,7 +354,7 @@ $('#s_amount').on( 'keyup', function () {
 
 
 $('#s_owner').on( 'keyup', function () {
-  table.columns(6).search( this.value ).draw();
+  table.columns(7).search( this.value ).draw();
   document.getElementById("reset").style.visibility = "visible";
 
 } );
@@ -355,7 +369,7 @@ $('#s_id').on( 'keyup', function () {
 // hidden columns  
 
 table.column( 0).visible( false );
-table.column( 4).visible( false );
+table.column( 6).visible( false );
 table.column( 7).visible( false );
 table.column( 9).visible( false );
 table.column( 10).visible( false );
