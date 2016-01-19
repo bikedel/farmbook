@@ -10,7 +10,7 @@
 
     <!-- Bootstrap CSS -->
 
-
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
     <link async href="{{ asset('/css/all.css') }}" rel="stylesheet">
     <!-- Fonts -->
 
@@ -59,7 +59,7 @@
 
                         @else
                         <li><a href="{{ url('/suburb') }}">{{ Auth::user()->getDatabase() }}</a></li>
-                   
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class=""></span></a>
                             <ul class="dropdown-menu" role="menu">
