@@ -11,6 +11,15 @@
 |
 */
 
+
+//Event::listen('illuminate.query', function($query)
+//{
+//    var_dump($query);
+//});
+
+
+
+
 // ajax call from view without reload
 //Route::any('myAjaxCallURI', 'MainController@getAjax');
 

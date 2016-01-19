@@ -15,7 +15,7 @@ use App\Freehold;
 use App\tblErfNumbers;
 use Redirect;
 use Route;
-
+use Log;
 use DB;
 
 class FreeholdsController extends Controller
@@ -81,7 +81,7 @@ class FreeholdsController extends Controller
 			if ($databaseType == 2 ){
 
 				$freeholds_table = "tblSuburbOwners";
-				$freeholds_table_key =  $freeholds_table.".strErfPort";
+				$freeholds_table_key =  $freeholds_table.".strKey";
 				$freeholds_identity = $freeholds_table.".strIdentity";
 				$mem_Table = "tblFHPropertyID";
 				$mem_key = $mem_Table.".strKey";
@@ -90,7 +90,7 @@ class FreeholdsController extends Controller
 			if ($databaseType == 3 ){
 
 				$freeholds_table = "tblSuburbOwners";
-				$freeholds_table_key =  $freeholds_table.".strComplexNameNo";
+				$freeholds_table_key =  $freeholds_table.".strKey";
 				$freeholds_identity = $freeholds_table.".strIdentity";
 				$mem_Table = "tblFHPropertyID";
 				$mem_key = $mem_Table.".strKey";
@@ -152,7 +152,7 @@ class FreeholdsController extends Controller
 				$freeholds_identity = $freeholds_table.".strIdentity";
 				$mem_Table = "tblFHPropertyID";
 				$mem_key = "strKey";
-				$searchKey = Input::get('strErfPort');
+				$searchKey = Input::get('strKey');
 			}
 			if ($databaseType == 3 ){
 
@@ -161,7 +161,7 @@ class FreeholdsController extends Controller
 				$freeholds_identity = $freeholds_table.".strIdentity";
 				$mem_Table = "tblFHPropertyID";
 				$mem_key = "strKey";
-				$searchKey = Input::get('strComplexNameNo');
+				$searchKey = Input::get('strKey');
 			}
 
 
@@ -177,7 +177,7 @@ class FreeholdsController extends Controller
 			$strCellPhoneNo = Input::get('strCellPhoneNo');
 			$EMAIL = Input::get('EMAIL');
 
-
+            DB::connection()->enableQueryLog();
 			$result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->get();
 
 

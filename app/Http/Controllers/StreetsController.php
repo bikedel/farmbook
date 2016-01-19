@@ -246,7 +246,7 @@ class StreetsController extends Controller
         if ($databaseType == 2 ){
 
             $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strErfPort";
+            $freeholds_table_key =  $freeholds_table.".strKey";
             $freeholds_identity = $freeholds_table.".strIdentity";
             $mem_Table = "tblFHPropertyID";
             $mem_key = $mem_Table.".strKey";
@@ -255,7 +255,7 @@ class StreetsController extends Controller
         if ($databaseType == 3 ){
 
             $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strComplexNameNo";
+            $freeholds_table_key =  $freeholds_table.".strKey";
             $freeholds_identity = $freeholds_table.".strIdentity";
             $mem_Table = "tblFHPropertyID";
             $mem_key = $mem_Table.".strKey";
@@ -500,20 +500,20 @@ class StreetsController extends Controller
         if ($databaseType == 2 ){
 
             $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strErfPort";
+            $freeholds_table_key =  $freeholds_table.".strKey";
             $freeholds_identity = $freeholds_table.".strIdentity";
             $mem_Table = "tblFHPropertyID";
             $mem_key = "strKey";
-            $searchKey = Input::get('strErfPort');
+            $searchKey = Input::get('strKey');
         }
         if ($databaseType == 3 ){
 
             $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strComplexNameNo";
+            $freeholds_table_key =  $freeholds_table.".strKey";
             $freeholds_identity = $freeholds_table.".strIdentity";
             $mem_Table = "tblFHPropertyID";
             $mem_key = "strKey";
-            $searchKey = Input::get('strComplexNameNo');
+            $searchKey = Input::get('strKey');
         }
 
 

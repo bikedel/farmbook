@@ -38,6 +38,8 @@ $(document).ready(function() {
      var strWorkPhoneNo = table.row( this ).data().strWorkPhoneNo ;
      var strCellPhoneNo = table.row( this ).data().strCellPhoneNo ;
      var EMAIL = table.row( this ).data().EMAIL ;   
+     var strKey = table.row( this ).data().strKey ;  
+
       //$(this).css('opacity', '.5');
 
       document.getElementById('strIdentity').value = id ;
@@ -54,6 +56,9 @@ $(document).ready(function() {
       document.getElementById('strWorkPhoneNo').value =  phoneFormat(strWorkPhoneNo);
       document.getElementById('strCellPhoneNo').value =  phoneFormat(strCellPhoneNo) ; 
       document.getElementById('EMAIL').value =  EMAIL ;
+
+      document.getElementById('strKey').value =  strKey ;
+
     });
 
 
@@ -113,6 +118,7 @@ function display_row($row) {
      var strWorkPhoneNo = table.row( $row ).data().strWorkPhoneNo ;
      var strCellPhoneNo = table.row( $row ).data().strCellPhoneNo ;
      var EMAIL = table.row( $row ).data().EMAIL ;   
+     var strKey = table.row( this ).data().strKey ;  
       //$(this).css('opacity', '.5');
 
       document.getElementById('strIdentity').value = id ;
@@ -129,6 +135,9 @@ function display_row($row) {
       document.getElementById('strWorkPhoneNo').value =  phoneFormat(strWorkPhoneNo) ;
       document.getElementById('strCellPhoneNo').value =  phoneFormat(strCellPhoneNo) ; 
       document.getElementById('EMAIL').value =  EMAIL ;
+
+      document.getElementById('strKey').value =  strKey ;
+
     }
 
 

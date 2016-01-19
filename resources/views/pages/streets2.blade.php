@@ -124,11 +124,8 @@ ul  {
 			{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}<br>
 
 
-			{!! Form::label('name', 'strErfPort:') !!}
-			{!! Form::text('strErfPort', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strErfPort', '' ,'placeholder' => '']) !!}<br>
-
-			{!! Form::label('name', 'strComplexNameNo:') !!}
-			{!! Form::text('strComplexNameNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strComplexNameNo', '' ,'placeholder' => '']) !!}<br>
+			{!! Form::label('name', 'strKey:') !!}
+			{!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '']) !!}<br>
 
 
 

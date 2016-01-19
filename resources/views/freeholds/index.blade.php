@@ -74,6 +74,7 @@
      <th>strWorkPhoneNo</th>
      <th>strCellPhoneNo</th>
      <th>EMAIL</th>
+     <th>strKey</th>
 
    </tr>
  </thead>
@@ -172,6 +173,18 @@
     {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
   </div>
 </div>
+<div class='row'>
+
+  <div class="form-group col-xs-4">
+      {!! Form::label('name', 'strKey:') !!}
+      {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '']) !!}<br>
+  </div>
+
+</div>
+
+
+
+
 
 <div class='row'>
   <div class="form-group col-xs-12">
@@ -260,7 +273,7 @@ $(document).ready(function() {
 
   { data: 'strIdentity', name: 'strIdentity' ,width: '100'},    
 
-  { data: 'memNotes', name: 'memNotes' , visible: false , sortable: false , targers: [9] },   
+  { data: 'memNotes', name: 'memNotes' , width: '100' ,visible: false , sortable: false , targers: [9] },   
 
   { data: 'strFirstName', name: 'strFirstName' },   
   { data: 'strSurname', name: 'strSurname' },   
@@ -270,6 +283,9 @@ $(document).ready(function() {
   { data: 'strWorkPhoneNo', name: 'strWorkPhoneNo' },  
   { data: 'strCellPhoneNo', name: 'strCellPhoneNo' },  
   { data: 'EMAIL', name: 'EMAIL' },    
+  { data: 'strKey', name: 'strKey' },    
+  
+
 
   ],
 
