@@ -56,9 +56,8 @@ class SuburbController extends Controller
     // check users suburbs for setting database
     $suburbs = DB::table('user_suburbs')
     ->join('suburbs',"suburbs.id" ,'=','user_suburbs.suburb_id')
-    ->select("suburbs.id","name","database")->distinct()
+    ->select("suburbs.id","name","database","type")->distinct()
     ->where('user_id',$userId)->distinct('suburbs.name')->get();
-
 
 
     return View::make('pages.suburb', compact('suburbs'));
@@ -71,10 +70,20 @@ public function setSuburb(Request $request){
  $input = Input::all();
  $suburb = Input::get('suburb_id');
 
+
+ // get database type
+  $suburb_type = DB::table('suburbs')
+    ->select("type")
+    ->where('database',$suburb)->get(1);
+
+//dd($suburb,$suburb_type[0]->type);
+
+$suburb_type =$suburb_type[0]->type;
  $user = User::find($userId);
 
-
+// set database and typ for selected database in user table
  $user->suburb = $suburb;
+  $user->suburb_type = $suburb_type;
  $user->save();
 
  return redirect('/');
@@ -113,6 +122,8 @@ public function setSuburb(Request $request){
         $ids = $db->table('tblSuburbContactNumbers')
         ->orderBy('strIDNumber')->get(['strIDNumber','strSurname']);
 
+       $complexs = $db->table('tblSecurityComplexNames')->get(['strComplexName']);
+
 
         $surnames = $db->table('tblSuburbContactNumbers')
         ->orderBy('strSurname','desc')->distinct()->get(['strIDNumber','strSurname']);
@@ -125,7 +136,7 @@ public function setSuburb(Request $request){
 
 
 
-        return View::make('pages.home', compact('user','suburbs','streets','erfs','ids','surnames'));
+        return View::make('pages.home', compact('user','suburbs','streets','erfs','ids','surnames','complexs'));
     }
 
     /**

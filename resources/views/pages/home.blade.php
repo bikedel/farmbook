@@ -65,6 +65,17 @@
 					</select>
 				</div>
 
+				<div class="radio">
+					<label><input id="complex_r" type="radio" name="optradio" value="5">Complex</label>
+				</div>
+				<div id="complexs" class="form-group ">
+					<select class="form-control" id="complex" name="complex" onchange=GetSelectedTextValue(this)>
+						@foreach($complexs as $complex)
+						<option value="{{$complex->strComplexName}}">{{$complex->strComplexName}}</option>
+						@endforeach
+					</select>
+				</div>
+
 			</div>
 			<br>
 			<div class="col-xs-12">
@@ -99,7 +110,7 @@ $(document).ready(function() {
 	document.getElementById("erf").addEventListener("change", myFunction2);
 	document.getElementById("id").addEventListener("change", myFunction3);
 	document.getElementById("surname").addEventListener("change", myFunction4);
-
+	document.getElementById("complex").addEventListener("change", myFunction5);
 
 	function myFunction1() {
 		var x = document.getElementById("street_r");
@@ -118,7 +129,10 @@ $(document).ready(function() {
 		var x = document.getElementById("surname_r");
 		x.checked = true;
 	}
-
+	function myFunction5() {
+		var x = document.getElementById("complex_r");
+		x.checked = true;
+	}
 
 
 });

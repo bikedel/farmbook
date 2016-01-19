@@ -21,6 +21,7 @@
             <th>Email</th>
             <th>Admin</th>
             <th>Suburb</th>
+            <th>Type</th>
         </tr>
     </thead>
 </table>
@@ -79,7 +80,7 @@ $(function() {
     { data: 'email', name: 'email' },
     { data: 'admin', name: 'admin' },
     { data: 'suburb', name: 'suburb' },
-
+    { data: 'suburb_type', name: 'suburb_type' },
 
 
 

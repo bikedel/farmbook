@@ -43,14 +43,14 @@ class StreetsController extends Controller
         //check which submit was clicked on
         if($act == 'View') {
 
-           return $this->index(); //if login then use this method
-       } 
-       if($act == "Print") {
+         return $this->index(); 
+     } 
+     if($act == "Print") {
 
-          return  $this->streetprint(); //if register then use this method
-      }
+      return  $this->streetprint(); 
+  }
 
-  }   
+}   
 
 
 
@@ -69,9 +69,40 @@ class StreetsController extends Controller
         $otf = new \App\Database\OTF(['database' => $userDB]);
         $db = DB::connection($userDB);
 
-        $freeholds_table = "tblSuburbOwners";
-        $freeholds_table_key =  $freeholds_table.".numErf";
-        $freeholds_identity = $freeholds_table.".strIdentity";
+        // check database type
+        $databaseType = Auth::user()->suburb_type;
+
+     
+
+        if ($databaseType == 1 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".numErf";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblErfNumbers";
+            $mem_key = "tblErfNumbers.numErf";
+
+        }
+        if ($databaseType == 2 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".strErfPort";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblFHPropertyID";
+            $mem_key = $mem_Table.".strKey";
+
+        }
+        if ($databaseType == 3 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".strComplexNameNo";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblFHPropertyID";
+            $mem_key = $mem_Table.".strKey";
+
+        }
+
+
 
         $input = Input::all();
         $suburb = Input::get('suburb_id');
@@ -79,6 +110,7 @@ class StreetsController extends Controller
         $erf = Input::get('erf');
         $id = Input::get('id');
         $surname = Input::get('surname');
+        $complex = Input::get('complex');
         $radio = Input::get('optradio');
 
         if ($radio === '1'){
@@ -86,7 +118,8 @@ class StreetsController extends Controller
          // view title
          $street = Input::get('street_id');
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         $streets = $db->table($freeholds_table)
+         ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
          ->orderBy('strStreetName', 'asc')
          ->orderBy('strStreetNo', 'asc')
@@ -106,12 +139,13 @@ class StreetsController extends Controller
          $street = Input::get('erf');
 
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         $streets = $db->table($freeholds_table)
+         ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
          ->orderBy('strStreetName', 'asc')
          ->orderBy('strStreetNo', 'asc')
          ->select('*')
-         ->where('tblErfNumbers.numErf', $erf)->paginate(100);
+         ->where($freeholds_table.'.numErf', $erf)->paginate(100);
 
          return view('pages.streetsPrint',compact('streets','street'));
 
@@ -124,12 +158,13 @@ class StreetsController extends Controller
          $street = Input::get('id');
 
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         $streets = $db->table($freeholds_table)
+          ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
          ->orderBy('strStreetName', 'asc')
          ->orderBy('strStreetNo', 'asc')
          ->select('*')
-         ->where('tblSuburbOwners.strIdentity', $id)->paginate(100);
+         ->where('strIdentity', $id)->paginate(100);
 
          return view('pages.streetsPrint',compact('streets','street'));
 
@@ -142,17 +177,38 @@ class StreetsController extends Controller
          // view title
          $street = Input::get('surname');
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         $streets = $db->table($freeholds_table)
+          ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
          ->orderBy('strStreetName', 'asc')
          ->orderBy('strStreetNo', 'asc')
          ->select('*')
-         ->where('tblSuburbContactNumbers.strSurname', $surname)->paginate(100);
+         ->where('strSurname', $surname)->paginate(100);
 
          return view('pages.streetsPrint',compact('streets','street'));
 
 
      }
+
+     if ($radio === '5'){
+
+
+         // view title
+         $street = Input::get('complex');
+
+         $streets = $db->table($freeholds_table)
+          ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+         ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+         ->orderBy('strStreetName', 'asc')
+         ->orderBy('strStreetNo', 'asc')
+         ->select('*')
+         ->where('tblSuburbContactNumbers.strComplexName', $complex)->paginate(100);
+
+         return view('pages.streetsPrint',compact('streets','street'));
+
+
+     }
+
 
  }
 
@@ -167,16 +223,44 @@ class StreetsController extends Controller
 
 
 
-// dynamically change database
+        // dynamically change database
         $userDB = Auth::user()->suburb;
         $otf = new \App\Database\OTF(['database' => $userDB]);
         $db = DB::connection($userDB);
 
-    //dd($db);
 
-        $freeholds_table = "tblSuburbOwners";
-        $freeholds_table_key =  $freeholds_table.".numErf";
-        $freeholds_identity = $freeholds_table.".strIdentity";
+        // check database type
+        $databaseType = Auth::user()->suburb_type;
+
+     
+
+        if ($databaseType == 1 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".numErf";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblErfNumbers";
+            $mem_key = "tblErfNumbers.numErf";
+
+        }
+        if ($databaseType == 2 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".strErfPort";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblFHPropertyID";
+            $mem_key = $mem_Table.".strKey";
+
+        }
+        if ($databaseType == 3 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".strComplexNameNo";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblFHPropertyID";
+            $mem_key = $mem_Table.".strKey";
+
+        }
 
 
         $input = Input::all();
@@ -185,6 +269,7 @@ class StreetsController extends Controller
         $erf = Input::get('erf');
         $id = Input::get('id');
         $surname = Input::get('surname');
+        $complex = Input::get('complex');
         $radio = Input::get('optradio');
 
 
@@ -196,7 +281,9 @@ class StreetsController extends Controller
          // view title
          $street = Input::get('street_id');
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+
+         $streets = $db->table($freeholds_table)
+         ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
          ->orderBy('strStreetName', 'asc')
          ->orderBy('strStreetNo', 'asc')
@@ -204,26 +291,55 @@ class StreetsController extends Controller
          ->where('strStreetName', $street)->paginate(1);
 
 
-         return view('pages.streets2',compact('streets','street'));
+
+         /* type 1 working
+         $streets = $db->table($freeholds_table)
+         ->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+         ->orderBy('strStreetName', 'asc')
+         ->orderBy('strStreetNo', 'asc')
+         ->select('*')
+         ->where('strStreetName', $street)->paginate(1);
+         */
 
 
-     }
+           /*/ noordhoek
+           $freeholds_table = "tblSuburbOwners";
+           $freeholds_table_key =  $freeholds_table.".strErfPort";
+           $freeholds_identity = $freeholds_table.".strIdentity";
+
+           $streets = $db->table($freeholds_table)
+           ->Join('tblFHPropertyID','tblSuburbOwners.strErfPort' ,'=','tblFHPropertyID.strKey')
+           ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+           ->orderBy('strStreetName', 'asc')
+           ->orderBy('strStreetNo', 'asc')
+           ->select('*')
+           ->where('strStreetName', $street)->paginate(1);
+            */
+
+
+
+           return view('pages.streets2',compact('streets','street'));
+
+
+       }
 
 
 //  erf number search
-     if ($radio === '2'){
+       if ($radio === '2'){
 
 
          // view title
          $street = Input::get('erf');
 
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         $streets = $db->table($freeholds_table)
+         ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
          ->orderBy('strStreetName', 'asc')
          ->orderBy('strStreetNo', 'asc')
          ->select('*')
-         ->where('tblErfNumbers.numErf', $erf)->paginate(1);
+         ->where('tblSuburbOwners.numErf', $erf)->paginate(1);
 
          return view('pages.streets2',compact('streets','street'));
 
@@ -238,12 +354,13 @@ class StreetsController extends Controller
          $street = Input::get('id');
 
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         $streets = $db->table($freeholds_table)
+          ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
          ->orderBy('strStreetName', 'asc')
          ->orderBy('strStreetNo', 'asc')
          ->select('*')
-         ->where('tblSuburbOwners.strIdentity', $id)->paginate(1);
+         ->where('strIdentity', $id)->paginate(1);
 
          return view('pages.streets2',compact('streets','street'));
 
@@ -256,19 +373,37 @@ class StreetsController extends Controller
          // view title
          $street = Input::get('surname');
 
-         $streets = $db->table($freeholds_table)->Join('tblErfNumbers',$freeholds_table_key ,'=','tblErfNumbers.numErf')
+         $streets = $db->table($freeholds_table)
+         ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-         ->orderBy('strStreetName', 'asc')
-         ->orderBy('strStreetNo', 'asc')
          ->select('*')
-         ->where('tblSuburbContactNumbers.strSurname', $surname)->paginate(1);
+         ->where('strSurname', $surname)->paginate(1);
+
+//dd($streets->count(),$street);
 
          return view('pages.streets2',compact('streets','street'));
 
 
      }
 
+     if ($radio === '5'){
 
+
+         // view title
+         $street = Input::get('complex');
+
+         $streets = $db->table($freeholds_table)
+          ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+         ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+         ->orderBy('strStreetName', 'asc')
+         ->orderBy('strStreetNo', 'asc')
+         ->select('*')
+         ->where($freeholds_table.'.strComplexName', $complex)->paginate(1);
+
+         return view('pages.streets2',compact('streets','street'));
+
+
+     }
 
 
 
@@ -348,7 +483,49 @@ class StreetsController extends Controller
         $otf = new \App\Database\OTF(['database' => $userDB]);
         $db = DB::connection($userDB);
 
+
+        $databaseType = Auth::user()->suburb_type;
+
+    
+
+        if ($databaseType == 1 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".numErf";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblErfNumbers";
+            $mem_key = "numErf";
+            $searchKey = Input::get('numErf');
+        }
+        if ($databaseType == 2 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".strErfPort";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblFHPropertyID";
+            $mem_key = "strKey";
+            $searchKey = Input::get('strErfPort');
+        }
+        if ($databaseType == 3 ){
+
+            $freeholds_table = "tblSuburbOwners";
+            $freeholds_table_key =  $freeholds_table.".strComplexNameNo";
+            $freeholds_identity = $freeholds_table.".strIdentity";
+            $mem_Table = "tblFHPropertyID";
+            $mem_key = "strKey";
+            $searchKey = Input::get('strComplexNameNo');
+        }
+
+
+
+
+
+
+
+
         $input = $request;
+
+      //  dd($input);
 
         $numErf = Input::get('numErf');
         $strIdentity = Input::get('strIdentity');
@@ -359,13 +536,16 @@ class StreetsController extends Controller
         $EMAIL = Input::get('EMAIL');
 
 
-        $result = $db->table('tblErfNumbers')->where('numErf', $numErf)->get();
+        $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->get();
+
+
+      //  dd($result);
 
 
         if ($result) {
 
-            $affected = $db->table('tblErfNumbers')
-            ->where('numErf', $numErf)
+            $affected = $db->table($mem_Table)
+            ->where($mem_key, $searchKey)
             ->update(array('memNotes' => $comment));
 
             $affected2 = $db->table('tblSuburbContactNumbers')

@@ -57,4 +57,11 @@ CanResetPasswordContract
     return $this->suburb; // this looks for an admin column in your users table
     }
 
+    public function getDatabaseType()
+    {
+
+    return $this->suburb_type; // this looks for an admin column in your users table
+    }
+
+
 }
