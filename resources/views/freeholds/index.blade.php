@@ -245,20 +245,20 @@ $(document).ready(function() {
 
 
 
-  { data: 'numErf', name: 'numErf' },
+  { data: 'numErf', name: 'numErf' ,width: '100'},
 
-  { data: 'strStreetNo', name: 'strStreetNo' },
-  { data: 'strStreetName', name: 'strStreetName' },
+  { data: 'strStreetNo', name: 'strStreetNo' ,width: '100'},
+  { data: 'strStreetName', name: 'strStreetName' ,width: '100'},
 
-  { data: 'strComplexNo', name: 'strComplexNo' },
-  { data: 'strComplexName', name: 'strComplexName' },
+  { data: 'strComplexNo', name: 'strComplexNo' ,width: '100'},
+  { data: 'strComplexName', name: 'strComplexName' ,width: '150'},
 
-  { data: 'dtmRegDate', name: 'dtmRegDate' },
+  { data: 'dtmRegDate', name: 'dtmRegDate' ,width: '150'},
   { data: 'strAmount', name: 'strAmount' },
 
-  { data: 'strOwners', name: 'strOwners' },  
+  { data: 'strOwners', name: 'strOwners' ,width: '100'},  
 
-  { data: 'strIdentity', name: 'strIdentity' },    
+  { data: 'strIdentity', name: 'strIdentity' ,width: '100'},    
 
   { data: 'memNotes', name: 'memNotes' , visible: false , sortable: false , targers: [9] },   
 
@@ -370,7 +370,7 @@ $('#s_id').on( 'keyup', function () {
 
 //console.log("hidding fileds");
 
-table.column( 0).visible( false );
+//table.column( 0).visible( false );
 table.column( 6).visible( false );
 table.column( 7).visible( false );
 table.column( 9).visible( false );
