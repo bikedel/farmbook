@@ -215,7 +215,7 @@ $(document).ready(function() {
     bProcessing:true,
     serverSide: false,
     select: true,
-    scrollX: true,
+    scrollX: '100%',
     responsive: true,
     bAutoWidth: true,
     bInfo: true,
@@ -371,15 +371,15 @@ $('#s_id').on( 'keyup', function () {
 //console.log("hidding fileds");
 
 //table.column( 0).visible( false );
-table.column( 6).visible( false );
-table.column( 7).visible( false );
-table.column( 9).visible( false );
-table.column( 10).visible( false );
-table.column( 11).visible( false );
-table.column( 12).visible( false );
-table.column( 13).visible( false );
-table.column( 14).visible( false );
-table.column( 15).visible( false );
+//table.column( 6).visible( false );
+//table.column( 7).visible( false );
+//table.column( 9).visible( false );
+//table.column( 10).visible( false );
+//table.column( 11).visible( false );
+//table.column( 12).visible( false );
+//table.column( 13).visible( false );
+//table.column( 14).visible( false );
+//table.column( 15).visible( false );
 
 
 // reset search

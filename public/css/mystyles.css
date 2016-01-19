@@ -59,7 +59,7 @@ background-color: #ff6700;
 
 table.display {
 margin: 0 auto;
-width: 100%;
+width: 4000px;
 clear: both;
 border-collapse: collapse;
 table-layout: fixed; // ***********add this 
@@ -176,3 +176,9 @@ opacity:.4; }
 background-color:lightblue;
 
 }
+
+
+
+th, td { white-space: nowrap; }
+
+
