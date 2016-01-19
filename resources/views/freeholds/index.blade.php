@@ -226,7 +226,7 @@ $(document).ready(function() {
     lengthChange: true,
     paging:true,
     keys:true,
-    scrollY: 195,
+    scrollY: 390,
     iDisplayLength: 10,
     lengthMenu: [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]],
     fnStateSave: function (oSettings, oData) {
