@@ -86,7 +86,7 @@ function clear_fields() {
 
 
 function display_row($row) {
- console.log("display row "+$row);
+ //console.log("display row "+$row);
  var table = new $.fn.dataTable.Api( '#freeholds' );
  var data = table.rows($row).data();
 
@@ -191,12 +191,12 @@ return phone;
 
 
 function priceFormat(price) {
-console.log(price);
+//console.log(price);
 price = price.replace(/[^0-9]/g, '');
-console.log(price);
+//console.log(price);
 price = Number(price).toLocaleString('en') ;
 
-console.log(price);
+//console.log(price);
 return "R "+price
 
 }

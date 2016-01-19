@@ -290,7 +290,7 @@ $(document).ready(function() {
 
 
   initComplete: function(settings, json) {
-   console.log( 'DataTables has finished its initialisation.' );
+ //  console.log( 'DataTables has finished its initialisation.' );
    document.getElementById("reset").style.visibility = "visible";
    rowindex = checkCookie()
 
@@ -368,6 +368,8 @@ $('#s_id').on( 'keyup', function () {
 
 // hidden columns  
 
+//console.log("hidding fileds");
+
 table.column( 0).visible( false );
 table.column( 6).visible( false );
 table.column( 7).visible( false );
@@ -384,8 +386,8 @@ table.column( 15).visible( false );
 $('#reset').click(function(){
   document.getElementById('s_numErf').value = "";
   document.getElementById('s_strStreetName').value = "";
+  document.getElementById('s_strComplexName').value = "";
   document.getElementById('s_owner').value = "";
-
   document.getElementById('s_id').value = "";
 
   table .search( '' )
@@ -426,8 +428,8 @@ $('#next').click(function(){
 
         var page = info.page;
 
-        console.log('len '+info.length);
-        console.log('end '+info.end);
+       // console.log('len '+info.length);
+      //  console.log('end '+info.end);
 
 
         // check number of rows is enough to go mpre
@@ -475,7 +477,7 @@ table
         var info = table.page.info();
         var len = info.length;
         $rowIndex = indexes;
-        console.log(indexes);
+      //  console.log(indexes);
         document.getElementById('mrec').value = indexes ;
       } )
 
@@ -501,10 +503,10 @@ table
  // document.getElementById('mrec').value = $rowIndex +1 ;
  $rowIndex = (info.page*info.length)
 
- console.log("page "+info.page)
- console.log("len "+info.length)
- console.log("index "+$rowIndex)
- console.log("index "+info.start)
+ //console.log("page "+info.page)
+ //console.log("len "+info.length)
+// console.log("index "+$rowIndex)
+ //console.log("index "+info.start)
 
   //display_row($rowIndex);
   //$rowIndex = 0;

@@ -72,6 +72,10 @@ public function setSuburb(Request $request){
 
 
  // get database type
+// 1 - numerf
+ // 2 - numerf_portion
+ //3 - complexname_complexno
+
   $suburb_type = DB::table('suburbs')
     ->select("type")
     ->where('database',$suburb)->get(1);
@@ -81,7 +85,7 @@ public function setSuburb(Request $request){
 $suburb_type =$suburb_type[0]->type;
  $user = User::find($userId);
 
-// set database and typ for selected database in user table
+// set database and type  for selected database in user table
  $user->suburb = $suburb;
   $user->suburb_type = $suburb_type;
  $user->save();
@@ -122,8 +126,10 @@ $suburb_type =$suburb_type[0]->type;
         $ids = $db->table('tblSuburbContactNumbers')
         ->orderBy('strIDNumber')->get(['strIDNumber','strSurname']);
 
-       $complexs = $db->table('tblSecurityComplexNames')->get(['strComplexName']);
-
+       $complexs = $db->table('tblSecurityComplexNames')
+       ->orderBy('strComplexName')
+       ->get(['strComplexName']);
+         
 
         $surnames = $db->table('tblSuburbContactNumbers')
         ->orderBy('strSurname','desc')->distinct()->get(['strIDNumber','strSurname']);
