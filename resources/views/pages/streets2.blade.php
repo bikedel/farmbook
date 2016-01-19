@@ -60,7 +60,7 @@ ul  {
 		{!! Form::model($street, ['method' => 'post', 'url' => ['street']]) !!}
 
 
-		<div class="col-xs-3">
+		<div class="col-sm-3">
 			{!! Form::label('name', 'Erf : ')  !!}
 			{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}<br>
 
@@ -101,7 +101,7 @@ ul  {
 			{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
 
 		</div>
-		<div class="col-xs-3">
+		<div class="col-sm-3">
 
 			{!! Form::label('name', 'First Name:') !!}
 			{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
@@ -130,7 +130,7 @@ ul  {
 
 
 		</div>
-		<div class="col-xs-6">
+		<div class="col-sm-6">
 			{!! Form::label('name', 'Notes : ')  !!}<br>
 			{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '25','id' => 'memNotes']) !!}<br>
 			
