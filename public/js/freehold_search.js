@@ -87,6 +87,7 @@ function clear_fields() {
   document.getElementById('dtmRegDate').value = "" ;
   document.getElementById('strAmount').value =  "" ;
   document.getElementById('strSqMeters').value =  "" ;
+   document.getElementById('strKey').value =  "";
 }
 
 
