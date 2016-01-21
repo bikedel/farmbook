@@ -55,13 +55,11 @@ ul  {
 	<div class="row">
 
 		@foreach($streets as $street)
-		<p>Erf:   {{$street->numErf      }}  Address:       {{$street->strStreetNo}}        {{$street->strStreetName}}      {{$street->strSuburb}}   </p>   
-		<p>	Owner : {{$street->strOwners}}  
+		<p> {{$street->strStreetName}}   {{$street->strStreetNo}}    {{$street->numErf      }}           {{$street->strOwners}}   {{  substr($street->strIdentity,0,6) }} </p>   
 
-	<p>	Home Phone : {{$street->strHomePhoneNo}} </p>
-	<p>	Work Phone : {{$street->strWorkPhoneNo}} </p>
-		<p>		Cell Phone : {{$street->strCellPhoneNo}} </p>
-			<p>		Email : {{$street->EMAIL}} </p>
+
+		<p>	Home Phone : {{$street->strHomePhoneNo}}  Work Phone : {{$street->strWorkPhoneNo}}  Cell Phone : {{$street->strCellPhoneNo}} Email : {{$street->EMAIL}} </p>
+
 		<p>		Notes :{{$street->memNotes}} </p>
 		<hr>
 		@endforeach
@@ -71,31 +69,31 @@ ul  {
 
 </div>
 
-	@stop
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script>
+@stop
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
 
-	$(document).on("ready page:load", function() {
-		setTimeout(function() { $(".alert").fadeOut(); }, 4000);
+$(document).on("ready page:load", function() {
+	setTimeout(function() { $(".alert").fadeOut(); }, 4000);
 
-	});
-
-
-	function priceFormat(price) {
-		alert(price);
-
-		price = price.replace(/[^0-9]/g, '');
-
-		price = Number(price).toLocaleString('en') ;
-
-		return "R "+price
-
-	}
+});
 
 
-	function mychange(street){
-		alert("dgjfbdgkbdskjgbfkgjfdg");
-	}
+function priceFormat(price) {
+	alert(price);
 
-	</script>
+	price = price.replace(/[^0-9]/g, '');
+
+	price = Number(price).toLocaleString('en') ;
+
+	return "R "+price
+
+}
+
+
+function mychange(street){
+	alert("dgjfbdgkbdskjgbfkgjfdg");
+}
+
+</script>
 

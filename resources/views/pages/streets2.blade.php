@@ -61,80 +61,80 @@ ul  {
 
 
 		<div class="col-sm-3">
-			{!! Form::label('name', 'Erf : ')  !!}
+			{!! Form::label('name', 'Erf  ')  !!}
 			{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}<br>
 
-			{!! Form::label('name', 'Street No : ')  !!}
+			{!! Form::label('name', 'Street No  ')  !!}
 			{!! Form::text('strStreetNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strStreetNo' , 'readonly' => 'true']) !!}<br>
 
-			{!! Form::label('name', 'Street Name : ')  !!}
+			{!! Form::label('name', 'Street Name  ')  !!}
 			{!! Form::text('strStreetName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strStreetName', 'readonly' => 'true']) !!}<br>
 
-			{!! Form::label('name', 'Complex No : ')  !!}
+			{!! Form::label('name', 'Complex No  ')  !!}
 			{!! Form::text('strComplexNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strComplexNo' , 'readonly' => 'true']) !!}<br>
 
-			{!! Form::label('name', 'Complex Name : ')  !!}
+			{!! Form::label('name', 'Complex Name  ')  !!}
 			{!! Form::text('strComplexName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strComplexName', 'readonly' => 'true']) !!}<br>
 
 
-			{!! Form::label('name', 'Identity : ')  !!}
+			{!! Form::label('name', 'Identity  ')  !!}
 			{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
 
-			{!! Form::label('name', 'Owner : ')  !!}
+			{!! Form::label('name', 'Owner  ')  !!}
 			{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
 
-			{!! Form::label('name', 'Bond Holder : ')  !!}
+			{!! Form::label('name', 'Bond Holder  ')  !!}
 			{!! Form::text('strBondHolder',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strBondHolder' , 'readonly' => 'true']) !!}<br>
 
 
 
-			{!! Form::label('name', 'Reg Date:') !!}
+			{!! Form::label('name', 'Reg Date') !!}
 			{!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
 
 
 
-			{!! Form::label('name', 'Sale Price:') !!}
+			{!! Form::label('name', 'Sale Price') !!}
 			{!! Form::text('strAmount',  null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
 
 
-			{!! Form::label('name', 'Sq Meters:') !!}
+			{!! Form::label('name', 'Sq Meters') !!}
 			{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
 
 		</div>
 		<div class="col-sm-3">
 
-			{!! Form::label('name', 'First Name:') !!}
+			{!! Form::label('name', 'First Name') !!}
 			{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
 
-			{!! Form::label('Surname', 'Surname:') !!}
+			{!! Form::label('Surname', 'Surname') !!}
 			{!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}<br>
 
 
-			{!! Form::label('name', 'Home Phone:') !!}
+			{!! Form::label('name', 'Home Phone') !!}
 			{!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}<br>
 
-			{!! Form::label('name', 'Work Phone:') !!}
+			{!! Form::label('name', 'Work Phone') !!}
 			{!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}<br>
 
 
-			{!! Form::label('name', 'Cell Phone:') !!}
+			{!! Form::label('name', 'Cell Phone') !!}
 			{!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}<br>
 
-			{!! Form::label('name', 'Email:') !!}
+			{!! Form::label('name', 'Email') !!}
 			{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}<br>
 
 
-			{!! Form::label('name', 'strKey:') !!}
+			{!! Form::label('name', 'strKey') !!}
 			{!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '']) !!}<br>
 
 
 
 		</div>
 		<div class="col-sm-6">
-			{!! Form::label('name', 'Previous Notes : ')  !!}<br>
+			{!! Form::label('name', 'Previous Notes  ')  !!}<br>
 			{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotes', 'readonly' => 'true']) !!}<br>
 			
-	    	{!! Form::label('name', 'New Notes : ')  !!}<br>
+	    	{!! Form::label('name', 'New Notes  ')  !!}<br>
 			{!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
 			
 

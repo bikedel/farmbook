@@ -87,7 +87,7 @@ class StreetsController extends Controller
         if ($databaseType == 2 ){
 
             $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strErfPort";
+            $freeholds_table_key =  $freeholds_table.".strKey";
             $freeholds_identity = $freeholds_table.".strIdentity";
             $mem_Table = "tblFHPropertyID";
             $mem_key = $mem_Table.".strKey";
@@ -96,7 +96,7 @@ class StreetsController extends Controller
         if ($databaseType == 3 ){
 
             $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strComplexNameNo";
+            $freeholds_table_key =  $freeholds_table.".strKey";
             $freeholds_identity = $freeholds_table.".strIdentity";
             $mem_Table = "tblFHPropertyID";
             $mem_key = $mem_Table.".strKey";
@@ -200,11 +200,11 @@ class StreetsController extends Controller
          $streets = $db->table($freeholds_table)
           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-         ->orderBy('strStreetName', 'asc')
-         ->orderBy('strStreetNo', 'asc')
+         ->orderBy($freeholds_table.'.strKey', 'asc')
+ 
          ->select('*')
-         ->where('tblSuburbContactNumbers.strComplexName', $complex)->paginate(100);
-
+  
+->where($freeholds_table.'.strComplexName', $complex)->paginate(100);
          return view('pages.streetsPrint',compact('streets','street'));
 
 
@@ -396,8 +396,8 @@ class StreetsController extends Controller
          $streets = $db->table($freeholds_table)
           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
          ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-         ->orderBy('strStreetName', 'asc')
-         ->orderBy('strStreetNo', 'asc')
+         ->orderBy($freeholds_table.'.strKey', 'asc')
+
          ->select('*')
          ->where($freeholds_table.'.strComplexName', $complex)->paginate(1);
 
