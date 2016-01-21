@@ -7251,7 +7251,8 @@ word-wrap:break-word; // ***********and this
 #strComplexName,
 #strBondHolder,
 #strKey,
-#comment{
+#comment,
+#memNotesNew{
 
  font-size: 120%;
 }
@@ -7331,6 +7332,18 @@ input[type="text"]:read-only {
 background-color:lightblue;
 opacity:.4; }
 
+textarea:read-only { 
+
+background-color:lightblue;
+opacity:.4; }
+
+#memNotes{
+background-color:lightblue;
+opacity:.4; 
+}
+
+
+
 
 #strOwners.owner {
 
@@ -7342,6 +7355,6 @@ background-color:lightblue;
 
 th, td { white-space: nowrap; }
 
-
+div.dataTables_processing { z-index: 1; }
 
 /*# sourceMappingURL=all.css.map */

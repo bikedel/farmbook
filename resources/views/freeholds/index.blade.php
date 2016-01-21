@@ -7,7 +7,7 @@
 
 
 <div class="row" id="search">
-<div class="col-sm-2">
+<div class="col-md-2">
 
 
 
@@ -18,19 +18,19 @@
 
 </div>
 
-  <div class="col-sm-2">
+  <div class="col-md-2">
     <input id="s_numErf" type="text" name="firstname" class="form-control input-sm" placeholder="Search Erf">
   </div>
-  <div class="col-sm-2">
+  <div class="col-md-2">
     <input id="s_strStreetName" type="text" name="firstname" class="form-control input-sm" placeholder="Search Street Name">
   </div>
-  <div class="col-sm-2">
+  <div class="col-md-2">
     <input id="s_strComplexName" type="text" name="firstname" class="form-control input-sm" placeholder="Search Complex Name">
   </div>
-  <div class="col-sm-2">
+  <div class="col-md-2">
     <input id="s_owner" type="text" name="firstname" class="form-control input-sm" placeholder="Search Owner">
   </div>
-  <div class="col-sm-2">
+  <div class="col-md-2">
     <input id="s_id" type="text" name="firstname" class="form-control input-sm " placeholder="Search Id">
   </div>
 
@@ -239,9 +239,12 @@ $(document).ready(function() {
     lengthChange: true,
     paging:true,
     keys:true,
-    scrollY: 390,
+    scrollY: 195,
     iDisplayLength: 10,
     lengthMenu: [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]],
+    language: {
+     "loadingRecords": "Please wait - loading..."
+  },
     fnStateSave: function (oSettings, oData) {
       alert("saving state");
       localStorage.setItem('DataTables_' + window.location.pathname, JSON.stringify(oData));

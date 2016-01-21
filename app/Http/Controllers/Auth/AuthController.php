@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
+use Redirect;
+use DB;
 
 class AuthController extends Controller
 {
@@ -54,7 +56,7 @@ class AuthController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'suburb' => 'required',
+
             'password' => 'required|confirmed|min:2',
             ]);
     }
@@ -67,13 +69,43 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        // get chosen databases
+        $suburbs= $data['getsuburb'];
+
+        // and its type
+        $suburbType = DB::table('suburbs')->where('database', $data['suburb'])->first();
+
+        $suburbType = $suburbType->type;
+        //dd($data,$suburbType);
+
+        // create the user
+        // set default suburb and type
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-             'suburb' => $data['suburb'],
+            'suburb' => $data['suburb'],
+            'suburb_type' => $suburbType,
             'password' => bcrypt($data['password']),
             ]);
-        
+ 
+        // get user id
+        $usersid = DB::table('users')->where('email', $data['email'])->first();
+        $usersid = $usersid->id ;
+
+
+        // add databases for user
+        foreach ($suburbs as $value) {
+            DB::table('user_suburbs')->insertGetId(
+                ['user_id' => $usersid, 'suburb_id' => $value]
+                );
+
+        }
+
+      
+
+        return $user;
+
     }
 
 
@@ -83,22 +115,22 @@ class AuthController extends Controller
 
  //log in the user
 
-        
 
-        $credentials = [
+
+      $credentials = [
         'email' => trim($request->get('email')),
-        'password' => trim($request->get('password'))
-        ];
+       'password' => trim($request->get('password'))
+     ];
 
-        $remember = $request->has('remember');
+      $remember = $request->has('remember');
 
-        if (\Auth::attempt($credentials, $remember)){
+       if (\Auth::attempt($credentials, $remember)){
 
-            return redirect()->intended('/');
-        }
+           return redirect()->intended('/');
+    }
 
         //show error if invalid data entered
-        return redirect()->back()->withErrors('Login/Pass do not match')->withInput();
-
+      // return redirect()->back()->withErrors('Login/Pass do not match')->withInput();
+return redirect();
     }
 }

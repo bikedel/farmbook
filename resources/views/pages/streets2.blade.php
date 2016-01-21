@@ -131,10 +131,12 @@ ul  {
 
 		</div>
 		<div class="col-sm-6">
-			{!! Form::label('name', 'Notes : ')  !!}<br>
-			{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '25','id' => 'memNotes']) !!}<br>
+			{!! Form::label('name', 'Previous Notes : ')  !!}<br>
+			{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotes', 'readonly' => 'true']) !!}<br>
 			
-
+	    	{!! Form::label('name', 'New Notes : ')  !!}<br>
+			{!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
+			
 
 			{!! Form::submit('Update',  array('class'=>'btn btn-info ')) !!}
 			{!! Form::close() !!}

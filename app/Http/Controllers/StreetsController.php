@@ -16,6 +16,7 @@ use Config;
 use App\Database;
 use Session;
 use Redirect;
+use Carbon;
 
 class StreetsController extends Controller
 {
@@ -477,8 +478,13 @@ class StreetsController extends Controller
       //  dd("update");
         $input = Input::all();
 
+       // set user and date
+       $user = Auth::user()->name;
+       $now = Carbon\Carbon::now('Africa/Cairo');
+      // $now->format('Y-m-d');
 
         // dynamic dtabase connection
+        
         $userDB = Auth::user()->suburb;
         $otf = new \App\Database\OTF(['database' => $userDB]);
         $db = DB::connection($userDB);
@@ -530,23 +536,27 @@ class StreetsController extends Controller
         $numErf = Input::get('numErf');
         $strIdentity = Input::get('strIdentity');
         $comment = Input::get('memNotes');
+        $commentNew = Input::get('memNotesNew');
         $strHomePhoneNo = Input::get('strHomePhoneNo');
         $strWorkPhoneNo = Input::get('strWorkPhoneNo');
         $strCellPhoneNo = Input::get('strCellPhoneNo');
         $EMAIL = Input::get('EMAIL');
 
 
-        $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->get();
+        $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->first();
 
 
-      //  dd($result);
+        
+         $commentNew = $comment . "\r\n" .   $now  . "  " . $user . " " . "\r\n" . $commentNew ;
+
+ //dd($result->memNotes,$commentNew,$user,$now);
 
 
         if ($result) {
 
             $affected = $db->table($mem_Table)
             ->where($mem_key, $searchKey)
-            ->update(array('memNotes' => $comment));
+            ->update(array('memNotes' => $commentNew));
 
             $affected2 = $db->table('tblSuburbContactNumbers')
             ->where('strIDNumber', $strIdentity)

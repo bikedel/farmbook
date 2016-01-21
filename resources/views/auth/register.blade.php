@@ -38,11 +38,11 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Farmbook</label>
 							<div class="col-md-6">
-								{!! Form::select('getsuburb', App\Suburb::lists('database'), null, ['class'=> 'form-control col-md-6', 'onchange'=>'document.getElementById("text_content").value=this.options[this.selectedIndex].text']) !!}
+								{!! Form::select('getsuburb[]', App\Suburb::lists('database','id','type'), 2, ['multiple'=>'multiple','class'=> 'form-control col-md-6', 'onchange'=>'document.getElementById("text_content").value=this.options[this.selectedIndex].text']) !!}
 							</div>
 						</div>
 
-<input type="hidden" name="suburb" id="text_content" value="" />
+						<input type="hidden" name="suburb" id="text_content" value="" />
 
 						<div class="form-group">
 							<label class="col-md-4 control-label">Password</label>
@@ -81,8 +81,8 @@ $(document).ready(function() {
 
 
 });
-	function GetSelectedTextValue(ddlFruits) {
-		var selectedText = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
-		var selectedValue = ddlFruits.value;
-   }
+function GetSelectedTextValue(ddlFruits) {
+	var selectedText = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
+	var selectedValue = ddlFruits.value;
+}
 </script>
