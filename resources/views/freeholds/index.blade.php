@@ -324,8 +324,8 @@ $(document).ready(function() {
        {
         $rowIndex = rowindex;
         document.getElementById('mrec').value = Number(rowindex )+1 ;
-        display_row(rowindex);
-  
+       // display_row(rowindex);
+  setTimeout(function() {  display_row( $rowIndex); }, 2000);
       }
       
 
