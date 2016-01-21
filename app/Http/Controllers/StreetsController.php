@@ -475,13 +475,12 @@ class StreetsController extends Controller
     {
 
 
-      //  dd("update");
         $input = Input::all();
 
        // set user and date
        $user = Auth::user()->name;
        $now = Carbon\Carbon::now('Africa/Cairo');
-      // $now->format('Y-m-d');
+
 
         // dynamic dtabase connection
         
@@ -490,6 +489,7 @@ class StreetsController extends Controller
         $db = DB::connection($userDB);
 
 
+        // get database type
         $databaseType = Auth::user()->suburb_type;
 
     
@@ -546,8 +546,8 @@ class StreetsController extends Controller
         $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->first();
 
 
-        
-         $commentNew = $comment . "\r\n" .   $now  . "  " . $user . " " . "\r\n" . $commentNew ;
+        // uers and date timestamp memNates
+         $commentNew = $comment . "\r\n" .   $now  . "  " . $user . "  wrote : " . "\r\n" . $commentNew ;
 
  //dd($result->memNotes,$commentNew,$user,$now);
 

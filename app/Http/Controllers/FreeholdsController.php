@@ -18,6 +18,8 @@ use Route;
 use Log;
 use DB;
 
+use Carbon;
+
 class FreeholdsController extends Controller
 {
 
@@ -126,12 +128,18 @@ class FreeholdsController extends Controller
 		public function update(Request $request)
 		{
 
-
+            // set database
 			$userDB = Auth::user()->suburb;
 			$otf = new \App\Database\OTF(['database' => $userDB]);
 			$db = DB::connection($userDB);
 
 
+       // set user and date
+       $user = Auth::user()->name;
+       $now = Carbon\Carbon::now('Africa/Cairo');
+
+
+            // get database type
 			$databaseType = Auth::user()->suburb_type;
 
 
@@ -172,22 +180,24 @@ class FreeholdsController extends Controller
 			$numErf = Input::get('numErf');
 			$strIdentity = Input::get('strIdentity');
 			$comment = Input::get('comment');
+			$commentNew = Input::get('memNotesNew');
 			$strHomePhoneNo = Input::get('strHomePhoneNo');
 			$strWorkPhoneNo = Input::get('strWorkPhoneNo');
 			$strCellPhoneNo = Input::get('strCellPhoneNo');
 			$EMAIL = Input::get('EMAIL');
 
-            DB::connection()->enableQueryLog();
+            
 			$result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->get();
 
-
+        // uers and date timestamp memNates
+         $commentNew = $comment . "\r\n" .   $now  . "  " . $user . " wrote : " . "\r\n" . $commentNew ;
 
 			if ($result) {
 
 
 				$affected = $db->table($mem_Table)
 				->where($mem_key, $searchKey)
-				->update(array('memNotes' => $comment));
+				->update(array('memNotes' => $commentNew));
 
 				$affected2 = $db->table('tblSuburbContactNumbers')
 				->where('strIDNumber', $strIdentity)
