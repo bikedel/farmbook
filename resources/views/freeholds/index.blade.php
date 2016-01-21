@@ -189,9 +189,14 @@
 <div class='row'>
   <div class="form-group col-sm-12">
     {!! Form::label('name', 'Notes:') !!}<br>
-    {!! Form::textarea('comment', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'comment', 'rows' => '5','placeholder' => '']) !!}
+    {!! Form::textarea('comment', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'comment', 'rows' => '5','readonly' => 'true' ,'placeholder' => '']) !!}
   </div>
+  <div class="form-group col-sm-12">
 
+
+        {!! Form::label('name', 'New Notes : ')  !!}<br>
+      {!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
+      </div>
 </div>
 
 
@@ -320,6 +325,7 @@ $(document).ready(function() {
         $rowIndex = rowindex;
         document.getElementById('mrec').value = Number(rowindex )+1 ;
         display_row(rowindex);
+  
       }
       
 

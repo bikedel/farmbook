@@ -118,7 +118,7 @@ function display_row($row) {
      var strWorkPhoneNo = table.row( $row ).data().strWorkPhoneNo ;
      var strCellPhoneNo = table.row( $row ).data().strCellPhoneNo ;
      var EMAIL = table.row( $row ).data().EMAIL ;   
-     var strKey = table.row( this ).data().strKey ;  
+     var strKey = table.row( $row ).data().strKey ;  
       //$(this).css('opacity', '.5');
 
       document.getElementById('strIdentity').value = id ;
