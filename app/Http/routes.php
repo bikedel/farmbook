@@ -23,6 +23,26 @@
 // ajax call from view without reload
 //Route::any('myAjaxCallURI', 'MainController@getAjax');
 
+
+Route::get('/adminDatabases',  'AdminController@indexDatabases' );
+
+Route::post('/adminDatabasesNew',  'AdminController@newDatabase' );
+
+Route::post('/adminUsersNew',  'DatatablesController@newUser' );
+
+
+Route::get('/adminUsers',  'AdminController@indexUsers' );
+
+
+Route::controller('admin', 'AdminController', [
+	'anyData'  => 'admin.data',
+	'getIndex' => 'admin',
+	]);
+
+
+
+
+
 Route::get('/',  'SuburbController@index' );
 
 Route::get('/suburb',  'SuburbController@getSuburb' );

@@ -135,8 +135,8 @@ class FreeholdsController extends Controller
 
 
        // set user and date
-       $user = Auth::user()->name;
-       $now = Carbon\Carbon::now('Africa/Cairo');
+			$user = Auth::user()->name;
+			$now = Carbon\Carbon::now('Africa/Cairo');
 
 
             // get database type
@@ -186,18 +186,22 @@ class FreeholdsController extends Controller
 			$strCellPhoneNo = Input::get('strCellPhoneNo');
 			$EMAIL = Input::get('EMAIL');
 
-            
+
 			$result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->get();
 
-        // uers and date timestamp memNates
-         $commentNew = $comment . "\r\n" .   $now  . "  " . $user . " wrote : " . "\r\n" . $commentNew ;
+
 
 			if ($result) {
 
+                // update notes
+				if (strlen(  $commentNew) > 0 ) {
+		        // uers and date timestamp memNates
+					$commentNew = $comment . "\r\n" .   $now  . "  " . $user . " wrote : " . "\r\n" . $commentNew ;
 
-				$affected = $db->table($mem_Table)
-				->where($mem_key, $searchKey)
-				->update(array('memNotes' => $commentNew));
+					$affected = $db->table($mem_Table)
+					->where($mem_key, $searchKey)
+					->update(array('memNotes' => $commentNew));
+				}
 
 				$affected2 = $db->table('tblSuburbContactNumbers')
 				->where('strIDNumber', $strIdentity)

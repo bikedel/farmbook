@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>User Admin</h1>
-
+<h1>Farmbooks Admin</h1>
 <div class='row'>
     <div class="col-xs-4">
 
@@ -16,10 +15,9 @@
     <thead>
         <tr>
             <th>Id</th>
+
             <th>Name</th>
-            <th>Email</th>
-            <th>Admin</th>
-            <th>Suburb</th>
+            <th>Database</th>
             <th>Type</th>
         </tr>
     </thead>
@@ -49,10 +47,8 @@
 <br>
 
 <button type="button" class="btn btn-default " id="addBtn" >Add </button>
-<button type="button" class="btn btn-default " id="updateBtn" >Update  </button>
-<button type="button" class="btn btn-default " id="deleteBtn" >Delete  </button>
-
-
+<button type="button" class="btn btn-default " id="updateBtn" >Update </button>
+<button type="button" class="btn btn-default " id="deleteBtn" >Delete </button>
 
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -66,61 +62,30 @@
             <div class="modal-body">
 
                 <div class="row">
- 
-                    <form class="form-horizontal" id="adminform" role="form" method="POST" action="{{ url('/adminUsersNew') }}">
+
+                    <form class="form-horizontal" id="adminform" role="form" method="POST" action="{{ url('/adminDatabasesNew') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Name</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="name" name="name" value="">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"><br>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                            <label class="col-md-4 control-label">Database</label>
                             <div class="col-md-6">
-                                <input type="email" class="form-control" id="email" name="email" value="">
+                                <input type="text" class="form-control" id="database" name="database" value="{{ old('database') }}"><br>
                             </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Admin</label>
+                            <label class="col-md-4 control-label">Type</label>
                             <div class="col-md-6">
-                                    {!! Form::select('admin', [0,1],  [0], ['class'=> 'form-control col-md-6', 'id'=>'admin']) !!}
+                                <input type="text" class="form-control" id="type" name="type" value="{{ old('type') }}">
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Farmbook</label>
                             <div class="col-md-6">
-                             
-                                {!! Form::select('getsuburb[]', $suburbs,  ['Noordhoek_farmbook'], ['multiple'=>'multiple','class'=> 'form-control col-md-6', 'id'=>'suburb']) !!}
+                                <input type="text" class="form-control" id="formaction" name="formaction" hidden value="">
                             </div>
-                        </div>
-
-                        <input type="hidden" name="suburb" id="text_content" value="" />
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Password</label>
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password_confirmation">
-                            </div>
-                        </div>        
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" id="formaction" name="formaction" hidden value="">
-                        </div>
-                                             
+                        </div>  
                     </div>
                     <div class="modal-footer">
+        
                         <button type="button" class="btn btn-default " id="actionBtn" >Save </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
@@ -160,80 +125,85 @@
                 var data = localStorage.getItem('DataTables_' + window.location.pathname);
                 return JSON.parse(data);
             },
-            ajax: '{!! route('datatables.data') !!}',
+            ajax: '{!! route('admin.data') !!}',
             columns: [
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
-            { data: 'email', name: 'email' },
-            { data: 'admin', name: 'admin' },
-            { data: 'suburb', name: 'suburb' },
-            { data: 'suburb_type', name: 'suburb_type' },
+            { data: 'database', name: 'database' },
+            { data: 'type', name: 'type' },
             ],
-            buttons: [     ],
+            buttons: [        ],
+        
 
-        });
+    });
 
 
 table
 .on( 'select', function ( e, dt, type, indexes ) {
     var rowData = table.rows( indexes ).data().toArray();
+
     $row = indexes;
-})
+        //alert("hello paulie "+JSON.stringify( rowData ));
+
+    } )
 .on( 'deselect', function ( e, dt, type, indexes ) {
     var rowData = table.rows( indexes ).data().toArray();
        // events.prepend( '<div><b>'+type+' <i>de</i>selection</b> - '+JSON.stringify( rowData )+'</div>' );
-   });
+
+   } );
+
+
+$('#s_name').on( 'keyup', function () {
+    table.columns(2).search( this.value ).draw();
+} );
+
 
 });
-
-
 
 $("#updateBtn").click(function(event){
-   document.getElementById('formHeader').innerHTML = "Update User";  
-   document.getElementById('actionBtn').innerHTML = "Update";  
+ document.getElementById('formHeader').innerHTML = "Update Farmbook";  
+ document.getElementById('actionBtn').innerHTML = "Update";  
 
 
-   var table = new $.fn.dataTable.Api( '#users-table' );
+ var table = new $.fn.dataTable.Api( '#users-table' );
 
-   var name = table.row( $row ).data().name ;
-   var email = table.row( $row ).data().email ;
-   var admin = table.row( $row ).data().admin ;
+ var name = table.row( $row ).data().name ;
+ var database = table.row( $row ).data().database ;
+ var type = table.row( $row ).data().type ;
 
-   document.getElementById('name').value = name ;
-   document.getElementById('email').value = email ;
-   document.getElementById('admin').value = admin ;
-   $("#myModal").modal('show');
-});
-
-
-$("#addBtn").click(function(event){
-
-
-
- document.getElementById('formHeader').innerHTML = "Add User";
- document.getElementById('actionBtn').innerHTML = "Add";  
-
- document.getElementById('name').value = "" ;
- document.getElementById('email').value = "" ;
- document.getElementById('suburb').value = "" ;
-
+ document.getElementById('name').value = name ;
+ document.getElementById('database').value = database ;
+ document.getElementById('type').value = type ;
  $("#myModal").modal('show');
 });
 
 
+$("#addBtn").click(function(event){
+   document.getElementById('formHeader').innerHTML = "Add Farmbook";
+ document.getElementById('actionBtn').innerHTML = "Add";  
+
+
+   document.getElementById('name').value = "" ;
+   document.getElementById('database').value = "" ;
+   document.getElementById('type').value = "" ;
+
+   $("#myModal").modal('show');
+});
+
+
 $("#deleteBtn").click(function(event){
-   document.getElementById('actionBtn').innerHTML = "Delete";  
+ document.getElementById('actionBtn').innerHTML = "Delete";  
    var table = new $.fn.dataTable.Api( '#users-table' );
 
    var name = table.row( $row ).data().name ;
-   var email = table.row( $row ).data().email ;
-   var admin = table.row( $row ).data().admin ;
+   var database = table.row( $row ).data().database ;
+   var type = table.row( $row ).data().type ;
 
    document.getElementById('name').value = name ;
-   document.getElementById('email').value = email ;
-   document.getElementById('admin').value = admin ;
+   document.getElementById('database').value = database ;
+   document.getElementById('type').value = type ;
 
-   document.getElementById('formHeader').innerHTML = "Delete User"; 
+   document.getElementById('formHeader').innerHTML = "Delete Farmbook"; 
 
    $("#myModal").modal('show');
 });
@@ -247,5 +217,7 @@ $("#actionBtn").click(function(event){
     //  document.location.href="{{ url('/adminDatabasesNew') }}"
 
 });
+
+
 </script>
 @endpush

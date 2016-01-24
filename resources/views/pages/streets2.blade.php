@@ -31,7 +31,7 @@ ul  {
 
 
 	</div>
-
+<hr>
 
 	@if ( Session::has('flash_message') )
 
@@ -57,7 +57,7 @@ ul  {
 
 
 	<div class="row">
-		<div class=" table-responsive">
+		<div class=" col-md-6 responsive">
 			
 			<table class="table table-bordered ">
 				<colgroup>
@@ -108,12 +108,6 @@ ul  {
 					<th>Bond Amount</th>
 					<td>{{  $streets[0]->strBondAmount }} </td>
 				</tr>
-
-
-				<tr>
-					<th>Owners</th>
-					<td>{{  $streets[0]->strOwners }}  </td>
-				</tr>
 				<tr>
 					<th>Identity</th>
 					<td>{{  $streets[0]->strIdentity }}  </td>
@@ -121,6 +115,10 @@ ul  {
 				<tr>
 					<th>ID Number</th>
 					<td>{{  $streets[0]->strIDNumber }}  </td>
+				</tr>
+								<tr>
+					<th>Owners</th>
+					<td>{{  $streets[0]->strOwners }}  </td>
 				</tr>
 				<tr>
 					<th> Surname</th>
@@ -146,20 +144,25 @@ ul  {
 					<th> Email</th>
 					<td> {{  $streets[0]->EMAIL}} </td>
 				</tr>
-
+				<tr>
+					<th> Key</th>
+					<td> {{  $streets[0]->strKey}} </td>
+				</tr>
 
 			</tbody>
 		</table>
-
-    <div class="form-group">
-      <label for="comment">Notes:</label>
-      <textarea readonly class="form-control readonly" rows="5" id="comment">{{  $streets[0]->memNotes}}</textarea>
-    </div>
-
-	</div>
-
 </div>
-<button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Update Details</button>
+<div class="col-md-6 responsive" >
+
+		<div class="form-group">
+			<label for="comment">Notes:</label>
+			<textarea readonly class="form-control readonly" rows="5" id="comment">{{  $streets[0]->memNotes}}</textarea>
+		</div>
+<button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Details</button>
+	</div>
+</div>
+</div>
+
 
 
 
@@ -242,20 +245,19 @@ ul  {
 						{!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}<br>
 
 						{!! Form::label('name', 'Email') !!}
-						{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}<br>
+						{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
 
 
-						{!! Form::label('name', 'strKey') !!}
-						{!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '']) !!}<br>
+				
+						{!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '', 'hidden']) !!}
 
 
 
-					</div>
-					<div class="col-sm-12">
-						{!! Form::label('name', 'Previous Notes  ')  !!}<br>
-						{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotes', 'readonly' => 'true']) !!}<br>
 
-						{!! Form::label('name', 'New Notes  ')  !!}<br>
+					
+						{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotes', 'readonly' => 'true','hidden']) !!}<br>
+
+						{!! Form::label('name', 'Notes  ')  !!}
 						{!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
 
 
@@ -264,10 +266,10 @@ ul  {
 					@endforeach
 				</div>
 				<div class="modal-footer">
-{!! Form::submit('Update',  array('class'=>'btn btn-info ')) !!}
-						{!! Form::close() !!}
+					{!! Form::submit('Save',  array('class'=>'btn btn-info ')) !!}
+					{!! Form::close() !!}
 
-					
+
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 

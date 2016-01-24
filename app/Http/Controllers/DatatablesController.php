@@ -16,6 +16,9 @@ use Route;
 use DB;
 use Auth;
 
+use Session;
+use Exception;
+
 class DatatablesController extends Controller
 {
 
@@ -40,7 +43,14 @@ class DatatablesController extends Controller
 
 		 //  $getname = Auth::user()->suburb;
           //  dd($getname);
-		 	return view('datatables.index');
+
+		 	$suburbs = DB::table('suburbs')->lists('database','id');
+
+		 	$test = [5 ];
+
+       // dd($suburbs,$test);
+
+		 	return view('datatables.index',compact('suburbs','test'));
 		 }
 
 		 /**
@@ -84,6 +94,157 @@ class DatatablesController extends Controller
 
 			return Datatables::of(User::select('*'))->make(true);
 		}
+
+		/**
+		 * Process datatables ajax request.
+		 *
+		 * @return \Illuminate\Http\JsonResponse
+		 */
+		public function newUser(Request $request)
+		{
+
+
+            // get inputs
+			$sub = $request->input('getsuburb');
+			$name = $request->get('name');
+			$email = $request->get('email');
+			$admin = $request->get('admin');
+			$password = $request->get('password');
+			$passwordc = $request->get('password_confirmation');
+
+
+
+
+
+
+     // submitted form action
+			$formaction = $request->get('formaction');
+
+            //dd($name,$email,$password,$admin,$sub,$formaction );
+
+     // delete database
+			if ($formaction == "Delete" ){
+				try{
+
+
+
+
+        // get user id
+					$usersid = DB::table('users')->where('email', $email)->first();
+					$usersid = $usersid->id ;
+
+					DB::table('users')->where('name', '=',$name)->delete();
+              // delete all assoc databases
+					DB::table('user_suburbs')->where('user_id', '=',$usersid)->delete();
+
+				}
+				catch(\Exception $e){
+            // error
+					Session::flash('flash_message',   $name . ' not deleted ' . $e->getMessage() );
+					Session::flash('flash_type', 'alert-danger');
+					return Redirect::back();
+				}
+            // success
+				Session::flash('flash_message',   $name . ' has been deleted');
+				Session::flash('flash_type', 'alert-success');
+				return Redirect::back();
+			}
+
+
+        // update database
+			if ($formaction == "Update" ){
+				try{
+
+
+					if (strlen($password) > 0  && $password == $passwordc ) {
+
+					} else {
+						throw new Exception('password problem');
+					}
+
+
+
+
+					DB::table('users')->where('name','=',$name)->update(
+						['name' => $name, 'email' => $email, 'admin' => $admin,
+						'password' => bcrypt($password),
+						'created_at'=> \Carbon\Carbon::now()->toDateTimeString(),
+						'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()
+						]);
+
+
+
+
+				}
+				catch(\Exception $e){
+                // error
+					Session::flash('flash_message',   $name . ' not updated.'.$e->getMessage() );
+					Session::flash('flash_type', 'alert-danger');
+					return Redirect::back();
+				}
+                // success
+				Session::flash('flash_message',   $name . ' has been updated');
+				Session::flash('flash_type', 'alert-success');
+				return Redirect::back();
+			}
+
+
+        // add new database
+			if ($formaction == "Add" ){
+				try{
+
+
+					if (strlen($password) > 0  && $password == $passwordc ) {
+
+					} else {
+						throw new Exception('password problem');
+					}
+
+
+                   // get first suburb selected details
+					$suburbType = DB::table('suburbs')->where('id', $sub[0])->first();
+
+
+					DB::table('users')->insert(
+						['name' => $name, 'email' => $email, 'admin' => $admin, 'suburb' => $suburbType->database , 'suburb_type'=> $suburbType->type,
+						'password' => bcrypt($password),
+						'created_at'=> \Carbon\Carbon::now()->toDateTimeString(),
+						'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()
+						]);
+
+        // get user id
+					$usersid = DB::table('users')->where('email', $email)->first();
+					$usersid = $usersid->id ;
+
+
+        // add databases for user
+					foreach ($sub as $value) {
+						DB::table('user_suburbs')->insertGetId(
+							['user_id' => $usersid, 'suburb_id' => $value]
+							);
+
+					}
+
+				}
+				catch(\Exception $e){
+
+
+                //error
+					Session::flash('flash_message',   $name . ' not added.' .$e->getMessage());
+					Session::flash('flash_type', 'alert-danger');
+					return Redirect::back();
+				}
+                // success
+				Session::flash('flash_message',   $name . ' has been added');
+				Session::flash('flash_type', 'alert-success');
+				return Redirect::back();
+			}
+
+
+			return Redirect::back();
+		}
+
+
 
 
 

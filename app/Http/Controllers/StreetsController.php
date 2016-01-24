@@ -22,11 +22,11 @@ class StreetsController extends Controller
 {
 
 
-    public function __construct()
-    {
-        $this->middleware('auth');
+  public function __construct()
+  {
+    $this->middleware('auth');
 
-    }
+  }
 
 
 
@@ -36,22 +36,22 @@ class StreetsController extends Controller
     //
     //   nb!  return function()
 
-    public function checkButton()
-    {
+  public function checkButton()
+  {
 
-        $act = Input::get('action');
+    $act = Input::get('action');
 
         //check which submit was clicked on
-        if($act == 'View') {
+    if($act == 'View') {
 
-           return $this->index(); 
-       } 
-       if($act == "Print") {
+     return $this->index(); 
+   } 
+   if($act == "Print") {
 
-          return  $this->streetprint(); 
-      }
+    return  $this->streetprint(); 
+  }
 
-  }   
+}   
 
 
 
@@ -66,149 +66,149 @@ class StreetsController extends Controller
 
 
        // dynamically change database
-        $userDB = Auth::user()->suburb;
-        $otf = new \App\Database\OTF(['database' => $userDB]);
-        $db = DB::connection($userDB);
+      $userDB = Auth::user()->suburb;
+      $otf = new \App\Database\OTF(['database' => $userDB]);
+      $db = DB::connection($userDB);
 
         // check database type
-        $databaseType = Auth::user()->suburb_type;
-
-        
-
-        if ($databaseType == 1 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".numErf";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblErfNumbers";
-            $mem_key = "tblErfNumbers.numErf";
-
-        }
-        if ($databaseType == 2 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strKey";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblFHPropertyID";
-            $mem_key = $mem_Table.".strKey";
-
-        }
-        if ($databaseType == 3 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strKey";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblFHPropertyID";
-            $mem_key = $mem_Table.".strKey";
-
-        }
+      $databaseType = Auth::user()->suburb_type;
 
 
 
-        $input = Input::all();
-        $suburb = Input::get('suburb_id');
-        $street = Input::get('street_id');
-        $erf = Input::get('erf');
-        $id = Input::get('id');
-        $surname = Input::get('surname');
-        $complex = Input::get('complex');
-        $radio = Input::get('optradio');
+      if ($databaseType == 1 ){
 
-        if ($radio === '1'){
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".numErf";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblErfNumbers";
+        $mem_key = "tblErfNumbers.numErf";
 
-         // view title
-           $street = Input::get('street_id');
+      }
+      if ($databaseType == 2 ){
 
-           $streets = $db->table($freeholds_table)
-           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-           ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-           ->orderBy('strStreetName', 'asc')
-           ->orderBy('strStreetNo', 'asc')
-           ->select('*')
-           ->where('strStreetName', $street)->paginate(100);
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = $mem_Table.".strKey";
+
+      }
+      if ($databaseType == 3 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = $mem_Table.".strKey";
+
+      }
 
 
-           return view('pages.streetsPrint',compact('streets','street'));
 
+      $input = Input::all();
+      $suburb = Input::get('suburb_id');
+      $street = Input::get('street_id');
+      $erf = Input::get('erf');
+      $id = Input::get('id');
+      $surname = Input::get('surname');
+      $complex = Input::get('complex');
+      $radio = Input::get('optradio');
 
-       }
-
-       if ($radio === '2'){
-
+      if ($radio === '1'){
 
          // view title
-           $street = Input::get('erf');
+       $street = Input::get('street_id');
+
+       $streets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+       ->orderBy('strStreetName', 'asc')
+       ->orderBy('strStreetNo', 'asc')
+       ->select('*')
+       ->where('strStreetName', $street)->paginate(100);
 
 
-           $streets = $db->table($freeholds_table)
-           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-           ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-           ->orderBy('strStreetName', 'asc')
-           ->orderBy('strStreetNo', 'asc')
-           ->select('*')
-           ->where($freeholds_table.'.numErf', $erf)->paginate(100);
-
-           return view('pages.streetsPrint',compact('streets','street'));
+       return view('pages.streetsPrint',compact('streets','street'));
 
 
-       }
-       if ($radio === '3'){
+     }
+
+     if ($radio === '2'){
 
 
          // view title
-           $street = Input::get('id');
+       $street = Input::get('erf');
 
 
-           $streets = $db->table($freeholds_table)
-           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-           ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-           ->orderBy('strStreetName', 'asc')
-           ->orderBy('strStreetNo', 'asc')
-           ->select('*')
-           ->where('strIdentity', $id)->paginate(100);
+       $streets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+       ->orderBy('strStreetName', 'asc')
+       ->orderBy('strStreetNo', 'asc')
+       ->select('*')
+       ->where($freeholds_table.'.numErf', $erf)->paginate(100);
 
-           return view('pages.streetsPrint',compact('streets','street'));
-
-
-       }
-
-       if ($radio === '4'){
+       return view('pages.streetsPrint',compact('streets','street'));
 
 
-         // view title
-           $street = Input::get('surname');
-
-           $streets = $db->table($freeholds_table)
-           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-           ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-           ->orderBy('strStreetName', 'asc')
-           ->orderBy('strStreetNo', 'asc')
-           ->select('*')
-           ->where('strSurname', $surname)->paginate(100);
-
-           return view('pages.streetsPrint',compact('streets','street'));
-
-
-       }
-
-       if ($radio === '5'){
+     }
+     if ($radio === '3'){
 
 
          // view title
-           $street = Input::get('complex');
-
-           $streets = $db->table($freeholds_table)
-           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-           ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-           ->orderBy($freeholds_table.'.strKey', 'asc')
-           
-           ->select('*')
-           
-           ->where($freeholds_table.'.strComplexName', $complex)->paginate(100);
-           return view('pages.streetsPrint',compact('streets','street'));
+       $street = Input::get('id');
 
 
-       }
+       $streets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+       ->orderBy('strStreetName', 'asc')
+       ->orderBy('strStreetNo', 'asc')
+       ->select('*')
+       ->where('strIdentity', $id)->paginate(100);
+
+       return view('pages.streetsPrint',compact('streets','street'));
+
+
+     }
+
+     if ($radio === '4'){
+
+
+         // view title
+       $street = Input::get('surname');
+
+       $streets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+       ->orderBy('strStreetName', 'asc')
+       ->orderBy('strStreetNo', 'asc')
+       ->select('*')
+       ->where('strSurname', $surname)->paginate(100);
+
+       return view('pages.streetsPrint',compact('streets','street'));
+
+
+     }
+
+     if ($radio === '5'){
+
+
+         // view title
+       $street = Input::get('complex');
+
+       $streets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+       ->orderBy($freeholds_table.'.strKey', 'asc')
+
+       ->select('*')
+
+       ->where($freeholds_table.'.strComplexName', $complex)->paginate(100);
+       return view('pages.streetsPrint',compact('streets','street'));
+
+
+     }
 
 
    }
@@ -225,73 +225,73 @@ class StreetsController extends Controller
 
 
         // dynamically change database
-        $userDB = Auth::user()->suburb;
-        $otf = new \App\Database\OTF(['database' => $userDB]);
-        $db = DB::connection($userDB);
+      $userDB = Auth::user()->suburb;
+      $otf = new \App\Database\OTF(['database' => $userDB]);
+      $db = DB::connection($userDB);
 
 
         // check database type
-        $databaseType = Auth::user()->suburb_type;
-
-        
-
-        if ($databaseType == 1 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".numErf";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblErfNumbers";
-            $mem_key = "tblErfNumbers.numErf";
-
-        }
-        if ($databaseType == 2 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strKey";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblFHPropertyID";
-            $mem_key = $mem_Table.".strKey";
-
-        }
-        if ($databaseType == 3 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strKey";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblFHPropertyID";
-            $mem_key = $mem_Table.".strKey";
-
-        }
+      $databaseType = Auth::user()->suburb_type;
 
 
-        $input = Input::all();
-        $suburb = Input::get('suburb_id');
-        $street = Input::get('street_id');
-        $erf = Input::get('erf');
-        $id = Input::get('id');
-        $surname = Input::get('surname');
-        $complex = Input::get('complex');
-        $radio = Input::get('optradio');
+
+      if ($databaseType == 1 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".numErf";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblErfNumbers";
+        $mem_key = "tblErfNumbers.numErf";
+
+      }
+      if ($databaseType == 2 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = $mem_Table.".strKey";
+
+      }
+      if ($databaseType == 3 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = $mem_Table.".strKey";
+
+      }
+
+
+      $input = Input::all();
+      $suburb = Input::get('suburb_id');
+      $street = Input::get('street_id');
+      $erf = Input::get('erf');
+      $id = Input::get('id');
+      $surname = Input::get('surname');
+      $complex = Input::get('complex');
+      $radio = Input::get('optradio');
 
 
 
   // street search
 
-        if ($radio === '1'){
+      if ($radio === '1'){
 
          // view title
-           $street = Input::get('street_id');
+       $street = Input::get('street_id');
 
 
-           $streets = $db->table($freeholds_table)
-           ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-           ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-           ->orderBy('strStreetName', 'asc')
-           ->orderBy('strStreetNo', 'asc')
-           ->orderBy($freeholds_table.'.strComplexName', 'asc')
-           ->orderBy($freeholds_table.'.strComplexNo', 'asc')
-           ->select('*')
-           ->where('strStreetName', $street)->paginate(1);
+       $streets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+       ->orderBy('strStreetName', 'asc')
+       ->orderBy('strStreetNo', 'asc')
+       ->orderBy($freeholds_table.'.strComplexName', 'asc')
+       ->orderBy($freeholds_table.'.strComplexNo', 'asc')
+       ->select('*')
+       ->where('strStreetName', $street)->paginate(1);
 
 
 
@@ -325,11 +325,11 @@ class StreetsController extends Controller
            return view('pages.streets2',compact('streets','street'));
 
 
-       }
+         }
 
 
 //  erf number search
-       if ($radio === '2'){
+         if ($radio === '2'){
 
 
          // view title
@@ -347,10 +347,10 @@ class StreetsController extends Controller
            return view('pages.streets2',compact('streets','street'));
 
 
-       }
+         }
 
 //  id number search
-       if ($radio === '3'){
+         if ($radio === '3'){
 
 
          // view title
@@ -368,9 +368,9 @@ class StreetsController extends Controller
            return view('pages.streets2',compact('streets','street'));
 
 
-       }
+         }
 
-       if ($radio === '4'){
+         if ($radio === '4'){
 
 
          // view title
@@ -387,9 +387,9 @@ class StreetsController extends Controller
            return view('pages.streets2',compact('streets','street'));
 
 
-       }
+         }
 
-       if ($radio === '5'){
+         if ($radio === '5'){
 
 
          // view title
@@ -406,11 +406,11 @@ class StreetsController extends Controller
            return view('pages.streets2',compact('streets','street'));
 
 
+         }
+
+
+
        }
-
-
-
-   }
 
     /**
      * Show the form for creating a new resource.
@@ -453,7 +453,7 @@ class StreetsController extends Controller
     public function edit($id = null)
     {
 
-        dd("edit");
+      dd("edit");
     }
 
 
@@ -477,114 +477,119 @@ class StreetsController extends Controller
     {
 
 
-        $input = Input::all();
+      $input = Input::all();
 
        // set user and date
-        $user = Auth::user()->name;
-        $now = Carbon\Carbon::now('Africa/Cairo');
+      $user = Auth::user()->name;
+      $now = Carbon\Carbon::now('Africa/Cairo');
 
 
         // dynamic dtabase connection
-        
-        $userDB = Auth::user()->suburb;
-        $otf = new \App\Database\OTF(['database' => $userDB]);
-        $db = DB::connection($userDB);
+
+      $userDB = Auth::user()->suburb;
+      $otf = new \App\Database\OTF(['database' => $userDB]);
+      $db = DB::connection($userDB);
 
 
         // get database type
-        $databaseType = Auth::user()->suburb_type;
-
-        
-
-        if ($databaseType == 1 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".numErf";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblErfNumbers";
-            $mem_key = "numErf";
-            $searchKey = Input::get('numErf');
-        }
-        if ($databaseType == 2 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strKey";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblFHPropertyID";
-            $mem_key = "strKey";
-            $searchKey = Input::get('strKey');
-        }
-        if ($databaseType == 3 ){
-
-            $freeholds_table = "tblSuburbOwners";
-            $freeholds_table_key =  $freeholds_table.".strKey";
-            $freeholds_identity = $freeholds_table.".strIdentity";
-            $mem_Table = "tblFHPropertyID";
-            $mem_key = "strKey";
-            $searchKey = Input::get('strKey');
-        }
+      $databaseType = Auth::user()->suburb_type;
 
 
+
+      if ($databaseType == 1 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".numErf";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblErfNumbers";
+        $mem_key = "numErf";
+        $searchKey = Input::get('numErf');
+      }
+      if ($databaseType == 2 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = "strKey";
+        $searchKey = Input::get('strKey');
+      }
+      if ($databaseType == 3 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = "strKey";
+        $searchKey = Input::get('strKey');
+      }
 
 
 
 
 
 
-        $input = $request;
+
+
+      $input = $request;
 
       //  dd($input);
 
-        $numErf = Input::get('numErf');
-        $strIdentity = Input::get('strIdentity');
-        $comment = Input::get('memNotes');
-        $commentNew = Input::get('memNotesNew');
-        $strHomePhoneNo = Input::get('strHomePhoneNo');
-        $strWorkPhoneNo = Input::get('strWorkPhoneNo');
-        $strCellPhoneNo = Input::get('strCellPhoneNo');
-        $EMAIL = Input::get('EMAIL');
+      $numErf = Input::get('numErf');
+      $strIdentity = Input::get('strIdentity');
+      $comment = Input::get('memNotes');
+      $commentNew = Input::get('memNotesNew');
+      $strHomePhoneNo = Input::get('strHomePhoneNo');
+      $strWorkPhoneNo = Input::get('strWorkPhoneNo');
+      $strCellPhoneNo = Input::get('strCellPhoneNo');
+      $EMAIL = Input::get('EMAIL');
 
 
-        $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->first();
+      $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->first();
 
 
-        // uers and date timestamp memNates
-        $commentNew = $comment . "\r\n" .   $now  . "  " . $user . "  wrote : " . "\r\n" . $commentNew ;
+
 
  //dd($result->memNotes,$commentNew,$user,$now);
 
 
-        if ($result) {
+      if ($result) {
 
-            $affected = $db->table($mem_Table)
-            ->where($mem_key, $searchKey)
-            ->update(array('memNotes' => $commentNew));
+        // update notes 
+        if (strlen(  $commentNew) > 0 ) {
+             // uers and date timestamp memNates
+           $commentNew = $comment . "\r\n" .   $now  . "  " . $user . "  wrote : " . "\r\n" . $commentNew ;
 
-            $affected2 = $db->table('tblSuburbContactNumbers')
-            ->where('strIDNumber', $strIdentity)
-            ->update(array('strCellPhoneNo' => $strCellPhoneNo,
-                'strHomePhoneNo' => $strHomePhoneNo,
-                'strWorkPhoneNo' => $strWorkPhoneNo,
-                'EMAIL' => $EMAIL,
-                ));
+           $affected = $db->table($mem_Table)
+           ->where($mem_key, $searchKey)
+           ->update(array('memNotes' => $commentNew));
+       }
 
-            Session::flash('flash_message', 'Updated '.  $numErf );
-            Session::flash('flash_type', 'alert-success');
-            return Redirect::back();
+       $affected2 = $db->table('tblSuburbContactNumbers')
+       ->where('strIDNumber', $strIdentity)
+       ->update(array('strCellPhoneNo' => $strCellPhoneNo,
+        'strHomePhoneNo' => $strHomePhoneNo,
+        'strWorkPhoneNo' => $strWorkPhoneNo,
+        'EMAIL' => $EMAIL,
+        ));
 
-        } else {
+       Session::flash('flash_message', 'Updated '.  $numErf );
+       Session::flash('flash_type', 'alert-success');
+       return Redirect::back();
+
+     } else {
 
 
-            Session::flash('flash_message', 'Error updating '.  $numErf );
-            Session::flash('flash_type', 'alert-danger');
-            return Redirect::back();
+      Session::flash('flash_message', 'Error updating '.  $numErf );
+      Session::flash('flash_type', 'alert-danger');
+      return Redirect::back();
 
-        }
-
-        dd("ok");
-
-        return Redirect::route('datatables');
     }
+
+    dd("ok");
+
+    return Redirect::route('datatables');
+  }
 
     /**
      * Remove the specified resource from storage.
@@ -596,4 +601,4 @@ class StreetsController extends Controller
     {
         //
     }
-}
+  }
