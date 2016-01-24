@@ -8,14 +8,9 @@
 
 <div class="row" id="search">
 <div class="col-md-2">
-
-
-
         <a href="#" id="reset" class="btn btn-default ">
           <span class="glyphicon glyphicon-refresh"></span> Refresh 
         </a>
-
-
 </div>
 
   <div class="col-md-2">
@@ -40,7 +35,6 @@
 </div>
 <div class="row">
 <hr>
-
 </div>
 <br>
 
@@ -48,37 +42,23 @@
 <table class="table table-striped table-bordered" id="freeholds" >
   <thead>
     <tr>
-
-  
-
      <th>Erf</th>
-
      <th>Street No</th>
      <th>Street Name</th>
-
      <th>Complex No</th>
      <th>Complex Name</th>
-
      <th>Owners</th>
      <th>Identity</th>
-
-
-
      <th>Reg Date</th>
      <th>Amount</th>
-
-
-
      <th>notes</th>
      <th>fname</th>
      <th>strSurname</th>
-
      <th>strHomePhoneNo</th>
      <th>strWorkPhoneNo</th>
      <th>strCellPhoneNo</th>
      <th>EMAIL</th>
      <th>strKey</th>
-
    </tr>
  </thead>
 </table>
@@ -106,7 +86,6 @@
 @endif
 
 <hr>
-
 <div class='row'>
   <div class="col-xs-6">
     <input id="prev" type="button" class="btn btn-info hidden " value="Prev " >
@@ -114,8 +93,14 @@
     <input id="next" type="button" class="btn btn-info hidden" value="Next ">
   </div>
 </div>
-  <button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Details</button>
 
+
+
+
+  <button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Row</button>
+  <button type="button" class="btn btn-default " id ='actionBtn'>View Street</button>
+
+ 
 
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -228,7 +213,7 @@
 
        <div class="modal-footer">
          {!! Form::submit('Update',  array('class'=>'btn btn-default')) !!}
-                      {!! Form::close() !!} 
+                       
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
 
@@ -520,9 +505,6 @@ $('#prev').click(function(){
      });
 
 table
-
-
-
 .on( 'select', function ( e, dt, type, indexes ) {
   var rowData = table.rows( indexes ).data().toArray();
   setCookie("rowindex", indexes, 30);
@@ -530,12 +512,11 @@ table
         //alert("hello paulie "+JSON.stringify( rowData ));
         var info = table.page.info();
         var len = info.length;
+        $row = indexes;
         $rowIndex = indexes;
       //  console.log(indexes);
         document.getElementById('mrec').value = indexes ;
       } )
-
-
 
 .on( 'deselect', function ( e, dt, type, indexes ) {
   var rowData = table.rows( indexes ).data().toArray();
@@ -578,9 +559,30 @@ table
 
 
 
+$("#actionBtn").click(function(event){
+
+ var table = new $.fn.dataTable.Api( '#freeholds' );
+ var data = table.rows($row).data();
+
+var st = table.row( $row  ).data().strStreetName ;
+
+// route to streetgrid plus street
+var $mroute = 'streetgrid/'+st;
+$path = "{{ URL::to('streetgrid') }}"+"/"+st;
+
+// navigate to route
+ document.location.href=$path;
+});
+
 
 
 });
+
+
+
+
+
+
 </script>
 @endpush
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>

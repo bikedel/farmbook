@@ -71,7 +71,7 @@ Route::post('/suburb',  'SuburbController@setSuburb' );
 //
 Route::get('/notes',  'FreeholdsController@update' );
 
-
+Route::get('/streetgrid/{street}',  'StreetsController@checkGrid' );
 
 Route::get('/street',  'StreetsController@checkButton' );
 
