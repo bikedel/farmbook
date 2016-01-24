@@ -98,8 +98,8 @@
 
 
   <button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Row</button>
-  <button type="button" class="btn btn-default " id ='actionBtn'>View Street</button>
-
+  <button type="button" class="btn btn-default " id ='viewStreet'>View Street</button>
+  <button type="button" class="btn btn-default " id ='viewComplex'>View Complex</button>
  
 
 <div class="modal fade" id="myModal" role="dialog">
@@ -559,7 +559,7 @@ table
 
 
 
-$("#actionBtn").click(function(event){
+$("#viewStreet").click(function(event){
 
  var table = new $.fn.dataTable.Api( '#freeholds' );
  var data = table.rows($row).data();
@@ -567,14 +567,27 @@ $("#actionBtn").click(function(event){
 var st = table.row( $row  ).data().strStreetName ;
 
 // route to streetgrid plus street
-var $mroute = 'streetgrid/'+st;
+
 $path = "{{ URL::to('streetgrid') }}"+"/"+st;
 
 // navigate to route
  document.location.href=$path;
 });
 
+$("#viewComplex").click(function(event){
 
+ var table = new $.fn.dataTable.Api( '#freeholds' );
+ var data = table.rows($row).data();
+
+var st = table.row( $row  ).data().strComplexName ;
+
+// route to streetgrid plus street
+
+$path = "{{ URL::to('complexgrid') }}"+"/"+st;
+
+// navigate to route
+ document.location.href=$path;
+});
 
 });
 

@@ -389,7 +389,74 @@ class StreetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkGrid($street)
+    public function checkStreet($street)
+    {
+
+
+     // dynamically change database
+      $userDB = Auth::user()->suburb;
+      $otf = new \App\Database\OTF(['database' => $userDB]);
+      $db = DB::connection($userDB);
+
+
+        // check database type
+      $databaseType = Auth::user()->suburb_type;
+
+
+
+      if ($databaseType == 1 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".numErf";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblErfNumbers";
+        $mem_key = "tblErfNumbers.numErf";
+
+      }
+      if ($databaseType == 2 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = $mem_Table.".strKey";
+
+      }
+      if ($databaseType == 3 ){
+
+        $freeholds_table = "tblSuburbOwners";
+        $freeholds_table_key =  $freeholds_table.".strKey";
+        $freeholds_identity = $freeholds_table.".strIdentity";
+        $mem_Table = "tblFHPropertyID";
+        $mem_key = $mem_Table.".strKey";
+
+      }
+
+       $streets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+       ->orderBy('strStreetName', 'asc')
+       ->orderBy('strStreetNo', 'asc')
+       ->orderBy($freeholds_table.'.strStreetName', 'asc')
+       ->orderBy($freeholds_table.'.strStreetNo', 'asc')
+       ->select('*')
+       ->where('strStreetName', $street)->paginate(1);
+
+
+       return view('pages.streets2',compact('streets','street'));
+
+
+      dd('checkgrid streetcontroller',$street);
+    }
+
+
+
+/**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function checkComplex($street)
     {
 
 
@@ -440,12 +507,12 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strComplexName', 'asc')
        ->orderBy($freeholds_table.'.strComplexNo', 'asc')
        ->select('*')
-       ->where('strStreetName', $street)->paginate(1);
+       ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
 
 
        return view('pages.streets2',compact('streets','street'));
 
-      
+
       dd('checkgrid streetcontroller',$street);
     }
 
