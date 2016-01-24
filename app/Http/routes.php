@@ -12,24 +12,19 @@
 */
 
 
-//Event::listen('illuminate.query', function($query)
-//{
-//    var_dump($query);
-//});
-
-
-
-
 // ajax call from view without reload
 //Route::any('myAjaxCallURI', 'MainController@getAjax');
 
+
+
+
+//Route::get('protected', ['middleware' => ['auth','admin'], 'uses' => 'DatatablesController@getIndex']);
 
 Route::get('/adminDatabases',  'AdminController@indexDatabases' );
 
 Route::post('/adminDatabasesNew',  'AdminController@newDatabase' );
 
-Route::post('/adminUsersNew',  'DatatablesController@newUser' );
-
+Route::post('/adminUsersNew',  'DatatablesControl@newUser' );
 
 Route::get('/adminUsers',  'AdminController@indexUsers' );
 
@@ -61,22 +56,22 @@ Route::post('/suburb',  'SuburbController@setSuburb' );
 //	return "this page requires that you be logged in and an Admin";
 //}]);
 
-Route::get('protected', ['middleware' => ['auth','admin'], 'uses' => 'DatatablesController@getIndex']);
+//Route::get('protected', ['middleware' => ['auth','admin'], 'uses' => 'DatatablesController@getIndex']);
+
+
 //Route::get('/users/{user}', function ( $user) {
 //	$mp = \App\User::find($user);
 //	return ($mp);
 //});
 
-Route::get('/hello/{name}',  'DatatablesController@show' );
+//Route::get('/hello/{name}',  'DatatablesController@show' );
 
+//
+//    grid update notes route
+//
 Route::get('/notes',  'FreeholdsController@update' );
 
-//Route::get('notes/{numErf}', function ($numErf) {
-//
-//	$mp = DB::table('tblErfNumbers')->where('id', $numErf)->first();
-//	dd($mp,$numErf,$mp);
-//	return view('datatables.edit',compact('mp'));
-//});
+
 
 Route::get('/street',  'StreetsController@checkButton' );
 

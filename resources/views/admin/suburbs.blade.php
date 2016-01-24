@@ -15,7 +15,6 @@
     <thead>
         <tr>
             <th>Id</th>
-
             <th>Name</th>
             <th>Database</th>
             <th>Type</th>

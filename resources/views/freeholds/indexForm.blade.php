@@ -11,8 +11,8 @@
 
 
 
-        <a href="#" id="reset" class="btn btn-default ">
-          <span class="glyphicon glyphicon-refresh"></span> Refresh 
+        <a href="#" id="reset" class="btn btn-info ">
+          <span class="glyphicon glyphicon-refresh"></span> Refresh Data
         </a>
 
 
@@ -37,9 +37,9 @@
 
 
 
+
 </div>
 <div class="row">
-<hr>
 
 </div>
 <br>
@@ -105,7 +105,7 @@
 </div>
 @endif
 
-<hr>
+
 
 <div class='row'>
   <div class="col-xs-6">
@@ -114,25 +114,13 @@
     <input id="next" type="button" class="btn btn-info hidden" value="Next ">
   </div>
 </div>
-  <button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Details</button>
 
 
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 id="formHeader" class="modal-title">Update Details</h4>
-            </div>
-
-            <div class="modal-body">
-
-
-<div class='row'>
 
 {!! Form::open([ 'url' => 'notes', 'method' => 'get']) !!}
 
+
+<div class='row'>
   <div class="form-group col-sm-4">
 
     {!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control', 'id' => 'numErf', 'readonly' => 'true' ,'hidden' => 'true']) !!}
@@ -217,27 +205,16 @@
 
 <div class='row'>
   <div class="update form-group  col-sm-12 pull-right">
-   
+    {!! Form::submit('Update',  array('class'=>'btn btn-info')) !!}
   </div>
 </div>
 
 
 
 
+{!! Form::close() !!}
 
 
-       <div class="modal-footer">
-         {!! Form::submit('Update',  array('class'=>'btn btn-default')) !!}
-                      {!! Form::close() !!} 
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>
 
 @stop
 
@@ -270,7 +247,7 @@ $(document).ready(function() {
     lengthChange: true,
     paging:true,
     keys:true,
-    scrollY: 390,
+    scrollY: 195,
     iDisplayLength: 10,
     lengthMenu: [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]],
     language: {

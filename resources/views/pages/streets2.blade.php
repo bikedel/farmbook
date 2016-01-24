@@ -152,6 +152,9 @@ ul  {
 			</tbody>
 		</table>
 </div>
+
+
+
 <div class="col-md-6 responsive" >
 
 		<div class="form-group">
@@ -162,7 +165,14 @@ ul  {
 	</div>
 </div>
 </div>
+<hr>
+	<div class="row">
+		<div class="col-xs-12">
+			{!! $streets->appends(Request::except('page'))->render() !!}
+		</div>
 
+
+	</div>
 
 
 
@@ -199,13 +209,19 @@ ul  {
 
 						{!! Form::label('name', 'Complex Name  ')  !!}
 						{!! Form::text('strComplexName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strComplexName', 'readonly' => 'true']) !!}<br>
+						{!! Form::label('name', 'First Name') !!}
+						{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
+
+						{!! Form::label('Surname', 'Surname') !!}
+						{!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}<br>
+
+
+						{!! Form::label('name', 'Owner  ')  !!}
+						{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
 
 
 						{!! Form::label('name', 'Identity  ')  !!}
 						{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
-
-						{!! Form::label('name', 'Owner  ')  !!}
-						{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
 
 						{!! Form::label('name', 'Bond Holder  ')  !!}
 						{!! Form::text('strBondHolder',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strBondHolder' , 'readonly' => 'true']) !!}<br>
@@ -227,12 +243,13 @@ ul  {
 					</div>
 					<div class="col-sm-12">
 
-						{!! Form::label('name', 'First Name') !!}
-						{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
 
-						{!! Form::label('Surname', 'Surname') !!}
-						{!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}<br>
 
+						{!! Form::label('name', 'Owner  ')  !!}
+						{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
+
+						{!! Form::label('name', 'Identity  ')  !!}
+						{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
 
 						{!! Form::label('name', 'Home Phone') !!}
 						{!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}<br>
@@ -266,6 +283,8 @@ ul  {
 					@endforeach
 				</div>
 				<div class="modal-footer">
+
+					
 					{!! Form::submit('Save',  array('class'=>'btn btn-info ')) !!}
 					{!! Form::close() !!}
 

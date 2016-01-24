@@ -81,8 +81,8 @@
 			<div class="col-xs-12">
 
 
-				<input type="submit" name="action" value="View" class="btn btn-info">
-                <input type="submit" name="action" value="Print" class="btn btn-info">
+				<input type="submit" name="action" value="View" class="btn btn-default">
+                <input type="submit" name="action" value="Print" class="btn btn-default">
 			</div>
 
 

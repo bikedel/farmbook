@@ -24,7 +24,7 @@
 			</div>
 <br>
 
-			{!! Form::submit('Set Farmbook ',  array('class'=>'btn btn-info ')) !!}
+			{!! Form::submit('Set Farmbook ',  array('class'=>'btn btn-default ')) !!}
 
 
 

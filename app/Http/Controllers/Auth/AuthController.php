@@ -130,7 +130,7 @@ class AuthController extends Controller
     }
 
         //show error if invalid data entered
-      // return redirect()->back()->withErrors('Login/Pass do not match')->withInput();
-return redirect();
+       return redirect()->back()->withErrors('Login/Pass do not match')->withInput();
+
     }
 }
