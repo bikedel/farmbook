@@ -194,6 +194,7 @@ function checkCookie() {
      }
    }
  }
+ 
 
 
  function phoneFormat(phone) {
