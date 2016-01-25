@@ -126,120 +126,118 @@
 
 
 
-          <div class="col-sm-12">
- {!! Form::label('name', 'Erf Number  ')  !!}
-            {!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}<br>
-          </div>
-
-
-
-          <div class="col-sm-6">
-
-
-
-            {!! Form::label('name', 'Owner  ')  !!}
-            {!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
-          </div>
-          <div class="col-sm-6">
-
-            {!! Form::label('name', 'Identity  ')  !!}
-            {!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
-          </div>
-
-
-
-        <div class="form-group col-sm-6">
-
-          {!! Form::label('name', 'Reg Date') !!}<br>
-          {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-
-        </div>
-        <div class="form-group col-sm-6">
-
-
-          {!! Form::label('name', 'Sale Price') !!}<br>
-          {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-
-        </div>
-        <div class="form-group col-sm-6">
-
-
-          {!! Form::label('name', 'Bond Amount') !!}<br>
-          {!! Form::text('strBondAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strBondAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-
-        </div>
-        <div class="form-group col-sm-6">
-
-          {!! Form::label('name', 'Sq Meters') !!}<br>
-          {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-        </div>
-
-
-        <div class="form-group col-sm-6">
-          {!! Form::label('name', 'Home Phone') !!}<br>
-          {!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
-        </div>
-        <div class="form-group col-sm-6">
-
-          {!! Form::label('name', 'Work Phone') !!}<br>
-          {!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
-        </div>
-        <div class="form-group col-sm-6">
-
-          {!! Form::label('name', 'Cell Phone') !!}<br>
-          {!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}
-        </div>
-        <div class="form-group col-sm-6">
-
-          {!! Form::label('name', 'Email') !!}<br>
-          {!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
-
-        </div>
-
-        <div class="form-group col-sm-12">
-
-          {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', 'readonly' => 'true' ,'placeholder' => '','hidden' => 'true']) !!}
-
-        </div>
-
-
-
-        <div class="form-group col-sm-12">
-          {!! Form::label('name', 'Previous Notes') !!}<br>
-          {!! Form::textarea('comment', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'comment', 'rows' => '5','readonly' => 'true' ,'placeholder' => '']) !!}
-        </div>
-        <div class="form-group col-sm-12">
-          {!! Form::label('name', 'New Notes ')  !!}<br>
-          {!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
-        </div>
-
-
-
-        <div class='row'>
-          <div class="update form-group  col-sm-12 pull-right">
-
-          </div>
-        </div>
-
-
-
-
-
-
-        <div class="modal-footer">
-         {!! Form::submit('Update',  array('class'=>'btn btn-danger')) !!}
-
-         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <div class="col-sm-12">
+         {!! Form::label('name', 'Erf Number  ')  !!}
+         {!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}<br>
        </div>
 
+
+
+       <div class="col-sm-6">
+        {!! Form::label('name', 'Owner  ')  !!}
+        {!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
+      </div>
+
+      <div class="col-sm-6">
+
+        {!! Form::label('name', 'Identity  ')  !!}
+        {!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
+      </div>
+
+
+
+      <div class="form-group col-sm-6">
+
+        {!! Form::label('name', 'Reg Date') !!}<br>
+        {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+      </div>
+      <div class="form-group col-sm-6">
+
+
+        {!! Form::label('name', 'Sale Price') !!}<br>
+        {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+      </div>
+      <div class="form-group col-sm-6">
+
+
+        {!! Form::label('name', 'Bond Amount') !!}<br>
+        {!! Form::text('strBondAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strBondAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+      </div>
+      <div class="form-group col-sm-6">
+
+        {!! Form::label('name', 'Sq Meters') !!}<br>
+        {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+      </div>
+
+
+      <div class="form-group col-sm-6">
+        {!! Form::label('name', 'Home Phone') !!}<br>
+        {!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
+      </div>
+      <div class="form-group col-sm-6">
+
+        {!! Form::label('name', 'Work Phone') !!}<br>
+        {!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
+      </div>
+      <div class="form-group col-sm-6">
+
+        {!! Form::label('name', 'Cell Phone') !!}<br>
+        {!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}
+      </div>
+      <div class="form-group col-sm-6">
+
+        {!! Form::label('name', 'Email') !!}<br>
+        {!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
+
+      </div>
+
+      <div class="form-group col-sm-12">
+
+        {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', 'readonly' => 'true' ,'placeholder' => '','hidden' => 'true']) !!}
+
+      </div>
+
+
+
+      <div class="form-group col-sm-12">
+        {!! Form::label('name', 'Previous Notes') !!}<br>
+        {!! Form::textarea('comment', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'comment', 'rows' => '5','readonly' => 'true' ,'placeholder' => '']) !!}
+      </div>
+      <div class="form-group col-sm-12">
+        {!! Form::label('name', 'New Notes ')  !!}<br>
+        {!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
+      </div>
+
+
+
+      <div class='row'>
+        <div class="update form-group  col-sm-12 pull-right">
+
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="modal-footer">
+       {!! Form::submit('Update',  array('class'=>'btn btn-danger')) !!}
+
+       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
      </div>
 
    </div>
+
  </div>
+</div>
 
 </div>
 

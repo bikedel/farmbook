@@ -80,6 +80,7 @@ $(document).on("ready page:load", function() {
 });
 
 
+
 function clear_fields() {
 
   document.getElementById('strIdentity').value = "" ;
