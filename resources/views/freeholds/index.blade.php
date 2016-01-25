@@ -223,7 +223,7 @@
 
 
        <div class="modal-footer">
-         {!! Form::submit('Update',  array('class'=>'btn btn-default')) !!}
+         {!! Form::submit('Update',  array('class'=>'btn btn-danger')) !!}
                        
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
@@ -293,7 +293,7 @@ $(document).ready(function() {
   { data: 'strStreetNo', name: 'strStreetNo' ,width: '100'},
   { data: 'strStreetName', name: 'strStreetName' ,width: '100'},
 
-  { data: 'strComplexNo', name: 'strComplexNo' ,width: '100'},
+  { data: 'strComplexNo', name: 'strComplexNo' ,width: '50'},
   { data: 'strComplexName', name: 'strComplexName' ,width: '150'},
 
 
@@ -306,7 +306,7 @@ $(document).ready(function() {
      { data: 'dtmRegDate', name: 'dtmRegDate' ,width: '150'},
   { data: 'strAmount', name: 'strAmount' },
 
-  { data: 'memNotes', name: 'memNotes' , width: '100' ,visible: false , sortable: false , targers: [9] },   
+  { data: 'memNotes', name: 'memNotes' , width: '200' ,  targers: [9] },   
 
   { data: 'strFirstName', name: 'strFirstName' },   
   { data: 'strSurname', name: 'strSurname' },   

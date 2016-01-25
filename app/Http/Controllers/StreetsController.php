@@ -505,7 +505,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strComplexName', 'asc')
-       ->orderBy($freeholds_table.'.strComplexNo', 'asc')
+       ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
        ->select('*')
        ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
 

@@ -285,7 +285,7 @@ ul  {
 				<div class="modal-footer">
 
 
-					{!! Form::submit('Save',  array('class'=>'btn btn-info ')) !!}
+					{!! Form::submit('Save',  array('class'=>'btn btn-danger ')) !!}
 					{!! Form::close() !!}
 
 
