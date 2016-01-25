@@ -25,11 +25,16 @@ $(document).ready(function() {
 
      //var aPos = table.fnGetPosition( this );
      var id = table.row( this ).data().strIdentity ;
+     var owners = table.row( this ).data().strOwners ;
+
      var erf = table.row( this ).data().numErf ;
      var notes = table.row( this ).data().notes ;
 
      var regdate = table.row( this ).data().dtmRegDate ;
      var salesprice = table.row( this ).data().strAmount ;
+     var BondAmount = table.row( this ).data().strBondAmount ;
+
+  
      var sqmeters = table.row( this ).data().strSqMeters ;
 
      var strFirstName = table.row( this ).data().strFirstName ;
@@ -43,11 +48,13 @@ $(document).ready(function() {
       //$(this).css('opacity', '.5');
 
       document.getElementById('strIdentity').value = id ;
+      document.getElementById('strOwners').value = owners ;
       document.getElementById('numErf').value =  erf ;
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
       document.getElementById('strAmount').value =  priceFormat(salesprice);
+      document.getElementById('strBondAmount').value = priceFormat(BondAmount);
       document.getElementById('strSqMeters').value =  (sqmeters);
 
       document.getElementById('strFirstName').value =  strFirstName ;
@@ -68,7 +75,7 @@ $(document).ready(function() {
 //  clear flash messages
 //
 $(document).on("ready page:load", function() {
-  setTimeout(function() { $(".alert").fadeOut(); }, 4000);
+  setTimeout(function() { $(".alert").fadeOut(); }, 8000);
 
 });
 
@@ -104,12 +111,16 @@ function display_row($row) {
 
 
      var id = table.row( $row ).data().strIdentity ;
+     var owners = table.row( $row ).data().strOwners ;
+
      var erf = table.row( $row ).data().numErf ;
      var notes = table.row( $row ).data().notes ;
 
 
      var regdate = table.row( $row  ).data().dtmRegDate ;
      var salesprice = table.row( $row  ).data().strAmount ;
+     var BondAmount = table.row( $row ).data().strBondAmount ;
+
      var sqmeters = table.row( $row  ).data().strSqMeters ;
 
      var strFirstName = table.row( $row ).data().strFirstName ;
@@ -123,11 +134,14 @@ function display_row($row) {
       //$(this).css('opacity', '.5');
 
       document.getElementById('strIdentity').value = id ;
+      document.getElementById('strOwners').value = owners ;
+
       document.getElementById('numErf').value =  erf ;
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
       document.getElementById('strAmount').value = priceFormat(salesprice);
+      document.getElementById('strBondAmount').value = priceFormat(BondAmount);
       document.getElementById('strSqMeters').value =  sqmeters;
       document.getElementById('strFirstName').value =  strFirstName ;
       document.getElementById('strSurname').value =  strSurname ;

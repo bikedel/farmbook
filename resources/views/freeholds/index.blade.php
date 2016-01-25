@@ -7,11 +7,11 @@
 
 
 <div class="row" id="search">
-<div class="col-md-2">
-        <a href="#" id="reset" class="btn btn-default ">
-          <span class="glyphicon glyphicon-refresh"></span> Refresh 
-        </a>
-</div>
+  <div class="col-md-2">
+    <a href="#" id="reset" class="btn btn-default ">
+      <span class="glyphicon glyphicon-refresh"></span> Refresh 
+    </a>
+  </div>
 
   <div class="col-md-2">
     <input id="s_numErf" type="text" name="firstname" class="form-control input-sm" placeholder="Search Erf">
@@ -34,7 +34,7 @@
 
 </div>
 <div class="row">
-<hr>
+  <hr>
 </div>
 <br>
 
@@ -51,6 +51,7 @@
      <th>Identity</th>
      <th>Reg Date</th>
      <th>Amount</th>
+     <th>Bond Amount</th>
      <th>notes</th>
      <th>fname</th>
      <th>strSurname</th>
@@ -97,134 +98,150 @@
 
 
 
-  <button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Row</button>
-  <button type="button" class="btn btn-default " id ='viewStreet'>View Street</button>
-  <button type="button" class="btn btn-default " id ='viewComplex'>View Complex</button>
- 
+<button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Row</button>
+<button type="button" class="btn btn-default " id ='viewStreet'>View Street</button>
+<button type="button" class="btn btn-default " id ='viewComplex'>View Complex</button>
+
 
 <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+  <div class="modal-dialog">
 
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 id="formHeader" class="modal-title">Update Details</h4>
-            </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 id="formHeader" class="modal-title">Update Details</h4>
+      </div>
 
-            <div class="modal-body">
-
-
-<div class='row'>
-
-{!! Form::open([ 'url' => 'notes', 'method' => 'get']) !!}
-
-  <div class="form-group col-sm-4">
-
-    {!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control', 'id' => 'numErf', 'readonly' => 'true' ,'hidden' => 'true']) !!}
-  </div>
-  <div class="form-group col-sm-4">
-
-    {!! Form::text('strIdentity', $value = null , $attributes = ['class' => 'form-control', 'id' => 'strIdentity', 'readonly' => 'true' ,'hidden' => 'true']) !!}
-  </div>
-
-</div>
+      <div class="modal-body">
 
 
-   <div class="form-group col-sm-12">
-    {!! Form::label('name', 'Surname') !!}<br>
-    {!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}
-</div>
-  <div class="form-group col-sm-12">
-    {!! Form::label('name', 'First Name') !!}<br>
-    {!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}
-</div>
+        <div class='row'>
 
-  <div class="form-group col-sm-12">
-
-    {!! Form::label('name', 'Reg Date') !!}<br>
-    {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-
-    </div>
-  <div class="form-group col-sm-12">
-
-
-    {!! Form::label('name', 'Sale Price') !!}<br>
-    {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-
-    </div>
-  <div class="form-group col-sm-12">
-
-    {!! Form::label('name', 'Sq Meters') !!}<br>
-    {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-    </div>
-
-
-  <div class="form-group col-sm-12">
-    {!! Form::label('name', 'Home Phone') !!}<br>
-    {!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
-    </div>
-  <div class="form-group col-sm-12">
-
-    {!! Form::label('name', 'Work Phone') !!}<br>
-    {!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
-    </div>
-  <div class="form-group col-sm-12">
- 
-    {!! Form::label('name', 'Cell Phone') !!}<br>
-    {!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}
-    </div>
-  <div class="form-group col-sm-12">
-
-    {!! Form::label('name', 'Email') !!}<br>
-    {!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
-
-    </div>
-
-  <div class="form-group col-sm-12">
-
-    {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', 'readonly' => 'true' ,'placeholder' => '','hidden' => 'true']) !!}
-
-    </div>
-
-
-
-  <div class="form-group col-sm-12">
-    {!! Form::label('name', 'Previous Notes') !!}<br>
-    {!! Form::textarea('comment', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'comment', 'rows' => '5','readonly' => 'true' ,'placeholder' => '']) !!}
-  </div>
-  <div class="form-group col-sm-12">
-      {!! Form::label('name', 'New Notes ')  !!}<br>
-      {!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
-  </div>
-
-
-
-<div class='row'>
-  <div class="update form-group  col-sm-12 pull-right">
-   
-  </div>
-</div>
+          {!! Form::open([ 'url' => 'notes', 'method' => 'get']) !!}
 
 
 
 
-
-
-       <div class="modal-footer">
-         {!! Form::submit('Update',  array('class'=>'btn btn-danger')) !!}
-                       
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-
-                </div>
-
-            </div>
         </div>
 
-    </div>
+
+
+          <div class="col-sm-12">
+ {!! Form::label('name', 'Erf Number  ')  !!}
+            {!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}<br>
+          </div>
+
+
+
+          <div class="col-sm-6">
+
+
+
+            {!! Form::label('name', 'Owner  ')  !!}
+            {!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
+          </div>
+          <div class="col-sm-6">
+
+            {!! Form::label('name', 'Identity  ')  !!}
+            {!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
+          </div>
+
+
+
+        <div class="form-group col-sm-6">
+
+          {!! Form::label('name', 'Reg Date') !!}<br>
+          {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+        </div>
+        <div class="form-group col-sm-6">
+
+
+          {!! Form::label('name', 'Sale Price') !!}<br>
+          {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+        </div>
+        <div class="form-group col-sm-6">
+
+
+          {!! Form::label('name', 'Bond Amount') !!}<br>
+          {!! Form::text('strBondAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strBondAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+        </div>
+        <div class="form-group col-sm-6">
+
+          {!! Form::label('name', 'Sq Meters') !!}<br>
+          {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+        </div>
+
+
+        <div class="form-group col-sm-6">
+          {!! Form::label('name', 'Home Phone') !!}<br>
+          {!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
+        </div>
+        <div class="form-group col-sm-6">
+
+          {!! Form::label('name', 'Work Phone') !!}<br>
+          {!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
+        </div>
+        <div class="form-group col-sm-6">
+
+          {!! Form::label('name', 'Cell Phone') !!}<br>
+          {!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}
+        </div>
+        <div class="form-group col-sm-6">
+
+          {!! Form::label('name', 'Email') !!}<br>
+          {!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
+
+        </div>
+
+        <div class="form-group col-sm-12">
+
+          {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', 'readonly' => 'true' ,'placeholder' => '','hidden' => 'true']) !!}
+
+        </div>
+
+
+
+        <div class="form-group col-sm-12">
+          {!! Form::label('name', 'Previous Notes') !!}<br>
+          {!! Form::textarea('comment', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'comment', 'rows' => '5','readonly' => 'true' ,'placeholder' => '']) !!}
+        </div>
+        <div class="form-group col-sm-12">
+          {!! Form::label('name', 'New Notes ')  !!}<br>
+          {!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
+        </div>
+
+
+
+        <div class='row'>
+          <div class="update form-group  col-sm-12 pull-right">
+
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="modal-footer">
+         {!! Form::submit('Update',  array('class'=>'btn btn-danger')) !!}
+
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+
+     </div>
+
+   </div>
+ </div>
+
+</div>
 
 @stop
 
@@ -262,77 +279,66 @@ $(document).ready(function() {
     lengthMenu: [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]],
     language: {
      "loadingRecords": "Please wait - loading..."
-  },
-    fnStateSave: function (oSettings, oData) {
-      alert("saving state");
-      localStorage.setItem('DataTables_' + window.location.pathname, JSON.stringify(oData));
-    },
-    fnStateLoad: function (oSettings) {
-     alert("restoring state");
-     var data = localStorage.getItem('DataTables_' + window.location.pathname);
-     return JSON.parse(data);
    },
+   fnStateSave: function (oSettings, oData) {
+    alert("saving state");
+    localStorage.setItem('DataTables_' + window.location.pathname, JSON.stringify(oData));
+  },
+  fnStateLoad: function (oSettings) {
+   alert("restoring state");
+   var data = localStorage.getItem('DataTables_' + window.location.pathname);
+   return JSON.parse(data);
+ },
 
-   ajax: { url: '{!! route('freeholds.data') !!}',
-   type: 'GET'},
-   columns: [
-
-
-
-  { data: 'numErf', name: 'numErf' ,width: '100'},
-
-  { data: 'strStreetNo', name: 'strStreetNo' ,width: '100'},
-  { data: 'strStreetName', name: 'strStreetName' ,width: '100'},
-
-  { data: 'strComplexNo', name: 'strComplexNo' ,width: '50'},
-  { data: 'strComplexName', name: 'strComplexName' ,width: '150'},
-
+ ajax: { url: '{!! route('freeholds.data') !!}',
+ type: 'GET'},
+ columns: [
 
 
-  { data: 'strOwners', name: 'strOwners' ,width: '100'},  
 
-  { data: 'strIdentity', name: 'strIdentity' ,width: '100'},   
+ { data: 'numErf', name: 'numErf' ,width: '100'},
+ { data: 'strStreetNo', name: 'strStreetNo' ,width: '100'},
+ { data: 'strStreetName', name: 'strStreetName' ,width: '100'},
+ { data: 'strComplexNo', name: 'strComplexNo' ,width: '50'},
+ { data: 'strComplexName', name: 'strComplexName' ,width: '150'},
+ { data: 'strOwners', name: 'strOwners' ,width: '100'},  
+ { data: 'strIdentity', name: 'strIdentity' ,width: '100'},   
+ { data: 'dtmRegDate', name: 'dtmRegDate' ,width: '150'},
+ { data: 'strAmount', name: 'strAmount' },
+ { data: 'strBondAmount', name: 'strBondAmount' },
+ { data: 'memNotes', name: 'memNotes' , width: '200' ,  targers: [9] },   
+ { data: 'strFirstName', name: 'strFirstName' },   
+ { data: 'strSurname', name: 'strSurname' },   
+ { data: 'strHomePhoneNo', name: 'strHomePhoneNo' },  
+ { data: 'strWorkPhoneNo', name: 'strWorkPhoneNo' },  
+ { data: 'strCellPhoneNo', name: 'strCellPhoneNo' },  
+ { data: 'EMAIL', name: 'EMAIL' },    
+ { data: 'strKey', name: 'strKey' },    
 
 
-     { data: 'dtmRegDate', name: 'dtmRegDate' ,width: '150'},
-  { data: 'strAmount', name: 'strAmount' },
 
-  { data: 'memNotes', name: 'memNotes' , width: '200' ,  targers: [9] },   
+ ],
 
-  { data: 'strFirstName', name: 'strFirstName' },   
-  { data: 'strSurname', name: 'strSurname' },   
-
-
-  { data: 'strHomePhoneNo', name: 'strHomePhoneNo' },  
-  { data: 'strWorkPhoneNo', name: 'strWorkPhoneNo' },  
-  { data: 'strCellPhoneNo', name: 'strCellPhoneNo' },  
-  { data: 'EMAIL', name: 'EMAIL' },    
-  { data: 'strKey', name: 'strKey' },    
-  
-
-
-  ],
-
-    buttons: [
+ buttons: [
         //    {
         //       // extend: 'print',
         //        exportOptions: {
         //            columns: ':visible'
         //        }
         //    },
-            'colvis'
+        'colvis'
         ],
         columnDefs: [ {
-            targets: -1,
-            visible: false
+          targets: -1,
+          visible: false
         } ],
 
 
 
-  initComplete: function(settings, json) {
+        initComplete: function(settings, json) {
  //  console.log( 'DataTables has finished its initialisation.' );
-   document.getElementById("reset").style.visibility = "visible";
-   rowindex = checkCookie()
+ document.getElementById("reset").style.visibility = "visible";
+ rowindex = checkCookie()
 
         // table.rows().deselect();
        // this.api().row(rowindex, { page: 'current' }).select();
@@ -341,14 +347,14 @@ $(document).ready(function() {
         $rowIndex = rowindex;
         document.getElementById('mrec').value = Number(rowindex )+1 ;
        // display_row(rowindex);
-  setTimeout(function() {  display_row( $rowIndex); }, 2000);
-      }
-      
-
-    }
+       setTimeout(function() {  display_row( $rowIndex); }, 2000);
+     }
 
 
-  });
+   }
+
+
+ });
 
 
 
@@ -517,8 +523,8 @@ table
         $row = indexes;
         $rowIndex = indexes;
       //  console.log(indexes);
-        document.getElementById('mrec').value = indexes ;
-      } )
+      document.getElementById('mrec').value = indexes ;
+    } )
 
 .on( 'deselect', function ( e, dt, type, indexes ) {
   var rowData = table.rows( indexes ).data().toArray();
@@ -566,14 +572,14 @@ $("#viewStreet").click(function(event){
  var table = new $.fn.dataTable.Api( '#freeholds' );
  var data = table.rows($row).data();
 
-var st = table.row( $row  ).data().strStreetName ;
+ var st = table.row( $row  ).data().strStreetName ;
 
 // route to streetgrid plus street
 
 $path = "{{ URL::to('streetgrid') }}"+"/"+st;
 
 // navigate to route
- document.location.href=$path;
+document.location.href=$path;
 });
 
 $("#viewComplex").click(function(event){
@@ -581,14 +587,14 @@ $("#viewComplex").click(function(event){
  var table = new $.fn.dataTable.Api( '#freeholds' );
  var data = table.rows($row).data();
 
-var st = table.row( $row  ).data().strComplexName ;
+ var st = table.row( $row  ).data().strComplexName ;
 
 // route to streetgrid plus street
 
 $path = "{{ URL::to('complexgrid') }}"+"/"+st;
 
 // navigate to route
- document.location.href=$path;
+document.location.href=$path;
 });
 
 });

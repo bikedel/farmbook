@@ -241,35 +241,88 @@ ul  {
 						{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
 
 					</div>
-					<div class="col-sm-12">
+
+
+
+          <div class="col-sm-12">
+ {!! Form::label('name', 'Erf Number  ')  !!}
+            {!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}<br>
+          </div>
+
+
+
+					<div class="col-sm-6">
 
 
 
 						{!! Form::label('name', 'Owner  ')  !!}
 						{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}<br>
+					</div>
+					<div class="col-sm-6">
 
 						{!! Form::label('name', 'Identity  ')  !!}
 						{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
+					</div>
+
+      <div class="form-group col-sm-6">
+
+          {!! Form::label('name', 'Reg Date') !!}<br>
+          {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+        </div>
+        <div class="form-group col-sm-6">
+
+
+          {!! Form::label('name', 'Sale Price') !!}<br>
+          {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+        </div>
+        <div class="form-group col-sm-6">
+
+
+          {!! Form::label('name', 'Bond Amount') !!}<br>
+          {!! Form::text('strBondAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strBondAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+        </div>
+        <div class="form-group col-sm-6">
+
+          {!! Form::label('name', 'Sq Meters') !!}<br>
+          {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+        </div>
+
+
+					<div class="col-sm-6">
 
 						{!! Form::label('name', 'Home Phone') !!}
 						{!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}<br>
+					</div>
+					<div class="col-sm-6">
 
 						{!! Form::label('name', 'Work Phone') !!}
 						{!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}<br>
+					</div>
+					<div class="col-sm-6">
 
 
 						{!! Form::label('name', 'Cell Phone') !!}
 						{!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}<br>
+					</div>
+					<div class="col-sm-6">
 
 						{!! Form::label('name', 'Email') !!}
 						{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
-
+					</div>
+					<div class="col-sm-6">
 
 
 						{!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '', 'hidden']) !!}
+					</div>
 
-
-
+					<div class="col-sm-12">
 
 
 						{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotes', 'readonly' => 'true','hidden']) !!}<br>
@@ -277,25 +330,25 @@ ul  {
 						{!! Form::label('name', 'Notes  ')  !!}
 						{!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
 
-
-						
 					</div>	
-					@endforeach
-				</div>
-				<div class="modal-footer">
+
+				</div>	
+				@endforeach
+			</div>
+			<div class="modal-footer">
 
 
-					{!! Form::submit('Save',  array('class'=>'btn btn-danger ')) !!}
-					{!! Form::close() !!}
+				{!! Form::submit('Save',  array('class'=>'btn btn-danger ')) !!}
+				{!! Form::close() !!}
 
 
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 
 		</div>
+
 	</div>
+</div>
 
 </div>
 
@@ -306,7 +359,7 @@ ul  {
 <script>
 
 $(document).on("ready page:load", function() {
-	setTimeout(function() { $(".alert").fadeOut(); }, 4000);
+	setTimeout(function() { $(".alert").fadeOut(); }, 8000);
 
 });
 
