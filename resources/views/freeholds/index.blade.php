@@ -129,75 +129,86 @@
 
 </div>
 
-<div class='row'>
-  <div class="form-group col-sm-4">
-    {!! Form::label('Surname', 'Surname') !!}<br>
+
+   <div class="form-group col-sm-12">
+    {!! Form::label('name', 'Surname') !!}<br>
     {!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}
-  </div>
-  <div class="form-group col-sm-4">
+</div>
+  <div class="form-group col-sm-12">
     {!! Form::label('name', 'First Name') !!}<br>
     {!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}
-  </div>
-  <div class="form-group col-sm-4">
-    {!! Form::label('name', 'Reg Date') !!}<br>
-    {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
-  </div>
 </div>
-
-<div class='row  '>
-  <div class="form-group col-sm-4">
+  <div class="form-group col-sm-12">
     {!! Form::label('name', 'Home Phone') !!}<br>
     {!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
-  </div>
-  <div class="form-group col-sm-4">
+    </div>
+  <div class="form-group col-sm-12">
+
     {!! Form::label('name', 'Work Phone') !!}<br>
     {!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
-  </div>
-  <div class="form-group col-sm-4">
-    {!! Form::label('name', 'Sale Price') !!}<br>
-    {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
-  </div>
-</div>
-
-<div class='row'>
-  <div class="form-group col-sm-4">
+    </div>
+  <div class="form-group col-sm-12">
+ 
     {!! Form::label('name', 'Cell Phone') !!}<br>
     {!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}
-  </div>
-  <div class="form-group col-sm-4">
+    </div>
+  <div class="form-group col-sm-12">
+
     {!! Form::label('name', 'Email') !!}<br>
     {!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
-  </div>
-  <div class="form-group col-sm-4">
+
+    </div>
+  <div class="form-group col-sm-12">
+
+    {!! Form::label('name', 'Reg Date') !!}<br>
+    {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+    </div>
+  <div class="form-group col-sm-12">
+
+
+    {!! Form::label('name', 'Sale Price') !!}<br>
+    {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+    </div>
+  <div class="form-group col-sm-12">
+
+
+
     {!! Form::label('name', 'Sq Meters') !!}<br>
     {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
-  </div>
-</div>
-<div class='row'>
-
-  <div class="form-group col-sm-4">
-      {!! Form::label('name', 'strKey') !!}
-      {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '']) !!}<br>
-  </div>
-
-</div>
 
 
 
+    </div>
+  <div class="form-group col-sm-12">
 
 
-<div class='row'>
+
+    {!! Form::label('name', 'strKey') !!}<br>
+    {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+
+
+    </div>
+
+
+
+
+
+
+
   <div class="form-group col-sm-12">
     {!! Form::label('name', 'Previous Notes') !!}<br>
     {!! Form::textarea('comment', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'comment', 'rows' => '5','readonly' => 'true' ,'placeholder' => '']) !!}
   </div>
   <div class="form-group col-sm-12">
-
-
-        {!! Form::label('name', 'New Notes ')  !!}<br>
+      {!! Form::label('name', 'New Notes ')  !!}<br>
       {!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}<br>
-      </div>
-</div>
+  </div>
+
 
 
 <div class='row'>

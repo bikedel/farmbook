@@ -103,6 +103,22 @@ word-wrap:break-word; // ***********and this
 }
 
 
+#tstrStreetName,
+#tstrStreetNo,
+#tstrOwners {
+  color:orange;
+}
+#tstrComplexName,
+#tstrComplexNo {
+  color:green;
+}
+
+#tnumErfNo {
+  color:red;
+}
+
+
+
 .dataTables_processing {
     position: absolute;
     top: -20px;

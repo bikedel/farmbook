@@ -31,7 +31,7 @@ ul  {
 
 
 	</div>
-<hr>
+	<hr>
 
 	@if ( Session::has('flash_message') )
 
@@ -66,8 +66,8 @@ ul  {
 			</colgroup>
 			<tbody>
 				<tr>
-					<td width="30%">Erf No</td>
-					<td>{{  $streets[0]->numErf }}  </td>
+					<td  width="30%">Erf No</td>
+					<td id='tnumErfNo'>{{  $streets[0]->numErf }}  </td>
 				</tr>
 				<tr>
 					<td>Suburb</td>
@@ -76,19 +76,19 @@ ul  {
 
 				<tr>
 					<td>Street No</td>
-					<td>{{  $streets[0]->strStreetNo }}  </td>
+					<td id='tstrStreetNo'>{{  $streets[0]->strStreetNo }}  </td>
 				</tr>
 				<tr>
 					<th>Street Name</th>
-					<td>{{  $streets[0]->strStreetName }} </td>
+					<td id='tstrStreetName'>{{  $streets[0]->strStreetName }} </td>
 				</tr>
 				<tr>
 					<th>Complex No</th>
-					<td>{{  $streets[0]->strComplexNo }}  </td>
+					<td id='tstrComplexNo'>{{  $streets[0]->strComplexNo }}  </td>
 				</tr>
 				<tr>
 					<th>Complex Name</th>
-					<td>{{  $streets[0]->strComplexName }}  </td>
+					<td id='tstrComplexName'>{{  $streets[0]->strComplexName }}  </td>
 				</tr>
 
 				<tr>
@@ -116,9 +116,9 @@ ul  {
 					<th>ID Number</th>
 					<td>{{  $streets[0]->strIDNumber }}  </td>
 				</tr>
-								<tr>
+				<tr>
 					<th>Owners</th>
-					<td>{{  $streets[0]->strOwners }}  </td>
+					<td id='tstrOwners'>{{  $streets[0]->strOwners }}  </td>
 				</tr>
 				<tr>
 					<th> Surname</th>
@@ -151,28 +151,28 @@ ul  {
 
 			</tbody>
 		</table>
-</div>
+	</div>
 
 
 
-<div class="col-md-6 responsive" >
+	<div class="col-md-6 responsive" >
 
 		<div class="form-group">
 			<label for="comment">Notes:</label>
 			<textarea readonly class="form-control readonly" rows="5" id="comment">{{  $streets[0]->memNotes}}</textarea>
 		</div>
-<button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Details</button>
+		<button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Details</button>
 	</div>
 </div>
 </div>
 <hr>
-	<div class="row">
-		<div class="col-xs-12">
-			{!! $streets->appends(Request::except('page'))->render() !!}
-		</div>
-
-
+<div class="row">
+	<div class="col-xs-12">
+		{!! $streets->appends(Request::except('page'))->render() !!}
 	</div>
+
+
+</div>
 
 
 
@@ -265,13 +265,13 @@ ul  {
 						{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
 
 
-				
+
 						{!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', '' ,'placeholder' => '', 'hidden']) !!}
 
 
 
 
-					
+
 						{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotes', 'readonly' => 'true','hidden']) !!}<br>
 
 						{!! Form::label('name', 'Notes  ')  !!}
@@ -284,7 +284,7 @@ ul  {
 				</div>
 				<div class="modal-footer">
 
-					
+
 					{!! Form::submit('Save',  array('class'=>'btn btn-info ')) !!}
 					{!! Form::close() !!}
 

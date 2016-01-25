@@ -17,7 +17,7 @@ use Redirect;
 use Route;
 use Log;
 use DB;
-
+use Exception;
 use Carbon;
 
 class FreeholdsController extends Controller
@@ -191,7 +191,12 @@ class FreeholdsController extends Controller
 
 
 
-			if ($result) {
+			//if ($result) {
+
+
+			try{
+
+
 
                 // update notes
 				if (strlen(  $commentNew) > 0 ) {
@@ -211,18 +216,20 @@ class FreeholdsController extends Controller
 					'EMAIL' => $EMAIL,
 					));
 
+			}
+			catch(\Exception $e){
 
-				Session::flash('flash_message', 'Updated '.  $numErf );
-				Session::flash('flash_type', 'alert-success');
-				return Redirect::back();
-
-			} else {
-
-				Session::flash('flash_message', 'Error updating '.  $numErf );
+				Session::flash('flash_message', 'Error updating '.  $numErf . "  ". $e->getMessage() );
 				Session::flash('flash_type', 'alert-danger');
 				return Redirect::back();
-
 			}
+
+			Session::flash('flash_message', 'Updated '.  $numErf );
+			Session::flash('flash_type', 'alert-success');
+			return Redirect::back();
+
+
+
 
 			dd("ok");
 
