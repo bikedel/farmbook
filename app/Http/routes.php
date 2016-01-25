@@ -24,7 +24,7 @@ Route::get('/adminDatabases',  'AdminController@indexDatabases' );
 
 Route::post('/adminDatabasesNew',  'AdminController@newDatabase' );
 
-Route::post('/adminUsersNew',  'DatatablesControl@newUser' );
+Route::post('/adminUsersNew',  'DatatablesController@newUser' );
 
 Route::get('/adminUsers',  'AdminController@indexUsers' );
 
