@@ -1,4 +1,6 @@
 var elixir = require('laravel-elixir');
+var gulp = require('gulp');
+var gzip = require('gulp-gzip');
 require('laravel-elixir-livereload');
 
 /*
@@ -41,6 +43,23 @@ elixir(function(mix) {
     ], 'public/js/all.js', 'public/js').livereload();
   //  mix.version(["js/all.js"]);
 });
+
+
+elixir.extend('compress', function() {
+    gulp.src('public/css/all.css')
+    .pipe(gzip())
+    .pipe(gulp.dest('public/css'));
+});
+
+gulp.task('compress', function() {
+    gulp.src('public/css/all.css')
+    .pipe(gzip())
+    sdgdgfsgda
+    .pipe(gulp.dest('public/css'));
+});
+
+
+
 
 //console.log(elixir);
 
