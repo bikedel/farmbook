@@ -124,6 +124,15 @@
 
         </div>
 
+        <div class="col-sm-12 hidden">
+          {!! Form::label('name', 'First Name') !!}
+          {!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}<br>
+
+          {!! Form::label('Surname', 'Surname') !!}
+          {!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}<br>
+
+        </div>
+
 
 
         <div class="col-sm-12">

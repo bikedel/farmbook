@@ -84,6 +84,7 @@ $(document).on("ready page:load", function() {
 function clear_fields() {
 
   document.getElementById('strIdentity').value = "" ;
+      document.getElementById('strOwners').value = "" ;
   document.getElementById('numErf').value =  "" ;  
   document.getElementById('comment').value =  "" ;
   document.getElementById('strFirstName').value =  "" ;
@@ -94,6 +95,7 @@ function clear_fields() {
   document.getElementById('EMAIL').value =  "" ;
   document.getElementById('dtmRegDate').value = "" ;
   document.getElementById('strAmount').value =  "" ;
+        document.getElementById('strBondAmount').value = "";
   document.getElementById('strSqMeters').value =  "" ;
    document.getElementById('strKey').value =  "";
 }

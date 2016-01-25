@@ -208,6 +208,8 @@ class FreeholdsController extends Controller
 					->update(array('memNotes' => $commentNew));
 				}
 
+                // check id is passed
+                if (strlen($strIdentity)) {
 				$affected2 = $db->table('tblSuburbContactNumbers')
 				->where('strIDNumber', $strIdentity)
 				->update(array('strCellPhoneNo' => $strCellPhoneNo,
@@ -215,7 +217,9 @@ class FreeholdsController extends Controller
 					'strWorkPhoneNo' => $strWorkPhoneNo,
 					'EMAIL' => $EMAIL,
 					));
-
+                 } else {
+                 	throw new Exception('no data passed');
+                 }
 			}
 			catch(\Exception $e){
 
@@ -229,11 +233,6 @@ class FreeholdsController extends Controller
 			return Redirect::back();
 
 
-
-
-			dd("ok");
-
-			return Redirect::route('datatables');
 		}
 
 
