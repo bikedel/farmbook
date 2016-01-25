@@ -187,8 +187,8 @@
 
 
 
-    {!! Form::label('name', 'strKey') !!}<br>
-    {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', 'readonly' => 'true' ,'placeholder' => '']) !!}
+ 
+    {!! Form::text('strKey', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strKey', 'readonly' => 'true' ,'placeholder' => '','hidden' => 'true']) !!}
 
 
 
