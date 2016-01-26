@@ -434,6 +434,9 @@ table.column( 12).visible( false );
 table.column( 13).visible( false );
 table.column( 14).visible( false );
 table.column( 15).visible( false );
+table.column( 16).visible( false );
+table.column( 17).visible( false );
+
 
 
 // reset search
