@@ -107,7 +107,9 @@ class FreeholdsController extends Controller
 			->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
 			->orderBy('strStreetName', 'asc')
 			->orderBy('strStreetNo', 'asc')
-			->select('*');
+			->select('*')
+             ->groupby('tblSuburbContactNumbers.strIDNumber');
+		
 
 
 
