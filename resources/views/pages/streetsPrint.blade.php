@@ -18,6 +18,29 @@ ul  {
 	float:left;
 }
 
+
+table {
+    table-layout:fixed;
+    font-size: 60%;
+    padding:0;
+}
+table th {
+    padding:0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+table td {
+    padding:0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+
+
+
 </style>
 
 <div class="container-fluid">
@@ -52,19 +75,49 @@ ul  {
 	</div>
 	@endif
 
-	<div class="row">
-
-		@foreach($streets as $street)
-		<p> {{$street->strStreetName}}   {{$street->strStreetNo}}    {{$street->numErf      }}           {{$street->strOwners}}   {{  substr($street->strIdentity,0,6) }} </p>   
 
 
-		<p>	Home Phone : {{$street->strHomePhoneNo}}  Work Phone : {{$street->strWorkPhoneNo}}  Cell Phone : {{$street->strCellPhoneNo}} Email : {{$street->EMAIL}} </p>
 
-		<p>		Notes :{{$street->memNotes}} </p>
-		<hr>
+
+		<table class="table table-bordered " style="table-layout: fixed; width: 600px">
+			<th width='80px'> Street Name </th>
+			<th width='30px'> No </th>
+			<th width='50px'> Erf </th>
+			<th width='100px'> Owner </th>
+			<th width='50px'> Id </th>
+			<th width='50px'> H Phone </th>
+			<th width='50px'> W Phone </th>
+			<th width='50px'> C Phone </th>
+		</table>
+
+		@foreach($streets as $street)	
+		<table class="table table-bordered " style="table-layout: fixed; width: 600px">
+			<tbody>
+				<tr>
+						<td width='80'> {{ $street->strStreetName }}  </td>
+						<td width='30'> {{ $street->strStreetNo }} </td>
+						<td width='50'> {{ $street->numErf }} </td>
+						<td width='100'> {{ $street->strOwners }} </td>
+						<td width='50'> {{ substr($street->strIdentity ,0,6)}} </td>			
+						<td width='50'> {{ $street->strHomePhoneNo }} </td>		
+						<td width='50'> {{ $street->strWorkPhoneNo }} </td>		
+						<td width='50'> {{ $street->strCellPhoneNo }} </td>	
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="col-md-12 " >
+			<p>{{ $street->memNotes }}</p>
+
+		</div>
+
+		
 		@endforeach
 
-	</div>
+
+
+
+
 
 
 </div>
