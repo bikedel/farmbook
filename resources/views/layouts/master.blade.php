@@ -10,7 +10,7 @@
 
     <!-- Bootstrap CSS -->
 
-    <link rel="shortcut icon" href="{{ asset('../imgages/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}">
     <link async href="{{ asset('/css/all.css') }}" rel="stylesheet">
     <!-- Fonts -->
 
@@ -22,7 +22,6 @@
 
 
     <body>
-
 
         <nav class="navbar  navbar-fixed-top navbar-inverse" >
             <div class="container-fluid">
