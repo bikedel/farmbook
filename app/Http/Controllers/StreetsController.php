@@ -167,7 +167,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+      // ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(100);
 
        return view('pages.streetsPrint',compact('streets','street'));
@@ -187,7 +187,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+       //->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strSurname', $surname)->paginate(100);
 
        return view('pages.streetsPrint',compact('streets','street'));
@@ -341,7 +341,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+     //  ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(1);
 
        return view('pages.streets2',compact('streets','street'));
@@ -359,7 +359,7 @@ class StreetsController extends Controller
        ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+      // ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strSurname', $surname)->paginate(1);
 
 //dd($streets->count(),$street);

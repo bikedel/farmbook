@@ -34,7 +34,7 @@ $(document).ready(function() {
      var salesprice = table.row( this ).data().strAmount ;
      var BondAmount = table.row( this ).data().strBondAmount ;
 
-  
+
      var sqmeters = table.row( this ).data().strSqMeters ;
 
      var strFirstName = table.row( this ).data().strFirstName ;
@@ -84,7 +84,7 @@ $(document).on("ready page:load", function() {
 function clear_fields() {
 
   document.getElementById('strIdentity').value = "" ;
-      document.getElementById('strOwners').value = "" ;
+  document.getElementById('strOwners').value = "" ;
   document.getElementById('numErf').value =  "" ;  
   document.getElementById('comment').value =  "" ;
   document.getElementById('strFirstName').value =  "" ;
@@ -95,9 +95,9 @@ function clear_fields() {
   document.getElementById('EMAIL').value =  "" ;
   document.getElementById('dtmRegDate').value = "" ;
   document.getElementById('strAmount').value =  "" ;
-        document.getElementById('strBondAmount').value = "";
+  document.getElementById('strBondAmount').value = "";
   document.getElementById('strSqMeters').value =  "" ;
-   document.getElementById('strKey').value =  "";
+  document.getElementById('strKey').value =  "";
 }
 
 
@@ -194,7 +194,60 @@ function checkCookie() {
      }
    }
  }
- 
+
+
+function checkSearchCookie() {
+
+var s_numErf=getCookie("s_numErf");
+var s_strComplexName=getCookie("s_strComplexName");
+
+var s_strStreetName=getCookie("s_strStreetName");
+var s_owner=getCookie("s_owner");
+var s_id=getCookie("s_id");
+
+
+
+
+    if (s_numErf != "") {
+        //alert("Row index =  " + user);
+          document.getElementById('s_numErf').value = s_numErf;
+         $("#reset").css("background","#ff6700");    
+     }
+    if (s_strComplexName != "") {
+        //alert("Row index =  " + user);
+          document.getElementById('s_strComplexName').value = s_strComplexName;
+         $("#reset").css("background","#ff6700");    
+     }
+         if (s_strStreetName != "") {
+        //alert("Row index =  " + user);
+          document.getElementById('s_strStreetName').value = s_strStreetName;
+         $("#reset").css("background","#ff6700");    
+     }
+         if (s_owner != "") {
+        //alert("Row index =  " + user);
+          document.getElementById('s_owner').value = s_owner;
+         $("#reset").css("background","#ff6700");    
+     }
+         if (s_id != "") {
+        //alert("Row index =  " + user);
+          document.getElementById('s_id').value = s_id;
+         $("#reset").css("background","#ff6700");    
+     }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
  function phoneFormat(phone) {

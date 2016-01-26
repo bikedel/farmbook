@@ -345,8 +345,8 @@ $(document).ready(function() {
         initComplete: function(settings, json) {
  //  console.log( 'DataTables has finished its initialisation.' );
  document.getElementById("reset").style.visibility = "visible";
- rowindex = checkCookie()
-
+ rowindex = checkCookie();
+ checkSearchCookie();
         // table.rows().deselect();
        // this.api().row(rowindex, { page: 'current' }).select();
        if (rowindex)
@@ -373,6 +373,8 @@ $(document).ready(function() {
 $('#s_numErf').on( 'keyup', function () {
   table.columns(0).search( this.value ).draw();
   document.getElementById("reset").style.visibility = "visible";
+  $("#reset").css("background","#ff6700");
+  setCookie("s_numErf", this.value, 30);
 } );
 
 
@@ -384,17 +386,22 @@ $('#s_strStreetName').on( 'keyup', function () {
   table.row($rowIndex).select();
   setTimeout(function() {  display_row(0); }, 1500);
   document.getElementById("reset").style.visibility = "visible";
-
+  $("#reset").css("background","#ff6700");
+    setCookie("s_strStreetName", this.value, 30);
 } );
 
+
+
 $('#s_strComplexName').on( 'keyup', function () {
-  table.columns(4).search( this.value ).draw();
+
+  table.columns(4).search( this.value ,true ,false).draw();
   $rowIndex = 0;
   //document.getElementById('mrec').value = $rowIndex +1 ;
   table.row($rowIndex).select();
   setTimeout(function() {  display_row(0); }, 1500);
   document.getElementById("reset").style.visibility = "visible";
-
+  $("#reset").css("background","#ff6700");
+  setCookie("s_strComplexName", this.value, 30);
 } );
 
 
@@ -403,20 +410,23 @@ $('#s_strComplexName').on( 'keyup', function () {
 $('#s_amount').on( 'keyup', function () {
   table.columns(5).search( this.value ).draw();
   document.getElementById("reset").style.visibility = "visible";
-
+  $("#reset").css("background","#ff6700");
+  setCookie("s_amount", this.value, 30);
 } );
 
 
 $('#s_owner').on( 'keyup', function () {
   table.columns(5).search( this.value ).draw();
   document.getElementById("reset").style.visibility = "visible";
-
+  $("#reset").css("background","#ff6700");
+  setCookie("s_owner", this.value, 30);
 } );
 
 $('#s_id').on( 'keyup', function () {
   table.columns(6).search( this.value ).draw();
   document.getElementById("reset").style.visibility = "visible";
-
+  $("#reset").css("background","#ff6700");
+  setCookie("s_id", this.value, 30);
 } );
 
 
@@ -442,10 +452,22 @@ table.column( 17).visible( false );
 // reset search
 $('#reset').click(function(){
   document.getElementById('s_numErf').value = "";
-  document.getElementById('s_strStreetName').value = "";
   document.getElementById('s_strComplexName').value = "";
+    document.getElementById('s_strStreetName').value = "";
   document.getElementById('s_owner').value = "";
   document.getElementById('s_id').value = "";
+
+  $("#reset").css("background","#363b3f");
+
+
+  setCookie("s_numErf", "", 30);
+  setCookie("s_strComplexName", "", 30);
+  setCookie("s_strStreetName", "", 30);
+  setCookie("s_owner", "", 30);
+  setCookie("s_id", "", 30);
+
+
+
 
   table .search( '' )
   .columns().search( '' )
