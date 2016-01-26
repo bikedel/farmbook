@@ -24,6 +24,12 @@ table {
     font-size: 60%;
     padding:0;
 }
+
+.t{
+    
+    font-size: 60%;
+    padding:0;
+}
 table th {
     padding:0;
     overflow: hidden;
@@ -106,7 +112,7 @@ table td {
 			</tbody>
 		</table>
 
-		<div class="col-md-12 " >
+		<div class="col-md-12 t" >
 			<p>{{ $street->memNotes }}</p>
 
 		</div>
