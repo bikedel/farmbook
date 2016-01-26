@@ -16,8 +16,7 @@
 
 				<br>
 
-				<div id="street" class="form-group ">
-
+				<div id="street" class="form-group col-md-6 responsive">
 					<div class="radio">
 						<label><input id="street_r" type="radio" name="optradio" value="1" checked>Street Name</label>
 					</div>
@@ -29,11 +28,11 @@
 					</select>
 				</div>
 
-				
-				<div class="radio">
-					<label><input id="erf_r" type="radio" name="optradio" value="2">Erf Number</label>
-				</div>
-				<div id="erf" class="form-group ">
+				<div id="erf" class="form-group col-md-6 responsive">
+					<div class="radio">
+						<label><input id="erf_r" type="radio" name="optradio" value="2">Erf Number</label>
+					</div>
+
 					<select class="form-control" id="erf" name="erf" onchange=GetSelectedTextValue(this)>
 						@foreach($erfs as $erf)
 						<option value="{{$erf->numErf}}">{{$erf->numErf}}</option>
@@ -41,11 +40,11 @@
 					</select>
 				</div>
 				
+				<div id="ids" class="form-group col-md-6 responsive">
+					<div class="radio">
+						<label><input id="id_r" type="radio" name="optradio" value="3">Id Number</label>
+					</div>
 
-				<div class="radio">
-					<label><input id="id_r" type="radio" name="optradio" value="3">Id Number</label>
-				</div>
-				<div id="ids" class="form-group ">
 					<select class="form-control" id="id" name="id" onchange=GetSelectedTextValue(this)>
 						@foreach($ids as $id)
 						<option value="{{$id->strIDNumber}}">{{$id->strIDNumber}}</option>
@@ -53,22 +52,22 @@
 					</select>
 				</div>
 
+				<div id="ids" class="form-group col-md-6 responsive">
+					<div class="radio">
+						<label><input id="surname_r" type="radio" name="optradio" value="4">Surname</label>
+					</div>
 
-				<div class="radio">
-					<label><input id="surname_r" type="radio" name="optradio" value="4">Surname</label>
-				</div>
-				<div id="ids" class="form-group ">
 					<select class="form-control" id="surname" name="surname" onchange=GetSelectedTextValue(this)>
 						@foreach($surnames as $surname)
 						<option value="{{$surname->strSurname}}">{{$surname->strSurname}}</option>
 						@endforeach
 					</select>
 				</div>
+				<div id="complexs" class="form-group col-md-6 responsive">
+					<div class="radio">
+						<label><input id="complex_r" type="radio" name="optradio" value="5">Complex</label>
+					</div>
 
-				<div class="radio">
-					<label><input id="complex_r" type="radio" name="optradio" value="5">Complex</label>
-				</div>
-				<div id="complexs" class="form-group ">
 					<select class="form-control" id="complex" name="complex" onchange=GetSelectedTextValue(this)>
 						@foreach($complexs as $complex)
 						<option value="{{$complex->strComplexName}}">{{$complex->strComplexName}}</option>
@@ -77,12 +76,13 @@
 				</div>
 
 			</div>
-			<br>
-			<div class="col-xs-12">
+			
+			<div class="col-md-12">
 
-
+				<br>
+				<br>
 				<input type="submit" name="action" value="View" class="btn btn-default">
-                <input type="submit" name="action" value="Print" class="btn btn-default">
+				<input type="submit" name="action" value="Print" class="btn btn-default">
 			</div>
 
 
@@ -104,7 +104,7 @@
 
 $(document).ready(function() {
 
-   
+
 
 	document.getElementById("street_id").addEventListener("change", myFunction1);
 	document.getElementById("erf").addEventListener("change", myFunction2);
@@ -115,7 +115,7 @@ $(document).ready(function() {
 	function myFunction1() {
 		var x = document.getElementById("street_r");
 		x.checked = true;
-	
+
 	}
 	function myFunction2() {
 		var x = document.getElementById("erf_r");

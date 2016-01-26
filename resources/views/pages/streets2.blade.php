@@ -67,7 +67,7 @@ ul  {
 			<tbody>
 				<tr>
 					<td  width="30%">Erf No</td>
-					<td id='tnumErfNo'>{{  $streets[0]->numErf }}  </td>
+					<td width="60%" id='tnumErfNo'>{{  $streets[0]->numErf }}  </td>
 				</tr>
 				<tr>
 					<td>Suburb</td>
@@ -167,7 +167,7 @@ ul  {
 </div>
 <hr>
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-md-12">
 		{!! $streets->appends(Request::except('page'))->render() !!}
 	</div>
 
