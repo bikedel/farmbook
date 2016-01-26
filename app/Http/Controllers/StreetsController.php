@@ -125,6 +125,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strStreetName', $street)->paginate(100);
 
 
@@ -146,6 +147,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where($freeholds_table.'.numErf', $erf)->paginate(100);
 
        return view('pages.streetsPrint',compact('streets','street'));
@@ -165,6 +167,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(100);
 
        return view('pages.streetsPrint',compact('streets','street'));
@@ -184,6 +187,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strSurname', $surname)->paginate(100);
 
        return view('pages.streetsPrint',compact('streets','street'));
@@ -203,7 +207,7 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strKey', 'asc')
 
        ->select('*')
-
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where($freeholds_table.'.strComplexName', $complex)->paginate(100);
        return view('pages.streetsPrint',compact('streets','street'));
 
@@ -291,6 +295,7 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strComplexName', 'asc')
        ->orderBy($freeholds_table.'.strComplexNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strStreetName', $street)->paginate(1);
 
 
@@ -314,6 +319,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('tblSuburbOwners.numErf', $erf)->paginate(1);
 
        return view('pages.streets2',compact('streets','street'));
@@ -335,6 +341,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(1);
 
        return view('pages.streets2',compact('streets','street'));
@@ -352,6 +359,7 @@ class StreetsController extends Controller
        ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strSurname', $surname)->paginate(1);
 
 //dd($streets->count(),$street);
@@ -373,6 +381,7 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strKey', 'asc')
 
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where($freeholds_table.'.strComplexName', $complex)->paginate(1);
 
        return view('pages.streets2',compact('streets','street'));
@@ -440,6 +449,7 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strStreetName', 'asc')
        ->orderBy($freeholds_table.'.strStreetNo', 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strStreetName', $street)->paginate(1);
 
 
@@ -507,7 +517,9 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strComplexName', 'asc')
        ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
        ->select('*')
+       ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
+
 
 
        return view('pages.streets2',compact('streets','street'));

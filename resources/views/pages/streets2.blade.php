@@ -244,10 +244,10 @@ ul  {
 
 
 
-          <div class="col-sm-12">
- {!! Form::label('name', 'Erf Number  ')  !!}
-            {!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}<br>
-          </div>
+					<div class="col-sm-12">
+						{!! Form::label('name', 'Erf Number  ')  !!}
+						{!! Form::text('numErf', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}<br>
+					</div>
 
 
 
@@ -260,39 +260,39 @@ ul  {
 					</div>
 					<div class="col-sm-6">
 
-						{!! Form::label('name', 'Identity  ')  !!}
+						{!! Form::label('name', 'Id  ')  !!}
 						{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
 					</div>
 
-      <div class="form-group col-sm-6">
+					<div class="form-group col-sm-6">
 
-          {!! Form::label('name', 'Reg Date') !!}<br>
-          {!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
-
-
-        </div>
-        <div class="form-group col-sm-6">
+						{!! Form::label('name', 'Reg Date') !!}<br>
+						{!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
 
 
-          {!! Form::label('name', 'Sale Price') !!}<br>
-          {!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+					</div>
+					<div class="form-group col-sm-6">
 
 
-        </div>
-        <div class="form-group col-sm-6">
+						{!! Form::label('name', 'Sale Price') !!}<br>
+						{!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
 
 
-          {!! Form::label('name', 'Bond Amount') !!}<br>
-          {!! Form::text('strBondAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strBondAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+					</div>
+					<div class="form-group col-sm-6">
 
 
-        </div>
-        <div class="form-group col-sm-6">
+						{!! Form::label('name', 'Bond Amount') !!}<br>
+						{!! Form::text('strBondAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strBondAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
 
-          {!! Form::label('name', 'Sq Meters') !!}<br>
-          {!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
 
-        </div>
+					</div>
+					<div class="form-group col-sm-6">
+
+						{!! Form::label('name', 'Sq Meters') !!}<br>
+						{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
+
+					</div>
 
 
 					<div class="col-sm-6">

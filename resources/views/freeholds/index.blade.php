@@ -149,7 +149,7 @@
 
       <div class="col-sm-6">
 
-        {!! Form::label('name', 'Identity  ')  !!}
+        {!! Form::label('name', 'Id ')  !!}
         {!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}<br>
       </div>
 
