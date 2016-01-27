@@ -437,6 +437,7 @@ $('#s_id').on( 'keyup', function () {
 //table.column( 0).visible( false );
 //table.column( 6).visible( false );
 table.column( 7).visible( false );
+table.column( 8).visible( false );
 table.column( 9).visible( false );
 table.column( 10).visible( false );
 table.column( 11).visible( false );
