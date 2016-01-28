@@ -23,7 +23,7 @@
 
     <body>
 
-        <nav class="navbar  navbar-fixed-top navbar-inverse" >
+        <nav class="navbar  navbar-fixed-top  navbar-custom " >
             <div class="container-fluid">
 
                 <div class="navbar-header">

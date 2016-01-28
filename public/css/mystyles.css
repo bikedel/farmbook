@@ -242,11 +242,30 @@ th, td { white-space: nowrap; }
 
 div.dataTables_processing { z-index: 1; }
 
+.navbar-custom {
+    
+    
+}
 
 
+/*
+.navbar-custom  {
+    background-image: none;
+  background-repeat: no-repeat;
 
+ 
+}
+*/
 
+.navbar-custom .navbar-toggle {
+  border-color: #ffffff;
+  color:#ffffff;
+}
 
-
+.navbar-custom .navbar-toggle .icon-bar {
+    color: white;
+     color:#ffffff;
+     background-color: white;
+}
 
 
