@@ -18,27 +18,27 @@ class helpers
 
 
 
-    public static function phoneFormat($phone)
-    {
-      $length = strlen($phone);
-      if ($length == 9){
-        $phone = preg_replace("/[^0-9]/", "", $phone);
-        $phone = "(0".substr($phone,0,2).") ".substr($phone,2,3)."-".substr($phone,5);
+  public static function phoneFormat($phone)
+  {
+    $length = strlen($phone);
+    if ($length == 9){
+      $phone = preg_replace("/[^0-9]/", "", $phone);
+      $phone = "(0".substr($phone,0,2).") ".substr($phone,2,3)."-".substr($phone,5);
     }
     return $phone;
-}
+  }
 
 
 
 
-public static function currencyFormat($number)
-{
-  $length = strlen($number);
-  if ($length > 0 ){
-    return "R ".number_format($number);;
-}
+  public static function currencyFormat($number)
+  {
+    $length = strlen($number);
+    if ($length > 0 ){
+      return "R ".number_format($number);;
+    }
 
-}
+  }
 
 
 }

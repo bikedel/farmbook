@@ -182,12 +182,29 @@ h1 span {
   color:green;
 }
 
+/*
+
+input[type="text"]:read-only { 
+
+background-color:#2f3339;
+
+color:#c8c8c8;
+border: 1;
+border-color:#222222;
+opacity:.4; 
+}
+
+
 
 
 input[type="text"]:read-only { 
 
 background-color:lightblue;
-opacity:.4; }
+opacity:.4; 
+
+}
+
+
 
 textarea:read-only { 
 
@@ -207,14 +224,26 @@ opacity:.4;
 background-color:lightblue;
 
 }
+*/
+
+#memNotes, #comment{
+
+background-color:#2f3339;
+
+color:#c8c8c8;
+border: 1;
+border-color:#222222;
+
+ font-size: 95%;
+
+}
+
 
 
 
 th, td { white-space: nowrap; }
 
 div.dataTables_processing { z-index: 1; }
-
-
 
 
 

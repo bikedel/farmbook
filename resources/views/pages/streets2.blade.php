@@ -60,10 +60,7 @@ ul  {
 		<div class=" col-md-6 responsive">
 			
 			<table class="table table-bordered ">
-				<colgroup>
-				<col span="1" style="background-color:">
-				<col style="background-color:#272727">
-			</colgroup>
+
 			<tbody>
 				<tr>
 					<td  width="30%">Erf No</td>
@@ -158,8 +155,8 @@ ul  {
 	<div class="col-md-6 responsive" >
 
 		<div class="form-group">
-			<label for="comment">Notes:</label>
-			<textarea readonly class="form-control readonly" rows="5" id="comment">{{  $streets[0]->memNotes}}</textarea>
+			
+			<textarea readonly class="form-control readonly" rows="15" id="comment">{{  $streets[0]->memNotes}}</textarea>
 		</div>
 		<button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Details</button>
 	</div>

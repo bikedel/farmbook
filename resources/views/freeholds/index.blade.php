@@ -186,14 +186,14 @@
       </div>
 
 
-      <div class="form-group col-sm-6">
+      <div class=" col-sm-6">
         {!! Form::label('name', 'Home Phone') !!}<br>
-        {!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
+        {!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo' ,'placeholder' => '']) !!}
       </div>
       <div class="form-group col-sm-6">
 
         {!! Form::label('name', 'Work Phone') !!}<br>
-        {!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
+        {!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo' ,'placeholder' => '']) !!}
       </div>
       <div class="form-group col-sm-6">
 
@@ -226,11 +226,7 @@
 
 
 
-      <div class='row'>
-        <div class="update form-group  col-sm-12 pull-right">
 
-        </div>
-      </div>
 
 
 

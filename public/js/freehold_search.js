@@ -53,15 +53,15 @@ $(document).ready(function() {
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
-      document.getElementById('strAmount').value =  priceFormat(salesprice);
-      document.getElementById('strBondAmount').value = priceFormat(BondAmount);
-      document.getElementById('strSqMeters').value =  (sqmeters);
+      document.getElementById('strAmount').value =  salesprice;
+      document.getElementById('strBondAmount').value = BondAmount;
+      document.getElementById('strSqMeters').value =  sqmeters;
 
       document.getElementById('strFirstName').value =  strFirstName ;
       document.getElementById('strSurname').value =  strSurname ;
-      document.getElementById('strHomePhoneNo').value =  phoneFormat(strHomePhoneNo) ;
-      document.getElementById('strWorkPhoneNo').value =  phoneFormat(strWorkPhoneNo);
-      document.getElementById('strCellPhoneNo').value =  phoneFormat(strCellPhoneNo) ; 
+      document.getElementById('strHomePhoneNo').value =  strHomePhoneNo ;
+      document.getElementById('strWorkPhoneNo').value =  strWorkPhoneNo;
+      document.getElementById('strCellPhoneNo').value =  strCellPhoneNo ; 
       document.getElementById('EMAIL').value =  EMAIL ;
 
       document.getElementById('strKey').value =  strKey ;
@@ -143,15 +143,15 @@ function display_row($row) {
       document.getElementById('comment').value =  notes ;
 
       document.getElementById('dtmRegDate').value = regdate ;
-      document.getElementById('strAmount').value = priceFormat(salesprice);
-      document.getElementById('strBondAmount').value = priceFormat(BondAmount);
+      document.getElementById('strAmount').value = salesprice;
+      document.getElementById('strBondAmount').value = BondAmount;
       document.getElementById('strSqMeters').value =  sqmeters;
       document.getElementById('strFirstName').value =  strFirstName ;
       document.getElementById('strSurname').value =  strSurname ;
 
-      document.getElementById('strHomePhoneNo').value =  phoneFormat(strHomePhoneNo) ;
-      document.getElementById('strWorkPhoneNo').value =  phoneFormat(strWorkPhoneNo) ;
-      document.getElementById('strCellPhoneNo').value =  phoneFormat(strCellPhoneNo) ; 
+      document.getElementById('strHomePhoneNo').value =  strHomePhoneNo ;
+      document.getElementById('strWorkPhoneNo').value =  strWorkPhoneNo ;
+      document.getElementById('strCellPhoneNo').value =  strCellPhoneNo ; 
       document.getElementById('EMAIL').value =  EMAIL ;
 
       document.getElementById('strKey').value =  strKey ;

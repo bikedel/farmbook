@@ -21,7 +21,7 @@ elixir(function(mix) {
         "buttons.dataTables.min.css",
         "dataTables.bootstrap.min.css",
         "select.dataTables.min.css", 
-        "dark_theme.css",
+        "theme.min.css",
         "mystyles.css"
     ], 'public/css/all.css', 'public/css').livereload();
    // mix.version(["css/all.css"]);
@@ -45,16 +45,11 @@ elixir(function(mix) {
 });
 
 
-elixir.extend('compress', function() {
-    gulp.src('public/css/all.css')
-    .pipe(gzip())
-    .pipe(gulp.dest('public/css'));
-});
 
 gulp.task('compress', function() {
     gulp.src('public/css/all.css')
     .pipe(gzip())
-    sdgdgfsgda
+
     .pipe(gulp.dest('public/css'));
 });
 
