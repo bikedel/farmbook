@@ -182,19 +182,16 @@ h1 span {
   color:green;
 }
 
-/*
+
 
 input[type="text"]:read-only { 
 
-background-color:#2f3339;
 
-color:#c8c8c8;
-border: 1;
 border-color:#222222;
 opacity:.4; 
 }
 
-
+/*
 
 
 input[type="text"]:read-only { 
