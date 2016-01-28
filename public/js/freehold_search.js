@@ -28,7 +28,7 @@ $(document).ready(function() {
      var owners = table.row( this ).data().strOwners ;
 
      var erf = table.row( this ).data().numErf ;
-     var notes = table.row( this ).data().notes ;
+     var notes = table.row( this ).data().memNotes ;
 
      var regdate = table.row( this ).data().dtmRegDate ;
      var salesprice = table.row( this ).data().strAmount ;
@@ -117,7 +117,7 @@ function display_row($row) {
      var owners = table.row( $row ).data().strOwners ;
 
      var erf = table.row( $row ).data().numErf ;
-     var notes = table.row( $row ).data().notes ;
+     var notes = table.row( $row ).data().memNotes ;
 
 
      var regdate = table.row( $row  ).data().dtmRegDate ;
@@ -196,51 +196,47 @@ function checkCookie() {
  }
 
 
-function checkSearchCookie() {
+ function checkSearchCookie() {
 
-var s_numErf=getCookie("s_numErf");
-var s_strComplexName=getCookie("s_strComplexName");
+  var s_numErf=getCookie("s_numErf");
+  var s_strComplexName=getCookie("s_strComplexName");
 
-var s_strStreetName=getCookie("s_strStreetName");
-var s_owner=getCookie("s_owner");
-var s_id=getCookie("s_id");
-
-
+  var s_strStreetName=getCookie("s_strStreetName");
+  var s_owner=getCookie("s_owner");
+  var s_id=getCookie("s_id");
 
 
-    if (s_numErf != "") {
+
+
+  if (s_numErf != "") {
         //alert("Row index =  " + user);
-          document.getElementById('s_numErf').value = s_numErf;
-         $("#reset").css("background","#ff6700");    
-     }
-    if (s_strComplexName != "") {
+        document.getElementById('s_numErf').value = s_numErf;
+        $("#reset").css("background","#ff6700");    
+      }
+      if (s_strComplexName != "") {
         //alert("Row index =  " + user);
-          document.getElementById('s_strComplexName').value = s_strComplexName;
-         $("#reset").css("background","#ff6700");    
-     }
-         if (s_strStreetName != "") {
+        document.getElementById('s_strComplexName').value = s_strComplexName;
+        $("#reset").css("background","#ff6700");    
+      }
+      if (s_strStreetName != "") {
         //alert("Row index =  " + user);
-          document.getElementById('s_strStreetName').value = s_strStreetName;
-         $("#reset").css("background","#ff6700");    
-     }
-         if (s_owner != "") {
+        document.getElementById('s_strStreetName').value = s_strStreetName;
+        $("#reset").css("background","#ff6700");    
+      }
+      if (s_owner != "") {
         //alert("Row index =  " + user);
-          document.getElementById('s_owner').value = s_owner;
-         $("#reset").css("background","#ff6700");    
-     }
-         if (s_id != "") {
+        document.getElementById('s_owner').value = s_owner;
+        $("#reset").css("background","#ff6700");    
+      }
+      if (s_id != "") {
         //alert("Row index =  " + user);
-          document.getElementById('s_id').value = s_id;
-         $("#reset").css("background","#ff6700");    
-     }
+        document.getElementById('s_id').value = s_id;
+        $("#reset").css("background","#ff6700");    
+      }
 
 
 
-}
-
-
-
-
+    }
 
 
 
@@ -250,20 +246,24 @@ var s_id=getCookie("s_id");
 
 
 
- function phoneFormat(phone) {
-
-  var n = phone.length;
 
 
-  phone = phone.replace(/[^0-9]/g, '');
 
-  if (n>9){
-   phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
- } else {
-  phone = "0"+phone;
-  phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-}
 
+    function phoneFormat(phone) {
+
+      var n = phone.length;
+
+      if (n>4) {
+        phone = phone.replace(/[^0-9]/g, '');
+
+        if (n>9){
+         phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+       } else {
+        phone = "0"+phone;
+        phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+      }
+    }
 //phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
 
 return phone;

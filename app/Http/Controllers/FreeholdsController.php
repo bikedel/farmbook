@@ -19,6 +19,7 @@ use Log;
 use DB;
 use Exception;
 use Carbon;
+use App\helpers;
 
 class FreeholdsController extends Controller
 {
@@ -108,21 +109,26 @@ class FreeholdsController extends Controller
 			->orderBy('strStreetName', 'asc')
 			->orderBy('strStreetNo', 'asc')
 			->select('*')
-             ->groupby('tblSuburbContactNumbers.strIDNumber');
-		
+			->groupby('tblSuburbContactNumbers.strIDNumber')->get();
+
+
+            // formats for phone and currency
+			foreach ($freehold as $value) {
+				$value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+				$value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+				$value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+				$value->strAmount = helpers::currencyFormat($value->strAmount);
+				$value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+			}
+
+
+			$collection = collect($freehold);
 
 
 
+			return Datatables::of( $collection)->make(true);
 
 
-
-
-
-			return Datatables::of($freehold)
-			->addColumn('notes', function ($freehold) {
-				return $freehold->memNotes;
-			})
-			->make(true);
 		}
 
 
@@ -211,17 +217,17 @@ class FreeholdsController extends Controller
 				}
 
                 // check id is passed
-                if (strlen($strIdentity)) {
-				$affected2 = $db->table('tblSuburbContactNumbers')
-				->where('strIDNumber', $strIdentity)
-				->update(array('strCellPhoneNo' => $strCellPhoneNo,
-					'strHomePhoneNo' => $strHomePhoneNo,
-					'strWorkPhoneNo' => $strWorkPhoneNo,
-					'EMAIL' => $EMAIL,
-					));
-                 } else {
-                 	throw new Exception('no data passed');
-                 }
+				if (strlen($strIdentity)) {
+					$affected2 = $db->table('tblSuburbContactNumbers')
+					->where('strIDNumber', $strIdentity)
+					->update(array('strCellPhoneNo' => $strCellPhoneNo,
+						'strHomePhoneNo' => $strHomePhoneNo,
+						'strWorkPhoneNo' => $strWorkPhoneNo,
+						'EMAIL' => $EMAIL,
+						));
+				} else {
+					throw new Exception('no data passed');
+				}
 			}
 			catch(\Exception $e){
 

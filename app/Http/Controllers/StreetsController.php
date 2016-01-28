@@ -17,6 +17,7 @@ use App\Database;
 use Session;
 use Redirect;
 use Carbon;
+use App\helpers;
 
 class StreetsController extends Controller
 {
@@ -129,6 +130,19 @@ class StreetsController extends Controller
        ->where('strStreetName', $street)->paginate(100);
 
 
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
+
        return view('pages.streetsPrint',compact('streets','street'));
 
 
@@ -150,6 +164,19 @@ class StreetsController extends Controller
        ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where($freeholds_table.'.numErf', $erf)->paginate(100);
 
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
+
        return view('pages.streetsPrint',compact('streets','street'));
 
 
@@ -169,6 +196,19 @@ class StreetsController extends Controller
        ->select('*')
       // ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(100);
+
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
 
        return view('pages.streetsPrint',compact('streets','street'));
 
@@ -190,6 +230,20 @@ class StreetsController extends Controller
        //->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strSurname', $surname)->paginate(100);
 
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
+
+
        return view('pages.streetsPrint',compact('streets','street'));
 
 
@@ -209,6 +263,20 @@ class StreetsController extends Controller
        ->select('*')
        ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where($freeholds_table.'.strComplexName', $complex)->paginate(100);
+
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
+
        return view('pages.streetsPrint',compact('streets','street'));
 
 
@@ -292,11 +360,23 @@ class StreetsController extends Controller
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
-       ->orderBy($freeholds_table.'.strComplexName', 'asc')
-       ->orderBy($freeholds_table.'.strComplexNo', 'asc')
+
        ->select('*')
        ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strStreetName', $street)->paginate(1);
+
+
+// format phone and currency
+
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
 
 
        return view('pages.streets2',compact('streets','street'));
@@ -322,6 +402,19 @@ class StreetsController extends Controller
        ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('tblSuburbOwners.numErf', $erf)->paginate(1);
 
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
+
        return view('pages.streets2',compact('streets','street'));
 
 
@@ -344,6 +437,19 @@ class StreetsController extends Controller
      //  ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(1);
 
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
+
        return view('pages.streets2',compact('streets','street'));
 
 
@@ -364,6 +470,19 @@ class StreetsController extends Controller
 
 //dd($streets->count(),$street);
 
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+
+
        return view('pages.streets2',compact('streets','street'));
 
 
@@ -383,6 +502,19 @@ class StreetsController extends Controller
        ->select('*')
        ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where($freeholds_table.'.strComplexName', $complex)->paginate(1);
+
+
+// format phone and currency
+       
+       foreach ($streets as $value) {
+         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+         $value->strAmount = helpers::currencyFormat($value->strAmount);
+         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+       }
+       
 
        return view('pages.streets2',compact('streets','street'));
 
@@ -441,23 +573,37 @@ class StreetsController extends Controller
 
       }
 
-       $streets = $db->table($freeholds_table)
-       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-       ->orderBy('strStreetName', 'asc')
-       ->orderBy('strStreetNo', 'asc')
-       ->orderBy($freeholds_table.'.strStreetName', 'asc')
-       ->orderBy($freeholds_table.'.strStreetNo', 'asc')
-       ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
-       ->where('strStreetName', $street)->paginate(1);
+      $streets = $db->table($freeholds_table)
+      ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+      ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+      ->orderBy('strStreetName', 'asc')
+      ->orderBy('strStreetNo', 'asc')
+      ->orderBy($freeholds_table.'.strStreetName', 'asc')
+      ->orderBy($freeholds_table.'.strStreetNo', 'asc')
+      ->select('*')
+      ->groupby('tblSuburbContactNumbers.strIDNumber')
+      ->where('strStreetName', $street)->paginate(1);
 
 
-       return view('pages.streets2',compact('streets','street'));
+// format phone and currency
+
+      foreach ($streets as $value) {
+       $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+       $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+       $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+       $value->strAmount = helpers::currencyFormat($value->strAmount);
+       $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+     }
 
 
-      dd('checkgrid streetcontroller',$street);
-    }
+
+
+     return view('pages.streets2',compact('streets','street'));
+
+
+     dd('checkgrid streetcontroller',$street);
+   }
 
 
 
@@ -466,67 +612,76 @@ class StreetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function checkComplex($street)
-    {
+public function checkComplex($street)
+{
 
 
      // dynamically change database
-      $userDB = Auth::user()->suburb;
-      $otf = new \App\Database\OTF(['database' => $userDB]);
-      $db = DB::connection($userDB);
+  $userDB = Auth::user()->suburb;
+  $otf = new \App\Database\OTF(['database' => $userDB]);
+  $db = DB::connection($userDB);
 
 
         // check database type
-      $databaseType = Auth::user()->suburb_type;
+  $databaseType = Auth::user()->suburb_type;
 
 
 
-      if ($databaseType == 1 ){
+  if ($databaseType == 1 ){
 
-        $freeholds_table = "tblSuburbOwners";
-        $freeholds_table_key =  $freeholds_table.".numErf";
-        $freeholds_identity = $freeholds_table.".strIdentity";
-        $mem_Table = "tblErfNumbers";
-        $mem_key = "tblErfNumbers.numErf";
+    $freeholds_table = "tblSuburbOwners";
+    $freeholds_table_key =  $freeholds_table.".numErf";
+    $freeholds_identity = $freeholds_table.".strIdentity";
+    $mem_Table = "tblErfNumbers";
+    $mem_key = "tblErfNumbers.numErf";
 
-      }
-      if ($databaseType == 2 ){
+  }
+  if ($databaseType == 2 ){
 
-        $freeholds_table = "tblSuburbOwners";
-        $freeholds_table_key =  $freeholds_table.".strKey";
-        $freeholds_identity = $freeholds_table.".strIdentity";
-        $mem_Table = "tblFHPropertyID";
-        $mem_key = $mem_Table.".strKey";
+    $freeholds_table = "tblSuburbOwners";
+    $freeholds_table_key =  $freeholds_table.".strKey";
+    $freeholds_identity = $freeholds_table.".strIdentity";
+    $mem_Table = "tblFHPropertyID";
+    $mem_key = $mem_Table.".strKey";
 
-      }
-      if ($databaseType == 3 ){
+  }
+  if ($databaseType == 3 ){
 
-        $freeholds_table = "tblSuburbOwners";
-        $freeholds_table_key =  $freeholds_table.".strKey";
-        $freeholds_identity = $freeholds_table.".strIdentity";
-        $mem_Table = "tblFHPropertyID";
-        $mem_key = $mem_Table.".strKey";
+    $freeholds_table = "tblSuburbOwners";
+    $freeholds_table_key =  $freeholds_table.".strKey";
+    $freeholds_identity = $freeholds_table.".strIdentity";
+    $mem_Table = "tblFHPropertyID";
+    $mem_key = $mem_Table.".strKey";
 
-      }
+  }
 
-       $streets = $db->table($freeholds_table)
-       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-       ->orderBy('strStreetName', 'asc')
-       ->orderBy('strStreetNo', 'asc')
-       ->orderBy($freeholds_table.'.strComplexName', 'asc')
-       ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
-       ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
-       ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
+  $streets = $db->table($freeholds_table)
+  ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+  ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+  ->orderBy('strStreetName', 'asc')
+  ->orderBy('strStreetNo', 'asc')
+  ->orderBy($freeholds_table.'.strComplexName', 'asc')
+  ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
+  ->select('*')
+  ->groupby('tblSuburbContactNumbers.strIDNumber')
+  ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
+
+// format phone and currency
+
+  foreach ($streets as $value) {
+   $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+   $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+   $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+   $value->strAmount = helpers::currencyFormat($value->strAmount);
+   $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+ }
+
+ return view('pages.streets2',compact('streets','street'));
 
 
-
-       return view('pages.streets2',compact('streets','street'));
-
-
-      dd('checkgrid streetcontroller',$street);
-    }
+ dd('checkgrid streetcontroller',$street);
+}
 
     /**
      * Store a newly created resource in storage.
@@ -707,4 +862,10 @@ class StreetsController extends Controller
     {
         //
     }
+
+
+
+
+
+
   }
