@@ -54,7 +54,7 @@ ul  {
 	</div>
 	@endif
 
-
+@foreach($streets as $street)
 
 	<div class="row">
 		<div class=" col-md-6 responsive">
@@ -68,82 +68,82 @@ ul  {
 				</tr>
 				<tr>
 					<td>Suburb</td>
-					<td>{{  $streets[0]->strSuburb }}  </td>
+					<td>{{  $street->strSuburb }}  </td>
 				</tr>
 
 				<tr>
 					<td>Street No</td>
-					<td id='tstrStreetNo'>{{  $streets[0]->strStreetNo }}  </td>
+					<td id='tstrStreetNo'>{{  $street->strStreetNo }}  </td>
 				</tr>
 				<tr>
 					<th>Street Name</th>
-					<td id='tstrStreetName'>{{  $streets[0]->strStreetName }} </td>
+					<td id='tstrStreetName'>{{  $street->strStreetName }} </td>
 				</tr>
 				<tr>
 					<th>Complex No</th>
-					<td id='tstrComplexNo'>{{  $streets[0]->strComplexNo }}  </td>
+					<td id='tstrComplexNo'>{{  $street->strComplexNo }}  </td>
 				</tr>
 				<tr>
 					<th>Complex Name</th>
-					<td id='tstrComplexName'>{{  $streets[0]->strComplexName }}  </td>
+					<td id='tstrComplexName'>{{  $street->strComplexName }}  </td>
 				</tr>
 
 				<tr>
 					<td>Sqr Meters</td>
-					<td>{{  $streets[0]->strSqMeters }}  </td>
+					<td>{{  $street->strSqMeters }}  </td>
 				</tr>
 				<tr>
 					<td>Reg Date</td>
-					<td>{{  $streets[0]->dtmRegDate }}  </td>
+					<td>{{  $street->dtmRegDate }}  </td>
 				</tr>
 
 				<tr>
 					<td>Sale Price</td>
-					<td>{{  $streets[0]->strAmount }}  </td>
+					<td>{{  $street->strAmount }}  </td>
 				</tr>
 				<tr>
 					<th>Bond Amount</th>
-					<td>{{  $streets[0]->strBondAmount }} </td>
+					<td>{{  $street->strBondAmount }} </td>
 				</tr>
 				<tr>
 					<th>Identity</th>
-					<td>{{  $streets[0]->strIdentity }}  </td>
+					<td>{{  $street->strIdentity }}  </td>
 				</tr>
 				<tr>
 					<th>ID Number</th>
-					<td>{{  $streets[0]->strIDNumber }}  </td>
+					<td>{{  $street->strIDNumber }}  </td>
 				</tr>
 				<tr>
 					<th>Owners</th>
-					<td id='tstrOwners'>{{  $streets[0]->strOwners }}  </td>
+					<td id='tstrOwners'>{{  $street->strOwners }}  </td>
 				</tr>
 				<tr>
 					<th> Surname</th>
-					<td> {{  $streets[0]->strSurname}} </td>
+					<td> {{  $street->strSurname}} </td>
 				</tr>
 				<tr>
 					<th> First Name</th>
-					<td> {{  $streets[0]->strFirstName}} </td>
+					<td> {{  $street->strFirstName}} </td>
 				</tr>
 				<tr>
 					<th>Home Phone </th>
-					<td> {{  $streets[0]->strHomePhoneNo}} </td>
+					<td> {{  $street->strHomePhoneNo}} </td>
 				</tr>
 				<tr>
 					<th> Work Phone</th>
-					<td> {{  $streets[0]->strWorkPhoneNo}} </td>
+					<td> {{  $street->strWorkPhoneNo}} </td>
 				</tr>
 				<tr>
 					<th> Cell Phone</th>
-					<td> {{  $streets[0]->strCellPhoneNo}} </td>
+					<td> {{  $street->strCellPhoneNo}} </td>
 				</tr>
 				<tr>
 					<th> Email</th>
-					<td> {{  $streets[0]->EMAIL}} </td>
+					<td> {{  $street->EMAIL}} </td>
 				</tr>
 				<tr>
 					<th> Key</th>
-					<td> {{  $streets[0]->strKey}} </td>
+					<td> {{  $street->strKey}} </td>
 				</tr>
 
 			</tbody>
@@ -186,7 +186,7 @@ ul  {
 
 				<div class="row">
 
-					@foreach($streets as $street)
+					
 
 					{!! Form::model($street, ['method' => 'post', 'url' => ['street']]) !!}
 
