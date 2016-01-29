@@ -213,7 +213,7 @@ class FreeholdsController extends Controller
 
 					$affected = $db->table($mem_Table)
 					->where($mem_key, $searchKey)
-					->update(array('memNotes' => $commentNew));
+					->update(array('memNotes' => $commentNew,'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()));
 				}
 
                 // check id is passed
@@ -224,6 +224,7 @@ class FreeholdsController extends Controller
 						'strHomePhoneNo' => $strHomePhoneNo,
 						'strWorkPhoneNo' => $strWorkPhoneNo,
 						'EMAIL' => $EMAIL,
+						'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()
 						));
 				} else {
 					throw new Exception('no data passed');

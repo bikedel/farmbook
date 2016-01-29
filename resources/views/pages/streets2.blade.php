@@ -63,86 +63,86 @@ ul  {
 
 			<tbody>
 				<tr>
-					<td  width="30%">Erf No</td>
+					<td  width="30%" class="mylabel"  >Erf No</td>
 					<td width="60%" max-width="400px" id='tnumErfNo'>{{  $streets[0]->numErf }}  </td>
 				</tr>
 				<tr>
-					<td>Suburb</td>
+					<td class="mylabel" >Suburb</td>
 					<td>{{  $street->strSuburb }}  </td>
 				</tr>
 
 				<tr>
-					<td>Street No</td>
+					<td class="mylabel">Street No</td>
 					<td id='tstrStreetNo'>{{  $street->strStreetNo }}  </td>
 				</tr>
 				<tr>
-					<td>Street Name</td>
+					<td class="mylabel">Street Name</td>
 					<td id='tstrStreetName'>{{  $street->strStreetName }} </td>
 				</tr>
 				<tr>
-					<td>Complex No</td>
+					<td class="mylabel">Complex No</td>
 					<td id='tstrComplexNo'>{{  $street->strComplexNo }}  </td>
 				</tr>
 				<tr>
-					<td>Complex Name</td>
+					<td class="mylabel">Complex Name</td>
 					<td id='tstrComplexName'>{{  $street->strComplexName }}  </td>
 				</tr>
 
 				<tr>
-					<td>Sqr Meters</td>
+					<td class="mylabel">Sqr Meters</td>
 					<td>{{  $street->strSqMeters }}  </td>
 				</tr>
 				<tr>
-					<td>Reg Date</td>
+					<td class="mylabel">Reg Date</td>
 					<td>{{  $street->dtmRegDate }}  </td>
 				</tr>
 
 				<tr>
-					<td>Sale Price</td>
+					<td class="mylabel">Sale Price</td>
 					<td>{{  $street->strAmount }}  </td>
 				</tr>
 				<tr>
-					<td>Bond Amount</td>
+					<td class="mylabel">Bond Amount</td>
 					<td>{{  $street->strBondAmount }} </td>
 				</tr>
 				<tr>
-					<td>Identity</td>
+					<td class="mylabel">Identity</td>
 					<td>{{  $street->strIdentity }}  </td>
 				</tr>
 				<tr>
-					<td>ID Number</th>
+					<td class="mylabel">ID Number</th>
 					<td>{{  $street->strIDNumber }}  </td>
 				</tr>
 				<tr>
-					<td>Owners</td>
+					<td class="mylabel">Owners</td>
 					<td id='tstrOwners'>{{  $street->strOwners }}  </td>
 				</tr>
 				<tr>
-					<td> Surname</td>
+					<td class="mylabel"> Surname</td>
 					<td> {{  $street->strSurname}} </td>
 				</tr>
 				<tr>
-					<td> First Name</td>
+					<td class="mylabel"> First Name</td>
 					<td> {{  $street->strFirstName}} </td>
 				</tr>
 				<tr>
-					<td>Home Phone </td>
+					<td class="mylabel">Home Phone </td>
 					<td> {{  $street->strHomePhoneNo}} </td>
 				</tr>
 				<tr>
-					<td> Work Phone</td>
+					<td class="mylabel">  Work Phone</td>
 					<td> {{  $street->strWorkPhoneNo}} </td>
 				</tr>
 				<tr>
-					<td> Cell Phone</td>
+					<td class="mylabel"> Cell Phone</td>
 					<td> {{  $street->strCellPhoneNo}} </td>
 				</tr>
 				<tr>
-					<td> Email</td>
+					<td class="mylabel"> Email</td>
 					<td> {{  $street->EMAIL}} </td>
 				</tr>
 				<tr>
-					<td> Key</td>
+					<td class="mylabel"> Key</td>
 					<td> {{  $street->strKey}} </td>
 				</tr>
 

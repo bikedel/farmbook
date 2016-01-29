@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -141,6 +142,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -176,6 +180,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -210,6 +217,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -244,6 +254,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -278,6 +291,11 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
+
+
        }
 
 
@@ -379,6 +397,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -416,6 +437,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -452,6 +476,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -486,6 +513,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
 
 
@@ -519,6 +549,9 @@ class StreetsController extends Controller
 
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+         $value->strSurname = str::title($value->strSurname);
+         $value->strFirstName = str::title($value->strFirstName);
        }
        
 
@@ -601,6 +634,9 @@ class StreetsController extends Controller
 
        $value->strAmount = helpers::currencyFormat($value->strAmount);
        $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+       $value->strSurname = str::title($value->strSurname);
+       $value->strFirstName = str::title($value->strFirstName);
      }
 
 
@@ -683,6 +719,9 @@ public function checkComplex($street)
 
    $value->strAmount = helpers::currencyFormat($value->strAmount);
    $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+   $value->strSurname = str::title($value->strSurname);
+   $value->strFirstName = str::title($value->strFirstName);
  }
 
  return view('pages.streets2',compact('streets','street'));
@@ -831,7 +870,7 @@ public function checkComplex($street)
 
          $affected = $db->table($mem_Table)
          ->where($mem_key, $searchKey)
-         ->update(array('memNotes' => $commentNew));
+         ->update(array('memNotes' => $commentNew,'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()));
        }
 
        $affected2 = $db->table('tblSuburbContactNumbers')
@@ -840,6 +879,7 @@ public function checkComplex($street)
         'strHomePhoneNo' => $strHomePhoneNo,
         'strWorkPhoneNo' => $strWorkPhoneNo,
         'EMAIL' => $EMAIL,
+        'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()
         ));
 
        Session::flash('flash_message', 'Updated '.  $numErf );

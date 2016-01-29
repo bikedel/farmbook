@@ -312,5 +312,9 @@ overflow: ellipsis;
   text-overflow: ellipsis;
 }
 
+.mylabel {
+opacity:.6;
+
+}
 
 /*# sourceMappingURL=all.css.map */
