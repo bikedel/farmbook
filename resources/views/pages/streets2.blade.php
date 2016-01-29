@@ -156,7 +156,7 @@ ul  {
 
 		<div class="form-group">
 			
-			<textarea readonly class="form-control readonly" rows="15" id="comment">{{  $streets[0]->memNotes}}</textarea>
+			<textarea readonly class="form-control readonly" rows="15" id="comment">{{  $street->memNotes}}</textarea>
 		</div>
 		<button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Details</button>
 	</div>
