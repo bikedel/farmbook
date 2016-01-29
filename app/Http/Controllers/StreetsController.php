@@ -378,8 +378,7 @@ class StreetsController extends Controller
        }
 
 
-
-       return view('pages.streets2',compact('streets','street'));
+       return view('pages.streets',compact('streets','street'));
 
 
      }
