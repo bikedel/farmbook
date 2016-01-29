@@ -109,207 +109,207 @@ label {
 				{!! Form::text('strComplexNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strComplexNo' , 'readonly' => 'true']) !!}
 			</div>
 		</div>
-			<div class="form-group">
-				<div class="lab col-sm-4">
-					{!! Form::label('name', 'Complex Name  ')  !!}
-				</div>
-				<div class="col-sm-8">
-					{!! Form::text('strComplexName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strComplexName', 'readonly' => 'true']) !!}
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Complex Name  ')  !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strComplexName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strComplexName', 'readonly' => 'true']) !!}
 
-				</div>
-</div>
+			</div>
+		</div>
 
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Identity  ')  !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Owner  ')  !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}
-					</div>
-				</div>
-
-
-
-
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'First Name') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('Surname', 'Surname') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Bond Holder  ')  !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strBondHolder',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strBondHolder' , 'readonly' => 'true']) !!}
-					</div>
-
-				</div>
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Sale Price') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Sq Meters') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Reg Date') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Home Phone') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-
-
-
-
-
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Work Phone') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Cell Phone') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Email') !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
-					</div>
-				</div>
-
-
-
-
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'Previous Notes  ')  !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'memNotes']) !!}
-					</div>	
-				</div>	
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-						{!! Form::label('name', 'New Notes  ')  !!}
-					</div>
-					<div class="col-sm-8">
-						{!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}
-					</div>	
-				</div>	
-
-
-
-
-
-
-
-				<div class="form-group">
-					<div class="lab col-sm-4">
-
-					</div>
-					<div class="col-sm-8">
-						{!! Form::submit('Update',  array('class'=>'btn btn-info ')) !!}
-						{!! Form::close() !!}
-					</div>	
-				</div>	
-
-
-			</div>	
-
-			@endforeach
-
-
-
-
-
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Identity  ')  !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Owner  ')  !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}
+			</div>
 		</div>
 
 
 
 
-		@stop
+
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'First Name') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('Surname', 'Surname') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Bond Holder  ')  !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strBondHolder',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strBondHolder' , 'readonly' => 'true']) !!}
+			</div>
+
+		</div>
+
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Sale Price') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Sq Meters') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Reg Date') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
+			</div>
+		</div>
 
 
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script >
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Home Phone') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strHomePhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strHomePhoneNo', '' ,'placeholder' => '']) !!}
+			</div>
+		</div>
 
-		$( document ).ready(function() {
 
 
 
-			function phoneFormat(phone) {
 
-				var n = phone.length;
-				alert('shit');
-				if (n>4) {
-					phone = phone.replace(/[^0-9]/g, '');
 
-					if (n>9){
-						phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-					} else {
-						phone = "0"+phone;
-						phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-					}
-				}
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Work Phone') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strWorkPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strWorkPhoneNo', '' ,'placeholder' => '']) !!}
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Cell Phone') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('strCellPhoneNo', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strCellPhoneNo', '' ,'placeholder' => '']) !!}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Email') !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::text('EMAIL', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'EMAIL', '' ,'placeholder' => '']) !!}
+			</div>
+		</div>
+
+
+
+
+
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'Previous Notes  ')  !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'memNotes']) !!}
+			</div>	
+		</div>	
+
+		<div class="form-group">
+			<div class="lab col-sm-4">
+				{!! Form::label('name', 'New Notes  ')  !!}
+			</div>
+			<div class="col-sm-8">
+				{!! Form::textarea('memNotesNew',null ,$attributes = ['class' => 'form-control input-sm', 'rows' => '5','id' => 'memNotesNew']) !!}
+			</div>	
+		</div>	
+
+
+
+
+
+
+
+		<div class="form-group">
+			<div class="lab col-sm-4">
+
+			</div>
+			<div class="col-sm-8">
+				{!! Form::submit('Update',  array('class'=>'btn btn-info ')) !!}
+				{!! Form::close() !!}
+			</div>	
+		</div>	
+
+
+	</div>	
+
+	@endforeach
+
+
+
+
+
+</div>
+
+
+
+
+@stop
+
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script >
+
+$( document ).ready(function() {
+
+
+
+	function phoneFormat(phone) {
+
+		var n = phone.length;
+		alert('shit');
+		if (n>4) {
+			phone = phone.replace(/[^0-9]/g, '');
+
+			if (n>9){
+				phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+			} else {
+				phone = "0"+phone;
+				phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+			}
+		}
 //phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
 
 return phone;
@@ -324,5 +324,5 @@ document.getElementById("strHomePhoneNo").onload = function() {alert('shit');}
 
 
 
-		</script>
+</script>
 

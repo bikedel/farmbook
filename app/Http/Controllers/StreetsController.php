@@ -367,7 +367,7 @@ class StreetsController extends Controller
 
 
 // format phone and currency
-
+/*
        foreach ($streets as $value) {
          $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
          $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
@@ -376,9 +376,9 @@ class StreetsController extends Controller
          $value->strAmount = helpers::currencyFormat($value->strAmount);
          $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
        }
+*/
 
-
-       return view('pages.streets',compact('streets','street'));
+       return view('pages.streets2',compact('streets','street'));
 
 
      }
