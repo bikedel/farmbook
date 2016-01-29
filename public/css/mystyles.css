@@ -120,6 +120,7 @@ word-wrap:break-word; // ***********and this
 
 
 
+
 .dataTables_processing {
     position: absolute;
     top: -20px;
@@ -188,7 +189,7 @@ input[type="text"]:read-only {
 
 
 border-color:#222222;
-opacity:.4; 
+opacity:.9; 
 }
 
 /*

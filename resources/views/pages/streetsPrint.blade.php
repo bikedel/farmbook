@@ -82,8 +82,9 @@ table td {
 	@endif
 
 
+       <a href="javascript:window.print()" class='btn btn-danger'>Print</a>
 
-
+<br><br>
 
 		<table class="table table-bordered " style="table-layout: fixed; width: 600px">
 			<th width='80px'> Street Name </th>
