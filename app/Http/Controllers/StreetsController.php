@@ -360,7 +360,7 @@ class StreetsController extends Controller
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
        ->orderBy('strStreetName', 'asc')
        ->orderBy('strStreetNo', 'asc')
-
+       ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
        ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strStreetName', $street)->paginate(1);
