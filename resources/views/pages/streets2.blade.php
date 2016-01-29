@@ -59,12 +59,12 @@ ul  {
 	<div class="row">
 		<div class=" col-md-6 responsive">
 			
-			<table class="table table-bordered ">
+			<table class="table table-bordered street" >
 
 			<tbody>
 				<tr>
 					<td  width="30%">Erf No</td>
-					<td width="60%" id='tnumErfNo'>{{  $streets[0]->numErf }}  </td>
+					<td width="60%" max-width="400px" id='tnumErfNo'>{{  $streets[0]->numErf }}  </td>
 				</tr>
 				<tr>
 					<td>Suburb</td>
@@ -76,15 +76,15 @@ ul  {
 					<td id='tstrStreetNo'>{{  $street->strStreetNo }}  </td>
 				</tr>
 				<tr>
-					<th>Street Name</th>
+					<td>Street Name</td>
 					<td id='tstrStreetName'>{{  $street->strStreetName }} </td>
 				</tr>
 				<tr>
-					<th>Complex No</th>
+					<td>Complex No</td>
 					<td id='tstrComplexNo'>{{  $street->strComplexNo }}  </td>
 				</tr>
 				<tr>
-					<th>Complex Name</th>
+					<td>Complex Name</td>
 					<td id='tstrComplexName'>{{  $street->strComplexName }}  </td>
 				</tr>
 
@@ -102,47 +102,47 @@ ul  {
 					<td>{{  $street->strAmount }}  </td>
 				</tr>
 				<tr>
-					<th>Bond Amount</th>
+					<td>Bond Amount</td>
 					<td>{{  $street->strBondAmount }} </td>
 				</tr>
 				<tr>
-					<th>Identity</th>
+					<td>Identity</td>
 					<td>{{  $street->strIdentity }}  </td>
 				</tr>
 				<tr>
-					<th>ID Number</th>
+					<td>ID Number</th>
 					<td>{{  $street->strIDNumber }}  </td>
 				</tr>
 				<tr>
-					<th>Owners</th>
+					<td>Owners</td>
 					<td id='tstrOwners'>{{  $street->strOwners }}  </td>
 				</tr>
 				<tr>
-					<th> Surname</th>
+					<td> Surname</td>
 					<td> {{  $street->strSurname}} </td>
 				</tr>
 				<tr>
-					<th> First Name</th>
+					<td> First Name</td>
 					<td> {{  $street->strFirstName}} </td>
 				</tr>
 				<tr>
-					<th>Home Phone </th>
+					<td>Home Phone </td>
 					<td> {{  $street->strHomePhoneNo}} </td>
 				</tr>
 				<tr>
-					<th> Work Phone</th>
+					<td> Work Phone</td>
 					<td> {{  $street->strWorkPhoneNo}} </td>
 				</tr>
 				<tr>
-					<th> Cell Phone</th>
+					<td> Cell Phone</td>
 					<td> {{  $street->strCellPhoneNo}} </td>
 				</tr>
 				<tr>
-					<th> Email</th>
+					<td> Email</td>
 					<td> {{  $street->EMAIL}} </td>
 				</tr>
 				<tr>
-					<th> Key</th>
+					<td> Key</td>
 					<td> {{  $street->strKey}} </td>
 				</tr>
 
