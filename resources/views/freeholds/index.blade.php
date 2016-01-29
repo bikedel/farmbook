@@ -52,7 +52,6 @@
      <th>Reg Date</th>
      <th>Amount</th>
      <th>Bond Amount</th>
-     <th>notes</th>
      <th>fname</th>
      <th>strSurname</th>
      <th>strHomePhoneNo</th>
@@ -60,6 +59,7 @@
      <th>strCellPhoneNo</th>
      <th>EMAIL</th>
      <th>strKey</th>
+     <th>notes</th>
    </tr>
  </thead>
 </table>
@@ -309,14 +309,14 @@ $(document).ready(function() {
  { data: 'dtmRegDate', name: 'dtmRegDate' ,width: '150'},
  { data: 'strAmount', name: 'strAmount' },
  { data: 'strBondAmount', name: 'strBondAmount' },
- { data: 'memNotes', name: 'memNotes' , width: '200' ,  targers: [9] },   
  { data: 'strFirstName', name: 'strFirstName' },   
  { data: 'strSurname', name: 'strSurname' },   
  { data: 'strHomePhoneNo', name: 'strHomePhoneNo' },  
  { data: 'strWorkPhoneNo', name: 'strWorkPhoneNo' },  
  { data: 'strCellPhoneNo', name: 'strCellPhoneNo' },  
  { data: 'EMAIL', name: 'EMAIL' },    
- { data: 'strKey', name: 'strKey' },    
+ { data: 'strKey', name: 'strKey' },   
+   { data: 'memNotes', name: 'memNotes' , width: '200' ,  targers: [9] },   
 
 
 
