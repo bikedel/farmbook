@@ -15,7 +15,7 @@ use Redirect;
 use Route;
 use DB;
 use Auth;
-
+use Helpers;
 use Session;
 use Exception;
 
@@ -46,9 +46,10 @@ class DatatablesController extends Controller
 
 		 	$suburbs = DB::table('suburbs')->lists('database','id');
 
-		 	$test = [5 ];
+		 	$test = DB::table('suburbs')->select('id')->orderby('id')->first();
+   
+            $test = [$test->id];
 
-       // dd($suburbs,$test);
 
 		 	return view('datatables.index',compact('suburbs','test'));
 		 }
@@ -78,6 +79,7 @@ class DatatablesController extends Controller
 		 	->where('user_id',$userId)->distinct('suburbs.name')->get();
 
 //dd($suburbs,$userId);
+
 
 		 	return View('datatables.edit',compact('mp','suburbs'));
 		 //	return view('datatables.edit');
@@ -162,17 +164,32 @@ class DatatablesController extends Controller
 						throw new Exception('password problem');
 					}
 
-
+                   // get first suburb selected details
+					$suburbType = DB::table('suburbs')->where('id', $sub[0])->first();
 
 
 					DB::table('users')->where('name','=',$name)->update(
-						['name' => $name, 'email' => $email, 'admin' => $admin,
+						['name' => $name, 'email' => $email, 'admin' => $admin, 'suburb' => $suburbType->database , 'suburb_type'=> $suburbType->type,
 						'password' => bcrypt($password),
 						'created_at'=> \Carbon\Carbon::now()->toDateTimeString(),
 						'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()
 						]);
 
 
+        // get user id
+					$usersid = DB::table('users')->where('email', $email)->first();
+					$usersid = $usersid->id ;
+
+                 // delete old database connections
+					DB::table('user_suburbs')->where('user_id', '=',$usersid)->delete();
+
+                 // add databases for user
+					foreach ($sub as $value) {
+						DB::table('user_suburbs')->insertGetId(
+							['user_id' => $usersid, 'suburb_id' => $value]
+							);
+
+					}
 
 
 				}

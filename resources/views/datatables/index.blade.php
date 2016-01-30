@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
+
+<script> $choices = []; </script>
 <h1>User Admin</h1>
 
 <div class='row'>
@@ -92,13 +94,16 @@
                             </div>
                         </div>
 
+
+
                         <div class="form-group">
                             <label class="col-md-4 control-label">Farmbook</label>
                             <div class="col-md-6">
-                             
-                                {!! Form::select('getsuburb[]', $suburbs,  ['Noordhoek_farmbook'], ['multiple'=>'multiple','class'=> 'form-control col-md-6', 'id'=>'suburb']) !!}
+                          
+                                {!! Form::select('getsuburb[]', $suburbs,  $test, ['multiple'=>'multiple','class'=> 'form-control col-md-6', 'id'=>'suburb']) !!}
                             </div>
                         </div>
+
 
                         <input type="hidden" name="suburb" id="text_content" value="" />
 
@@ -186,7 +191,7 @@ table
 
 });
 
-
+$choices = [];
 
 $("#updateBtn").click(function(event){
    document.getElementById('formHeader').innerHTML = "Update User";  
@@ -202,6 +207,10 @@ $("#updateBtn").click(function(event){
    document.getElementById('name').value = name ;
    document.getElementById('email').value = email ;
    document.getElementById('admin').value = admin ;
+
+
+  <?php $test = [50]; ?>
+
    $("#myModal").modal('show');
 });
 
