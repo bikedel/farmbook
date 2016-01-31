@@ -377,8 +377,6 @@ class StreetsController extends Controller
 
          // view title
        $street = Input::get('street_id');
-
-
        $streets = $db->table($freeholds_table)
        ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
@@ -386,7 +384,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-        ->groupby($freeholds_table.'.ID')
+       ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(1);
 
 
@@ -625,6 +623,11 @@ class StreetsController extends Controller
       ->select('*')
       ->groupby($freeholds_table.'.ID')
       ->where('strStreetName', $street)->paginate(1);
+
+
+
+
+
 
 
 // format phone and currency
