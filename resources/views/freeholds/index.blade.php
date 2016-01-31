@@ -7,12 +7,8 @@
 
 
 <div class="row" id="search">
-  <div class="col-md-2">
-    <a href="#" id="reset" class="btn btn-default ">
-      <span class="glyphicon glyphicon-refresh"></span> Refresh 
-    </a>
-  </div>
 
+<br>
   <div class="col-md-2">
     <input id="s_numErf" type="text" name="firstname" class="form-control input-sm" placeholder="Search Erf">
   </div>
@@ -29,14 +25,18 @@
     <input id="s_id" type="text" name="firstname" class="form-control input-sm " placeholder="Search Id">
   </div>
 
-
+  <div class="col-md-2 ">
+    <a href="#" id="reset" class="btn btn-default ">
+      <span class="glyphicon glyphicon-refresh"></span> Refresh 
+    </a>
+  </div>
 
 
 </div>
 <div class="row">
   <hr>
 </div>
-<br>
+
 
 
 <table class="table table-striped table-bordered" id="freeholds" >

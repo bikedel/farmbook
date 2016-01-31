@@ -76,14 +76,18 @@ label {
 
 
 	<div class="responsive">
-	
+
 		<div class="form-group row">
 			<div class="lab col-sm-4">
 				{!! Form::label('name', 'Erf  ')  !!}
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-4">
 				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}
 			</div>
+			<div class="col-sm-4">
+				{!! Form::text('strKey',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}
+			</div>
+
 		</div>
 		<div class="form-group">
 			<div class="lab col-sm-4">
@@ -280,8 +284,8 @@ label {
 
 	</div>	
 
-<hr>
-		<div class="row">
+	<hr>
+	<div class="row">
 		<div class="col-xs-8">
 			{!! $streets->appends(Request::except('page'))->render() !!}    	
 		</div>
