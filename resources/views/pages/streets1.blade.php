@@ -78,7 +78,7 @@ label {
 	<div class="responsive">
 
 		<div class="form-group row">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Erf  ')  !!}
 			</div>
 			<div class="col-sm-4">
@@ -92,7 +92,7 @@ label {
 
 		</div>
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Street No  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -100,7 +100,7 @@ label {
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Street Name  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -109,7 +109,7 @@ label {
 		</div>
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Complex No  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -117,7 +117,7 @@ label {
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Complex Name  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -129,7 +129,7 @@ label {
 
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Sq Meters') !!}
 			</div>
 			<div class="col-sm-8">
@@ -138,7 +138,7 @@ label {
 		</div>
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Reg Date') !!}
 			</div>
 			<div class="col-sm-8">
@@ -146,7 +146,7 @@ label {
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Sale Price') !!}
 			</div>
 			<div class="col-sm-8">
@@ -155,7 +155,7 @@ label {
 		</div>
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Bond Amount  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -165,7 +165,7 @@ label {
 		</div>
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Identity  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -173,7 +173,7 @@ label {
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Owner  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -186,7 +186,7 @@ label {
 
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'First Name') !!}
 			</div>
 			<div class="col-sm-8">
@@ -194,7 +194,7 @@ label {
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('Surname', 'Surname') !!}
 			</div>
 			<div class="col-sm-8">
@@ -205,7 +205,7 @@ label {
 
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Home Phone') !!}
 			</div>
 			<div class="col-sm-8">
@@ -219,7 +219,7 @@ label {
 
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Work Phone') !!}
 			</div>
 			<div class="col-sm-8">
@@ -229,7 +229,7 @@ label {
 
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Cell Phone') !!}
 			</div>
 			<div class="col-sm-8">
@@ -237,7 +237,7 @@ label {
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Email') !!}
 			</div>
 			<div class="col-sm-8">
@@ -250,7 +250,7 @@ label {
 
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Previous Notes  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -259,7 +259,7 @@ label {
 		</div>	
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 				{!! Form::label('name', 'New Notes  ')  !!}
 			</div>
 			<div class="col-sm-8">
@@ -274,7 +274,7 @@ label {
 
 
 		<div class="form-group">
-			<div class="lab col-sm-4">
+			<div class="lab col-sm-3">
 
 			</div>
 			<div class="col-sm-8">
