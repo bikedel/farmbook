@@ -272,7 +272,7 @@ label {
 
 			</div>
 			<div class="col-sm-8">
-				{!! Form::submit('Update',  array('class'=>'btn btn-info ')) !!}
+				{!! Form::submit('Update',  array('class'=>'btn btn-danger ')) !!}
 				{!! Form::close() !!}
 			</div>	
 		</div>	
