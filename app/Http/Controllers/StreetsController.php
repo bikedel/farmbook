@@ -498,7 +498,7 @@ class StreetsController extends Controller
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-      // ->groupby('tblSuburbContactNumbers.strIDNumber')
+     // ->groupby('tblSuburbContactNumbers.strSurname')
        ->where('strSurname', $surname)->paginate(1);
 
 //dd($streets->count(),$street);
