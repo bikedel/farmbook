@@ -128,7 +128,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+        ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(100);
 
 
@@ -167,7 +167,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+        ->groupby($freeholds_table.'.ID')
        ->where($freeholds_table.'.numErf', $erf)->paginate(100);
 
 
@@ -204,6 +204,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
+        ->groupby($freeholds_table.'.ID')
       // ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(100);
 
@@ -241,6 +242,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
+        ->groupby($freeholds_table.'.ID')
        //->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strSurname', $surname)->paginate(100);
 
@@ -278,7 +280,7 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strKey', 'asc')
 
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+        ->groupby($freeholds_table.'.ID')
        ->where($freeholds_table.'.strComplexName', $complex)->paginate(100);
 
 
@@ -384,7 +386,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+        ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(1);
 
 
@@ -424,7 +426,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+        ->groupby($freeholds_table.'.ID')
        ->where('tblSuburbOwners.numErf', $erf)->paginate(1);
 
 
@@ -536,7 +538,7 @@ class StreetsController extends Controller
        ->orderBy($freeholds_table.'.strKey', 'asc')
 
        ->select('*')
-       ->groupby('tblSuburbContactNumbers.strIDNumber')
+        ->groupby($freeholds_table.'.ID')
        ->where($freeholds_table.'.strComplexName', $complex)->paginate(1);
 
 
@@ -621,7 +623,7 @@ class StreetsController extends Controller
       ->orderBy($freeholds_table.'.strStreetNo', 'asc')
       ->orderBy($freeholds_table.'.strKey', 'asc')
       ->select('*')
-      ->groupby('tblSuburbContactNumbers.strIDNumber')
+      ->groupby($freeholds_table.'.ID')
       ->where('strStreetName', $street)->paginate(1);
 
 
@@ -707,7 +709,7 @@ public function checkComplex($street)
   ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
   ->orderBy($freeholds_table.'.strKey', 'asc')
   ->select('*')
-  ->groupby('tblSuburbContactNumbers.strIDNumber')
+   ->groupby($freeholds_table.'.ID')
   ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
 
 // format phone and currency
@@ -789,7 +791,7 @@ public function checkId($street)
   ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
   ->orderBy($freeholds_table.'.strKey', 'asc')
   ->select('*')
-
+  ->groupby($freeholds_table.'.ID')
   ->where($freeholds_table.'.strOwners', $street)->paginate(1);
 
 // format phone and currency

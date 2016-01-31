@@ -109,7 +109,7 @@ class FreeholdsController extends Controller
 			->orderBy('strStreetName', 'asc')
 			->orderBy('strStreetNo', 'asc')
 			->select('*')
-			->groupby('tblSuburbContactNumbers.strIDNumber')->get();
+			->groupby($freeholds_table.'.ID')->get();
 
 
             // formats for phone and currency
