@@ -50,11 +50,12 @@ table td {
 </style>
 
 <div class="container-fluid">
-	<h2> {{ $streets[0]->strSuburb }} - {{ $street }}  </h2>
+	<h2> {{ $streets[0]->strSuburb }} - {{ $street }}  	 <a href="javascript:window.print()" class='btn btn-danger'>Print</a></h2>
 	
 	<div class="row">
 		<div class="col-xs-12">
 			{!! $streets->appends(Request::except('page'))->render() !!}
+		
 		</div>
 		<hr>
 	</div>
@@ -82,7 +83,7 @@ table td {
 	@endif
 
 
-       <a href="javascript:window.print()" class='btn btn-danger'>Print</a>
+      
 
 <br><br>
 
