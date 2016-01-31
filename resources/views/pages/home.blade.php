@@ -22,7 +22,7 @@
 							<label><input id="erf_r" type="radio" name="optradio" value="2">Erf Number</label>
 						</div>
 
-						<select class="form-control" id="erf" name="erf" onchange=GetSelectedTextValue(this)>
+						<select class="form-control input-sm" id="erf" name="erf" onchange=GetSelectedTextValue(this)>
 							@foreach($erfs as $erf)
 							<option value="{{$erf->numErf}}">{{$erf->numErf}}</option>
 							@endforeach
@@ -36,7 +36,7 @@
 							<label><input id="street_r" type="radio" name="optradio" value="1" checked>Street Name</label>
 						</div>
 
-						<select class="form-control" id="street_id" name="street_id" onchange=GetSelectedTextValue(this)>
+						<select class="form-control input-sm" id="street_id" name="street_id" onchange=GetSelectedTextValue(this)>
 							@foreach($streets as $street)
 							<option value="{{$street->strStreetName}}">{{$street->strStreetName}}</option>
 							@endforeach
@@ -51,7 +51,7 @@
 							<label><input id="complex_r" type="radio" name="optradio" value="5">Complex</label>
 						</div>
 
-						<select class="form-control" id="complex" name="complex" onchange=GetSelectedTextValue(this)>
+						<select class="form-control input-sm" id="complex" name="complex" onchange=GetSelectedTextValue(this)>
 							@foreach($complexs as $complex)
 							<option value="{{$complex->strComplexName}}">{{$complex->strComplexName}}</option>
 							@endforeach
@@ -65,7 +65,7 @@
 							<label><input id="surname_r" type="radio" name="optradio" value="4">Surname</label>
 						</div>
 
-						<select class="form-control" id="surname" name="surname" onchange=GetSelectedTextValue(this)>
+						<select class="form-control input-sm" id="surname" name="surname" onchange=GetSelectedTextValue(this)>
 							@foreach($surnames as $surname)
 							<option value="{{$surname->strSurname}}">{{$surname->strSurname}}</option>
 							@endforeach
@@ -78,7 +78,7 @@
 							<label><input id="id_r" type="radio" name="optradio" value="3">Id Number</label>
 						</div>
 
-						<select class="form-control" id="id" name="id" onchange=GetSelectedTextValue(this)>
+						<select class="form-control input-sm" id="id" name="id" onchange=GetSelectedTextValue(this)>
 							@foreach($ids as $id)
 							<option value="{{$id->strIDNumber}}">{{$id->strIDNumber}}</option>
 							@endforeach

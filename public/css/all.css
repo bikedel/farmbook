@@ -342,4 +342,10 @@ opacity:.6;
 
 }
 
+.input-xs, select.input-xs {
+  height: 20px;
+  line-height: 20px;
+}
+
+
 /*# sourceMappingURL=all.css.map */

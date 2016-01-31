@@ -13,7 +13,7 @@
 			
 			<div id="suburb" class="form-group ">
 			<p>Select Farmbook</p>
-				<select class="form-control " id="suburb_id" name="suburb_id" onchange=GetSelectedTextValue(this)>
+				<select class="form-control input-sm" id="suburb_id" name="suburb_id" onchange=GetSelectedTextValue(this)>
 					@foreach($suburbs as $suburb)
 					<option value="{{$suburb->database}}">{{$suburb->database}}</option>
 					@endforeach
