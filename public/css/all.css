@@ -114,15 +114,36 @@ word-wrap:break-word; // ***********and this
 #strKey,
 #comment,
 #memNotesNew{
-
+ background-color: #262626;
  font-size: 120%;
+color:#ccc;
 }
+
+#numErf{color:cyan;}
+#strStreetName,#strStreetNo{color:orange;}
+#strComplexName,#strComplexNo{color:green;}
+#strOwners{color:cyan;}
+
+#strFirstName,#strSurname{color:teal;}
+#strIdentity{color:yellow;}
+
+
+#strHomePhoneNo,#strWorkPhoneNo,#strCellPhoneNo,#EMAIL{border-color:#222222;color:teal;}
+
 
 #freeholds_length {
 	float: right;
 
 }
 
+
+.property{
+    border-style: solid;
+    border-width: 1px;
+  border:1;
+  border-color:white;
+  padding:10px;
+}
 
 #tstrStreetName,
 #tstrStreetNo,
@@ -244,15 +265,15 @@ background-color:lightblue;
 }
 */
 
-#memNotes, #comment{
 
-background-color:#2f3339;
 
-color:#c8c8c8;
-border: 1;
+
+#memNotes, #comment,#memNotesNew{
+
+
 border-color:#222222;
+opacit:.4;
 
- font-size: 95%;
 
 }
 
@@ -314,6 +335,11 @@ overflow: ellipsis;
 }
 
 .mylabel {
+opacity:.6;
+
+}
+
+.lab {
 opacity:.6;
 
 }

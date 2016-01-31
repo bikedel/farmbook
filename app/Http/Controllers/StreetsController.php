@@ -403,7 +403,7 @@ class StreetsController extends Controller
        }
 
 
-       return view('pages.streets2',compact('streets','street'));
+       return view('pages.streets1',compact('streets','street'));
 
 
      }
@@ -443,7 +443,7 @@ class StreetsController extends Controller
        }
 
 
-       return view('pages.streets2',compact('streets','street'));
+       return view('pages.streets1',compact('streets','street'));
 
 
      }
@@ -482,7 +482,7 @@ class StreetsController extends Controller
        }
 
 
-       return view('pages.streets2',compact('streets','street'));
+       return view('pages.streets1',compact('streets','street'));
 
 
      }
@@ -519,7 +519,7 @@ class StreetsController extends Controller
        }
 
 
-       return view('pages.streets2',compact('streets','street'));
+       return view('pages.streets1',compact('streets','street'));
 
 
      }
@@ -555,7 +555,7 @@ class StreetsController extends Controller
        }
        
 
-       return view('pages.streets2',compact('streets','street'));
+       return view('pages.streets1',compact('streets','street'));
 
 
      }
@@ -642,7 +642,7 @@ class StreetsController extends Controller
 
 
 
-     return view('pages.streets2',compact('streets','street'));
+     return view('pages.streets1',compact('streets','street'));
 
 
      dd('checkgrid streetcontroller',$street);
@@ -724,11 +724,97 @@ public function checkComplex($street)
    $value->strFirstName = str::title($value->strFirstName);
  }
 
- return view('pages.streets2',compact('streets','street'));
+ return view('pages.streets1',compact('streets','street'));
 
 
  dd('checkgrid streetcontroller',$street);
 }
+
+
+
+/**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+public function checkId($street)
+{
+
+
+     // dynamically change database
+  $userDB = Auth::user()->suburb;
+  $otf = new \App\Database\OTF(['database' => $userDB]);
+  $db = DB::connection($userDB);
+
+
+        // check database type
+  $databaseType = Auth::user()->suburb_type;
+
+
+
+  if ($databaseType == 1 ){
+
+    $freeholds_table = "tblSuburbOwners";
+    $freeholds_table_key =  $freeholds_table.".numErf";
+    $freeholds_identity = $freeholds_table.".strIdentity";
+    $mem_Table = "tblErfNumbers";
+    $mem_key = "tblErfNumbers.numErf";
+
+  }
+  if ($databaseType == 2 ){
+
+    $freeholds_table = "tblSuburbOwners";
+    $freeholds_table_key =  $freeholds_table.".strKey";
+    $freeholds_identity = $freeholds_table.".strIdentity";
+    $mem_Table = "tblFHPropertyID";
+    $mem_key = $mem_Table.".strKey";
+
+  }
+  if ($databaseType == 3 ){
+
+    $freeholds_table = "tblSuburbOwners";
+    $freeholds_table_key =  $freeholds_table.".strKey";
+    $freeholds_identity = $freeholds_table.".strIdentity";
+    $mem_Table = "tblFHPropertyID";
+    $mem_key = $mem_Table.".strKey";
+
+  }
+
+  $streets = $db->table($freeholds_table)
+  ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+  ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+  ->orderBy('strStreetName', 'asc')
+  ->orderBy('strStreetNo', 'asc')
+  ->orderBy($freeholds_table.'.strComplexName', 'asc')
+  ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
+  ->orderBy($freeholds_table.'.strKey', 'asc')
+  ->select('*')
+
+  ->where($freeholds_table.'.strOwners', $street)->paginate(1);
+
+// format phone and currency
+
+  foreach ($streets as $value) {
+   $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+   $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+   $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+
+   $value->strAmount = helpers::currencyFormat($value->strAmount);
+   $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+
+   $value->strSurname = str::title($value->strSurname);
+   $value->strFirstName = str::title($value->strFirstName);
+ }
+
+ return view('pages.streets1',compact('streets','street'));
+
+
+ dd('checkgrid streetcontroller',$street);
+}
+
+
+
+
 
     /**
      * Store a newly created resource in storage.

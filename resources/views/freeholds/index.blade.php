@@ -48,6 +48,7 @@
      <th>Complex No</th>
      <th>Complex Name</th>
      <th>Owners</th>
+
      <th>Identity</th>
      <th>Reg Date</th>
      <th>Amount</th>
@@ -98,7 +99,9 @@
 
 
 
-<button type="button" class="btn btn-default " data-toggle="modal" data-target="#myModal">Update Row</button>
+
+
+<button type="button" class="btn btn-default " id ='viewId'>View Owner</button>
 <button type="button" class="btn btn-default " id ='viewStreet'>View Street</button>
 <button type="button" class="btn btn-default " id ='viewComplex'>View Complex</button>
 
@@ -305,6 +308,7 @@ $(document).ready(function() {
  { data: 'strComplexNo', name: 'strComplexNo' ,width: '50'},
  { data: 'strComplexName', name: 'strComplexName' ,width: '150'},
  { data: 'strOwners', name: 'strOwners' ,width: '100'},  
+ 
  { data: 'strIdentity', name: 'strIdentity' ,width: '100'},   
  { data: 'dtmRegDate', name: 'dtmRegDate' ,width: '150'},
  { data: 'strAmount', name: 'strAmount' },
@@ -594,7 +598,20 @@ table
         //    $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
       } );
 
+$("#viewId").click(function(event){
 
+ var table = new $.fn.dataTable.Api( '#freeholds' );
+ var data = table.rows($row).data();
+
+ var st = table.row( $row  ).data().strOwners ;
+
+// route to streetgrid plus street
+
+$path = "{{ URL::to('idgrid') }}"+"/"+encodeURIComponent(st);
+
+// navigate to route
+document.location.href=$path;
+});
 
 $("#viewStreet").click(function(event){
 

@@ -37,7 +37,7 @@
 
                     <a class="navbar-brand" href="#"></a>
 
-                    <img id="logo" src="{{ asset('images/farmbook.png') }}" class="pull-left" alt="Smiley face" height="42" width="42">
+                    <img id="logo" src="{{ asset('images/sothebys.jpeg') }}" class="pull-left" alt="Smiley face" height="42" width="42">
 
 
 
