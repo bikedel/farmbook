@@ -132,7 +132,7 @@ $suburb_type =$suburb_type[0]->type;
          
 
         $surnames = $db->table('tblSuburbContactNumbers')
-        ->orderBy('strSurname','desc')->distinct()->get(['strIDNumber','strSurname']);
+        ->orderBy('strSurname','desc')->groupby('strSurname')->get(['strIDNumber','strSurname']);
 
     // check users suburbs for setting database
         $suburbs = DB::table('user_suburbs')
