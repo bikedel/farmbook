@@ -27,7 +27,7 @@ label {
 .lab {
 	float:left;
 	text-align: justify;
-	width:150px;
+
 }
 
 
@@ -84,6 +84,8 @@ label {
 			<div class="col-sm-4">
 				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}
 			</div>
+
+
 			<div class="col-sm-4">
 				{!! Form::text('strKey',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}
 			</div>
