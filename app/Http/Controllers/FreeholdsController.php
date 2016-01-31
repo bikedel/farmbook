@@ -120,8 +120,7 @@ class FreeholdsController extends Controller
 				$value->strAmount = helpers::currencyFormat($value->strAmount);
 				$value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
 
-				$value->strSurname = str::title($value->strSurname);
-				$value->strFirstName = str::title($value->strFirstName);
+
 			}
 
 
