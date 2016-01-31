@@ -33,9 +33,8 @@
 
 
 </div>
-<div class="row">
   <hr>
-</div>
+
 
 
 
