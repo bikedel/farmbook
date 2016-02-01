@@ -20,6 +20,7 @@ use Redirect;
 use Carbon;
 use App\helpers;
 
+
 class StreetsController extends Controller
 {
 
@@ -387,6 +388,8 @@ class StreetsController extends Controller
        ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(1);
 
+$len = sizeof($streets);
+
 
 // format phone and currency
 
@@ -403,7 +406,9 @@ class StreetsController extends Controller
        }
 
 
-       return view('pages.streets1',compact('streets','street'));
+       
+
+       return view('pages.streets1',compact('streets','street','len'));
 
 
      }
