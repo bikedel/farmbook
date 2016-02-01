@@ -44,7 +44,7 @@
      <th>Erf</th>
      <th>Street No</th>
      <th>Street Name</th>
-     <th>Complex No</th>
+     <th class='elips'>Complex No</th>
      <th>Complex Name</th>
      <th>Owners</th>
 
@@ -304,7 +304,7 @@ $(document).ready(function() {
  { data: 'numErf', name: 'numErf' ,width: '100'},
  { data: 'strStreetNo', name: 'strStreetNo' ,width: '100'},
  { data: 'strStreetName', name: 'strStreetName' ,width: '100'},
- { data: 'strComplexNo', name: 'strComplexNo' ,width: '50'},
+ { data: 'strComplexNo', name: 'strComplexNo' ,width: '50', class: 'elips'},
  { data: 'strComplexName', name: 'strComplexName' ,width: '150'},
  { data: 'strOwners', name: 'strOwners' ,width: '100'},  
  
