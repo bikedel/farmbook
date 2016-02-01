@@ -381,9 +381,12 @@ class StreetsController extends Controller
        $streets = $db->table($freeholds_table)
        ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-       ->orderBy('strStreetName', 'asc')
-       ->orderBy('strStreetNo', 'asc')
-       ->orderBy($freeholds_table.'.strKey', 'asc')
+      ->orderBy('strStreetName', 'asc')
+      ->orderBy('strStreetNo', 'asc')
+      ->orderBy($freeholds_table.'.strKey', 'asc')
+       ->orderBy(DB::raw('cast(\'strStreetNo\' as UNSIGNED )'),'ASC')
+   
+      
        ->select('*')
        ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(1);
