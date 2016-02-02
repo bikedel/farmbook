@@ -82,12 +82,12 @@ label {
 				{!! Form::label('name', 'Erf  ')  !!}
 			</div>
 			<div class="col-sm-4">
-				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}
+				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' , 'disabled' =>'true']) !!}
 			</div>
 
 
 			<div class="col-sm-4">
-				{!! Form::text('strKey',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true']) !!}
+				{!! Form::text('strKey',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 
 		</div>
@@ -96,7 +96,7 @@ label {
 				{!! Form::label('name', 'Street No  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strStreetNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strStreetNo' , 'readonly' => 'true']) !!}
+				{!! Form::text('strStreetNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strStreetNo' , 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 		<div class="form-group">
@@ -104,7 +104,7 @@ label {
 				{!! Form::label('name', 'Street Name  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strStreetName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strStreetName', 'readonly' => 'true']) !!}
+				{!! Form::text('strStreetName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strStreetName', 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 
@@ -113,7 +113,7 @@ label {
 				{!! Form::label('name', 'Complex No  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strComplexNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strComplexNo' , 'readonly' => 'true']) !!}
+				{!! Form::text('strComplexNo',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strComplexNo' , 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 		<div class="form-group">
@@ -121,7 +121,7 @@ label {
 				{!! Form::label('name', 'Complex Name  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strComplexName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strComplexName', 'readonly' => 'true']) !!}
+				{!! Form::text('strComplexName',null ,$attributes = ['class' => 'form-control input-sm ', 'id' => 'strComplexName', 'readonly' => 'true', 'disabled' =>'true']) !!}
 
 			</div>
 		</div>
@@ -133,7 +133,7 @@ label {
 				{!! Form::label('name', 'Sq Meters') !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '']) !!}
+				{!! Form::text('strSqMeters', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSqMeters', 'readonly' => 'true' ,'placeholder' => '', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 
@@ -142,7 +142,7 @@ label {
 				{!! Form::label('name', 'Reg Date') !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '']) !!}
+				{!! Form::text('dtmRegDate', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'dtmRegDate', 'readonly' => 'true' ,'placeholder' => '', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 		<div class="form-group">
@@ -150,7 +150,7 @@ label {
 				{!! Form::label('name', 'Sale Price') !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '']) !!}
+				{!! Form::text('strAmount', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strAmount', 'readonly' => 'true' ,'placeholder' => '', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 
@@ -159,7 +159,7 @@ label {
 				{!! Form::label('name', 'Bond Amount  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strBondAmount',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strBondHolder' , 'readonly' => 'true']) !!}
+				{!! Form::text('strBondAmount',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strBondHolder' , 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 
 		</div>
@@ -169,7 +169,7 @@ label {
 				{!! Form::label('name', 'Identity  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}
+				{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 		<div class="form-group">
@@ -177,7 +177,7 @@ label {
 				{!! Form::label('name', 'Owner  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true']) !!}
+				{!! Form::text('strOwners',null ,$attributes = ['class' => 'form-control input-sm owner', 'id' => 'strOwners', 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 
@@ -190,7 +190,7 @@ label {
 				{!! Form::label('name', 'First Name') !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '']) !!}
+				{!! Form::text('strFirstName', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strFirstName', 'readonly' => 'true' ,'placeholder' => '', 'disabled' =>'true']) !!}
 			</div>
 		</div>
 		<div class="form-group">
@@ -198,7 +198,7 @@ label {
 				{!! Form::label('Surname', 'Surname') !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' ]) !!}
+				{!! Form::text('strSurname', $value = null , $attributes = ['class' => 'form-control input-sm', 'id' => 'strSurname', 'readonly' => 'true' ,'placeholder' => '' , 'disabled' =>'true']) !!}
 			</div>
 		</div>
 
@@ -254,7 +254,7 @@ label {
 				{!! Form::label('name', 'Previous Notes  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'memNotes', 'readonly' => 'true' ]) !!}
+				{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'memNotes', 'readonly' => 'true' , 'disabled' =>'true']) !!}
 			</div>	
 		</div>	
 

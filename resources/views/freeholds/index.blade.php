@@ -99,7 +99,7 @@
 
 
 
-
+<button type="button" class="btn btn-default " id ='viewErf'>View Erf</button>
 <button type="button" class="btn btn-default " id ='viewId'>View Owner</button>
 <button type="button" class="btn btn-default " id ='viewStreet'>View Street</button>
 <button type="button" class="btn btn-default " id ='viewComplex'>View Complex</button>
@@ -596,6 +596,21 @@ table
          //   $( table.cells().nodes() ).removeClass( 'highlight' );
         //    $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
       } );
+
+$("#viewErf").click(function(event){
+
+ var table = new $.fn.dataTable.Api( '#freeholds' );
+ var data = table.rows($row).data();
+
+ var st = table.row( $row  ).data().numErf ;
+
+// route to streetgrid plus street
+
+$path = "{{ URL::to('erfgrid') }}"+"/"+encodeURIComponent(st);
+
+// navigate to route
+document.location.href=$path;
+});
 
 $("#viewId").click(function(event){
 

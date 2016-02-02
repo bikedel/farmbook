@@ -74,7 +74,7 @@ Route::get('/notes',  'FreeholdsController@update' );
 Route::get('/streetgrid/{street}',  'StreetsController@checkStreet' );
 Route::get('/complexgrid/{street}',  'StreetsController@checkComplex' );
 Route::get('/idgrid/{street}',  'StreetsController@checkId' );
-
+Route::get('/erfgrid/{street}',  'StreetsController@checkErf' );
 
 
 Route::get('/street',  'StreetsController@checkButton' );
