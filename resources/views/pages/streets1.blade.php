@@ -81,10 +81,10 @@ label {
 			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Erf  ')  !!}
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}
 			</div>
-			<div class="lab col-sm-3">
+			<div class="lab col-sm-2">
 				{!! Form::label('name', 'strKey  ')  !!}
 			</div>
 
