@@ -82,7 +82,7 @@ label {
 				{!! Form::label('name', 'Erf  ')  !!}
 			</div>
 			<div class="col-sm-2">
-				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' , 'disabled' =>'true']) !!}
+				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' ]) !!}
 			</div>
 			<div class="lab col-sm-3">
 				{!! Form::label('name', 'strKey  ')  !!}
@@ -171,7 +171,7 @@ label {
 				{!! Form::label('name', 'Identity  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true', 'disabled' =>'true']) !!}
+				{!! Form::text('strIdentity',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strIdentity' , 'readonly' => 'true']) !!}
 			</div>
 		</div>
 		<div class="form-group">
@@ -256,7 +256,7 @@ label {
 				{!! Form::label('name', 'Previous Notes  ')  !!}
 			</div>
 			<div class="col-sm-8">
-				{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'memNotes', 'readonly' => 'true' , 'disabled' =>'true']) !!}
+				{!! Form::textarea('memNotes',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'memNotes', 'readonly' => 'true' ]) !!}
 			</div>	
 		</div>	
 

@@ -1027,10 +1027,10 @@ public function checkErf($street)
 
       $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->first();
 
+ $comment = $result->memNotes;
 
 
-
- //dd($result->memNotes,$commentNew,$user,$now,$mem_key, $searchKey,$databaseType);
+ //dd($result->memNotes,$comment,$commentNew,$user,$now,$mem_key, $searchKey,$databaseType);
 
 
       if ($result) {
@@ -1044,6 +1044,9 @@ public function checkErf($street)
          ->where($mem_key, $searchKey)
          ->update(array('memNotes' => $commentNew,'updated_at'=> \Carbon\Carbon::now()->toDateTimeString()));
        }
+
+
+      // dd($strIdentity);
 
        $affected2 = $db->table('tblSuburbContactNumbers')
        ->where('strIDNumber', $strIdentity)
