@@ -81,12 +81,14 @@ label {
 			<div class="lab col-sm-3">
 				{!! Form::label('name', 'Erf  ')  !!}
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-2">
 				{!! Form::text('numErf',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true' , 'disabled' =>'true']) !!}
 			</div>
+			<div class="lab col-sm-3">
+				{!! Form::label('name', 'strKey  ')  !!}
+			</div>
 
-
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				{!! Form::text('strKey',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true', 'disabled' =>'true']) !!}
 			</div>
 
