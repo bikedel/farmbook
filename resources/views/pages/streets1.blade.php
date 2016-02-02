@@ -315,35 +315,14 @@ label {
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script >
 
-$( document ).ready(function() {
 
 
-
-	function phoneFormat(phone) {
-
-		var n = phone.length;
-		alert('shit');
-		if (n>4) {
-			phone = phone.replace(/[^0-9]/g, '');
-
-			if (n>9){
-				phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-			} else {
-				phone = "0"+phone;
-				phone = phone.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-			}
-		}
-//phone.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
-
-return phone;
-}
-
-
-document.getElementById("strHomePhoneNo").onload = function() {alert('shit');}
-
-
+$(document).on("ready page:load", function() {
+	setTimeout(function() { $(".alert").fadeOut(); }, 8000);
 
 });
+
+
 
 
 
