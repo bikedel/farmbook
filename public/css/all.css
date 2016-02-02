@@ -119,7 +119,7 @@ word-wrap:break-word; // ***********and this
 color:#ccc;
 }
 
-#numErf{color:cyan;}
+#numErf,#strKey{color:cyan;}
 #strStreetName,#strStreetNo{color:orange;}
 #strComplexName,#strComplexNo{color:green;}
 #strOwners{color:cyan;}

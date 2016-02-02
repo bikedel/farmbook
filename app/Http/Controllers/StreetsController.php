@@ -385,13 +385,24 @@ class StreetsController extends Controller
       ->orderBy('strStreetNo', 'asc')
      // ->orderBy($freeholds_table.'.strKey', 'asc')
        ->orderBy(DB::raw('cast(\'strStreetNo\' as UNSIGNED )'),'ASC')
-   
-      
        ->select('*')
        ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(1);
 
-$len = sizeof($streets);
+
+       $mystreets = $db->table($freeholds_table)
+       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+      ->orderBy('strStreetName', 'asc')
+      ->orderBy('strStreetNo', 'asc')
+     // ->orderBy($freeholds_table.'.strKey', 'asc')
+       ->orderBy(DB::raw('cast(\'strStreetNo\' as UNSIGNED )'),'ASC')
+       ->select('*')
+       ->groupby($freeholds_table.'.ID')
+       ->where('strStreetName', $street)->get();
+
+
+$len = sizeof($mystreets);
 
 
 // format phone and currency
@@ -723,6 +734,9 @@ public function checkComplex($street)
    ->groupby($freeholds_table.'.ID')
   ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
 
+
+
+
 // format phone and currency
 
   foreach ($streets as $value) {
@@ -1025,12 +1039,12 @@ public function checkErf($street)
       $EMAIL = Input::get('EMAIL');
 
 
+      // fetch old comments
       $result = $db->table($mem_Table)->where(  $mem_key, $searchKey)->first();
+      $comment = $result->memNotes;
 
- $comment = $result->memNotes;
 
-
- //dd($result->memNotes,$comment,$commentNew,$user,$now,$mem_key, $searchKey,$databaseType);
+      //dd($result->memNotes,$comment,$commentNew,$user,$now,$mem_key, $searchKey,$databaseType);
 
 
       if ($result) {

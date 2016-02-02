@@ -36,13 +36,13 @@ label {
 
 <div class="container-fluid">
 
-	<h2>{{ $street }}            </h2>
+	<h2>{{ $street }}           </h2>
 	
 	<div class="row">
 		<div class="col-xs-8">
 			{!! $streets->appends(Request::except('page'))->render() !!}    	
-		</div>
 
+		</div>
 
 
 	</div>
