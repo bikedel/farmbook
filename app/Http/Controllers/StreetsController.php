@@ -980,7 +980,10 @@ public function checkErf($street)
         // get database type
       $databaseType = Auth::user()->suburb_type;
 
+      $input = $request;
 
+
+      //  dd($input);
 
       if ($databaseType == 1 ){
 
@@ -1007,19 +1010,10 @@ public function checkErf($street)
         $freeholds_identity = $freeholds_table.".strIdentity";
         $mem_Table = "tblFHPropertyID";
         $mem_key = "strKey";
-        $searchKey = Input::get('strKey');
+        $searchKey = Input::get("strKey");
       }
 
 
-
-
-
-
-
-
-      $input = $request;
-
-      //  dd($input);
 
       $numErf = Input::get('numErf');
       $strIdentity = Input::get('strIdentity');
@@ -1036,7 +1030,7 @@ public function checkErf($street)
 
 
 
- //dd($result->memNotes,$commentNew,$user,$now);
+ //dd($result->memNotes,$commentNew,$user,$now,$mem_key, $searchKey,$databaseType);
 
 
       if ($result) {

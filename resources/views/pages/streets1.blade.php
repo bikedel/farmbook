@@ -89,7 +89,7 @@ label {
 			</div>
 
 			<div class="col-sm-3">
-				{!! Form::text('strKey',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'numErf', 'readonly' => 'true', 'disabled' =>'true']) !!}
+				{!! Form::text('strKey',null ,$attributes = ['class' => 'form-control input-sm', 'id' => 'strKey']) !!}
 			</div>
 
 		</div>
