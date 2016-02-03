@@ -125,7 +125,7 @@ class AuthController extends Controller
 
       //log in the user
 $radio = 'Login'; 
-$append = trim($request->get('email'))."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ;
+$append = trim($request->get('email'))."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'authcontroller '.$radio ;
 Storage::append( 'logfile.txt', $append );
 
       $remember = $request->has('remember');

@@ -13,7 +13,7 @@ use Input;
 use Auth;
 use View;
 use App\User;
-
+use Storage;
 
 class SuburbController extends Controller
 {
@@ -89,6 +89,13 @@ $suburb_type =$suburb_type[0]->type;
  $user->suburb = $suburb;
   $user->suburb_type = $suburb_type;
  $user->save();
+
+
+$radio = 'change database'; 
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'suburbcontroller '.$radio ."    ". $user->suburb;
+Storage::append( 'logfile.txt', $append );
+
+
 
  return redirect('/');
 }
