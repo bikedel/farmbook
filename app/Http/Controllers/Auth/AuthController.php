@@ -12,6 +12,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Redirect;
 use DB;
+use Storage;
 
 class AuthController extends Controller
 {
@@ -113,7 +114,6 @@ class AuthController extends Controller
     function postLogin(Request $request){
 
 
- //log in the user
 
 
 
@@ -121,6 +121,12 @@ class AuthController extends Controller
         'email' => trim($request->get('email')),
        'password' => trim($request->get('password'))
      ];
+
+
+      //log in the user
+$radio = 'Login'; 
+$append = trim($request->get('email'))."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ;
+Storage::append( 'logfile.txt', $append );
 
       $remember = $request->has('remember');
 

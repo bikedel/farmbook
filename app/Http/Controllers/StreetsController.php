@@ -19,7 +19,7 @@ use Session;
 use Redirect;
 use Carbon;
 use App\helpers;
-
+use Storage;
 
 class StreetsController extends Controller
 {
@@ -372,6 +372,9 @@ class StreetsController extends Controller
 
 
 
+
+
+
   // street search
 
       if ($radio === '1'){
@@ -389,7 +392,7 @@ class StreetsController extends Controller
        ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(1);
 
-
+/*    use this with simple pagination to get total number records
        $mystreets = $db->table($freeholds_table)
        ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
@@ -403,7 +406,7 @@ class StreetsController extends Controller
 
 
 $len = sizeof($mystreets);
-
+*/
 
 // format phone and currency
 
@@ -420,9 +423,12 @@ $len = sizeof($mystreets);
        }
 
 
+// log
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
        
 
-       return view('pages.streets1',compact('streets','street','len'));
+       return view('pages.streets1',compact('streets','street'));
 
 
      }
@@ -460,6 +466,11 @@ $len = sizeof($mystreets);
          $value->strSurname = str::title($value->strSurname);
          $value->strFirstName = str::title($value->strFirstName);
        }
+
+
+// log
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
 
 
        return view('pages.streets1',compact('streets','street'));
@@ -501,6 +512,10 @@ $len = sizeof($mystreets);
        }
 
 
+// log
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
+
        return view('pages.streets1',compact('streets','street'));
 
 
@@ -538,6 +553,10 @@ $len = sizeof($mystreets);
        }
 
 
+// log
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
+
        return view('pages.streets1',compact('streets','street'));
 
 
@@ -573,6 +592,10 @@ $len = sizeof($mystreets);
          $value->strFirstName = str::title($value->strFirstName);
        }
        
+
+// log
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
 
        return view('pages.streets1',compact('streets','street'));
 
@@ -664,7 +687,11 @@ $len = sizeof($mystreets);
      }
 
 
+// log
 
+$radio = 'checkStreet'; 
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
 
      return view('pages.streets1',compact('streets','street'));
 
@@ -751,6 +778,14 @@ public function checkComplex($street)
    $value->strFirstName = str::title($value->strFirstName);
  }
 
+
+// log
+
+$radio = 'checkComplex'; 
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
+
+
  return view('pages.streets1',compact('streets','street'));
 
 
@@ -833,6 +868,14 @@ public function checkId($street)
    $value->strFirstName = str::title($value->strFirstName);
  }
 
+
+// log
+
+$radio = 'checkId'; 
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
+
+
  return view('pages.streets1',compact('streets','street'));
 
 
@@ -913,6 +956,13 @@ public function checkErf($street)
    $value->strSurname = str::title($value->strSurname);
    $value->strFirstName = str::title($value->strFirstName);
  }
+
+
+// log
+
+$radio = 'checkErf'; 
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street;
+Storage::append( 'logfile.txt', $append );
 
  return view('pages.streets1',compact('streets','street'));
 
@@ -1045,6 +1095,13 @@ public function checkErf($street)
 
 
       //dd($result->memNotes,$comment,$commentNew,$user,$now,$mem_key, $searchKey,$databaseType);
+
+
+// log
+
+$radio = 'update'; 
+$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$searchKey;
+Storage::append( 'logfile.txt', $append );
 
 
       if ($result) {
