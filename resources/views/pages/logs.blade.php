@@ -9,14 +9,10 @@
 	<h2></h2>
 	
 	<div class="row">
-		<div class="col-xs-8">
-		 	
-		</div>
-
-
-
+		<h1>Logfile</h1>
+			<hr>
 	</div>
-	<hr>
+
 
 	@if ( Session::has('flash_message') )
 
@@ -40,23 +36,25 @@
 	@endif
 
 
-	@foreach($logs as $log)
+	<ul class="list-group">
 
-	   {{$log}}<br>
-    @endforeach
+		@foreach($logs as $log)
 
+		<a href="#" class="list-group-item"> {{$log}}</a>
+		@endforeach
 
-
-
-
-@stop
-
-
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script >
+	</ul>
 
 
 
+	@stop
 
-</script>
+
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script >
+
+
+
+
+	</script>
 
