@@ -66,6 +66,9 @@ Route::post('/suburb',  'SuburbController@setSuburb' );
 
 //Route::get('/hello/{name}',  'DatatablesController@show' );
 
+
+Route::get('/logs',  'LogsController@index' );
+
 //
 //    grid update notes route
 //

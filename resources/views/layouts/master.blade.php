@@ -69,6 +69,7 @@
                                     <hr>
                                     <li><a href="{{ url('/adminDatabases') }}">Farmbooks</a></li>
                                     <li><a href="{{ url('/datatables') }}">Users</a></li>
+                                     <li><a href="{{ url('/logs') }}">Logs</a></li>
                                 @endif
 
                             </ul>

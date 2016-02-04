@@ -129,7 +129,7 @@ class StreetsController extends Controller
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-        ->groupby($freeholds_table.'.ID')
+       ->groupby($freeholds_table.'.ID')
        ->where('strStreetName', $street)->paginate(100);
 
 
@@ -150,8 +150,8 @@ class StreetsController extends Controller
 
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+       $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
+       Storage::append( 'logfile.txt', $append );
 
        return view('pages.streetsPrint',compact('streets','street'));
 
@@ -172,7 +172,7 @@ Storage::append( 'logfile.txt', $append );
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-        ->groupby($freeholds_table.'.ID')
+       ->groupby($freeholds_table.'.ID')
        ->where($freeholds_table.'.numErf', $erf)->paginate(100);
 
 
@@ -191,8 +191,8 @@ Storage::append( 'logfile.txt', $append );
        }
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+       $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
+       Storage::append( 'logfile.txt', $append );
 
        return view('pages.streetsPrint',compact('streets','street'));
 
@@ -212,7 +212,7 @@ Storage::append( 'logfile.txt', $append );
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-        ->groupby($freeholds_table.'.ID')
+       ->groupby($freeholds_table.'.ID')
       // ->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strIdentity', $id)->paginate(100);
 
@@ -233,8 +233,8 @@ Storage::append( 'logfile.txt', $append );
 
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+       $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
+       Storage::append( 'logfile.txt', $append );
 
        return view('pages.streetsPrint',compact('streets','street'));
 
@@ -254,7 +254,7 @@ Storage::append( 'logfile.txt', $append );
        ->orderBy('strStreetNo', 'asc')
        ->orderBy($freeholds_table.'.strKey', 'asc')
        ->select('*')
-        ->groupby($freeholds_table.'.ID')
+       ->groupby($freeholds_table.'.ID')
        //->groupby('tblSuburbContactNumbers.strIDNumber')
        ->where('strSurname', $surname)->paginate(100);
 
@@ -275,8 +275,8 @@ Storage::append( 'logfile.txt', $append );
 
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+       $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
+       Storage::append( 'logfile.txt', $append );
 
 
        return view('pages.streetsPrint',compact('streets','street'));
@@ -296,7 +296,7 @@ Storage::append( 'logfile.txt', $append );
        ->orderBy($freeholds_table.'.strKey', 'asc')
 
        ->select('*')
-        ->groupby($freeholds_table.'.ID')
+       ->groupby($freeholds_table.'.ID')
        ->where($freeholds_table.'.strComplexName', $complex)->paginate(100);
 
 
@@ -318,8 +318,8 @@ Storage::append( 'logfile.txt', $append );
 
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+       $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'print streetscontroller '.$radio ."    ".$street."    ".$userDB;
+       Storage::append( 'logfile.txt', $append );
 
        return view('pages.streetsPrint',compact('streets','street'));
 
@@ -403,8 +403,8 @@ Storage::append( 'logfile.txt', $append );
        $streets = $db->table($freeholds_table)
        ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
        ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-      ->orderBy('strStreetName', 'asc')
-      ->orderBy('strStreetNo', 'asc')
+       ->orderBy('strStreetName', 'asc')
+       ->orderBy('strStreetNo', 'asc')
      // ->orderBy($freeholds_table.'.strKey', 'asc')
        ->orderBy(DB::raw('cast(\'strStreetNo\' as UNSIGNED )'),'ASC')
        ->select('*')
@@ -429,202 +429,202 @@ $len = sizeof($mystreets);
 
 // format phone and currency
 
-       foreach ($streets as $value) {
-         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
-         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
-         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+foreach ($streets as $value) {
+ $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+ $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+ $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
 
-         $value->strAmount = helpers::currencyFormat($value->strAmount);
-         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+ $value->strAmount = helpers::currencyFormat($value->strAmount);
+ $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
 
-         $value->strSurname = str::title($value->strSurname);
-         $value->strFirstName = str::title($value->strFirstName);
-       }
+ $value->strSurname = str::title($value->strSurname);
+ $value->strFirstName = str::title($value->strFirstName);
+}
 
 
 // log
 $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
 Storage::append( 'logfile.txt', $append );
-       
-
-       return view('pages.streets1',compact('streets','street'));
 
 
-     }
+return view('pages.streets1',compact('streets','street'));
+
+
+}
 
 
 //  erf number search
-     if ($radio === '2'){
+if ($radio === '2'){
 
 
          // view title
-       $street = Input::get('erf');
+ $street = Input::get('erf');
 
 
-       $streets = $db->table($freeholds_table)
-       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-       ->orderBy('strStreetName', 'asc')
-       ->orderBy('strStreetNo', 'asc')
-       ->orderBy($freeholds_table.'.strKey', 'asc')
-       ->select('*')
-        ->groupby($freeholds_table.'.ID')
-       ->where('tblSuburbOwners.numErf', $erf)->paginate(1);
+ $streets = $db->table($freeholds_table)
+ ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+ ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+ ->orderBy('strStreetName', 'asc')
+ ->orderBy('strStreetNo', 'asc')
+ ->orderBy($freeholds_table.'.strKey', 'asc')
+ ->select('*')
+ ->groupby($freeholds_table.'.ID')
+ ->where('tblSuburbOwners.numErf', $erf)->paginate(1);
 
 
 // format phone and currency
-       
-       foreach ($streets as $value) {
-         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
-         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
-         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+ 
+ foreach ($streets as $value) {
+   $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+   $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+   $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
 
-         $value->strAmount = helpers::currencyFormat($value->strAmount);
-         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+   $value->strAmount = helpers::currencyFormat($value->strAmount);
+   $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
 
-         $value->strSurname = str::title($value->strSurname);
-         $value->strFirstName = str::title($value->strFirstName);
-       }
+   $value->strSurname = str::title($value->strSurname);
+   $value->strFirstName = str::title($value->strFirstName);
+ }
 
 
 // log
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+ $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+ Storage::append( 'logfile.txt', $append );
 
 
-       return view('pages.streets1',compact('streets','street'));
+ return view('pages.streets1',compact('streets','street'));
 
 
-     }
+}
 
 //  id number search
-     if ($radio === '3'){
+if ($radio === '3'){
 
 
          // view title
-       $street = Input::get('id');
+ $street = Input::get('id');
 
 
-       $streets = $db->table($freeholds_table)
-       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-       ->orderBy('strStreetName', 'asc')
-       ->orderBy('strStreetNo', 'asc')
-       ->orderBy($freeholds_table.'.strKey', 'asc')
-       ->select('*')
+ $streets = $db->table($freeholds_table)
+ ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+ ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+ ->orderBy('strStreetName', 'asc')
+ ->orderBy('strStreetNo', 'asc')
+ ->orderBy($freeholds_table.'.strKey', 'asc')
+ ->select('*')
      //  ->groupby('tblSuburbContactNumbers.strIDNumber')
-       ->where('strIdentity', $id)->paginate(1);
+ ->where('strIdentity', $id)->paginate(1);
 
 
 // format phone and currency
-       
-       foreach ($streets as $value) {
-         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
-         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
-         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+ 
+ foreach ($streets as $value) {
+   $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+   $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+   $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
 
-         $value->strAmount = helpers::currencyFormat($value->strAmount);
-         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+   $value->strAmount = helpers::currencyFormat($value->strAmount);
+   $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
 
-         $value->strSurname = str::title($value->strSurname);
-         $value->strFirstName = str::title($value->strFirstName);
-       }
+   $value->strSurname = str::title($value->strSurname);
+   $value->strFirstName = str::title($value->strFirstName);
+ }
 
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+ $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+ Storage::append( 'logfile.txt', $append );
 
-       return view('pages.streets1',compact('streets','street'));
+ return view('pages.streets1',compact('streets','street'));
 
 
-     }
+}
 
-     if ($radio === '4'){
+if ($radio === '4'){
 
 
          // view title
-       $street = Input::get('surname');
+ $street = Input::get('surname');
 
-       $streets = $db->table($freeholds_table)
-       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-       ->orderBy($freeholds_table.'.strKey', 'asc')
-       ->select('*')
+ $streets = $db->table($freeholds_table)
+ ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+ ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+ ->orderBy($freeholds_table.'.strKey', 'asc')
+ ->select('*')
      // ->groupby('tblSuburbContactNumbers.strSurname')
-       ->where('strSurname', $surname)->paginate(1);
+ ->where('strSurname', $surname)->paginate(1);
 
 //dd($streets->count(),$street);
 
 
 // format phone and currency
-       
-       foreach ($streets as $value) {
-         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
-         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
-         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+ 
+ foreach ($streets as $value) {
+   $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+   $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+   $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
 
-         $value->strAmount = helpers::currencyFormat($value->strAmount);
-         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+   $value->strAmount = helpers::currencyFormat($value->strAmount);
+   $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
 
-         $value->strSurname = str::title($value->strSurname);
-         $value->strFirstName = str::title($value->strFirstName);
-       }
+   $value->strSurname = str::title($value->strSurname);
+   $value->strFirstName = str::title($value->strFirstName);
+ }
 
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+ $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+ Storage::append( 'logfile.txt', $append );
 
-       return view('pages.streets1',compact('streets','street'));
+ return view('pages.streets1',compact('streets','street'));
 
 
-     }
+}
 
-     if ($radio === '5'){
+if ($radio === '5'){
 
 
          // view title
-       $street = Input::get('complex');
+ $street = Input::get('complex');
 
-       $streets = $db->table($freeholds_table)
-       ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
-       ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
-       ->orderBy($freeholds_table.'.strKey', 'asc')
+ $streets = $db->table($freeholds_table)
+ ->Join($mem_Table,$freeholds_table_key ,'=',$mem_key)
+ ->Join('tblSuburbContactNumbers',$freeholds_identity,'=','tblSuburbContactNumbers.strIDNumber')
+ ->orderBy($freeholds_table.'.strKey', 'asc')
 
-       ->select('*')
-        ->groupby($freeholds_table.'.ID')
-       ->where($freeholds_table.'.strComplexName', $complex)->paginate(1);
+ ->select('*')
+ ->groupby($freeholds_table.'.ID')
+ ->where($freeholds_table.'.strComplexName', $complex)->paginate(1);
 
 
 // format phone and currency
-       
-       foreach ($streets as $value) {
-         $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
-         $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
-         $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
+ 
+ foreach ($streets as $value) {
+   $value->strHomePhoneNo = helpers::phoneFormat($value->strHomePhoneNo);
+   $value->strWorkPhoneNo = helpers::phoneFormat($value->strWorkPhoneNo);
+   $value->strCellPhoneNo = helpers::phoneFormat($value->strCellPhoneNo);
 
-         $value->strAmount = helpers::currencyFormat($value->strAmount);
-         $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
+   $value->strAmount = helpers::currencyFormat($value->strAmount);
+   $value->strBondAmount = helpers::currencyFormat($value->strBondAmount);
 
-         $value->strSurname = str::title($value->strSurname);
-         $value->strFirstName = str::title($value->strFirstName);
-       }
-       
+   $value->strSurname = str::title($value->strSurname);
+   $value->strFirstName = str::title($value->strFirstName);
+ }
+ 
 
 // log
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+ $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+ Storage::append( 'logfile.txt', $append );
 
-       return view('pages.streets1',compact('streets','street'));
-
-
-     }
+ return view('pages.streets1',compact('streets','street'));
 
 
+}
 
-   }
+
+
+}
 
     /**
      * Show the form for creating a new resource.
@@ -709,9 +709,9 @@ Storage::append( 'logfile.txt', $append );
 
 // log
 
-$radio = 'checkStreet'; 
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+     $radio = 'checkStreet'; 
+     $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+     Storage::append( 'logfile.txt', $append );
 
      return view('pages.streets1',compact('streets','street'));
 
@@ -778,7 +778,7 @@ public function checkComplex($street)
   ->orderBy($freeholds_table.'.strComplexNo' , 'asc')
   ->orderBy($freeholds_table.'.strKey', 'asc')
   ->select('*')
-   ->groupby($freeholds_table.'.ID')
+  ->groupby($freeholds_table.'.ID')
   ->where($freeholds_table.'.strComplexName', $street)->paginate(1);
 
 
@@ -801,9 +801,9 @@ public function checkComplex($street)
 
 // log
 
-$radio = 'checkComplex'; 
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+ $radio = 'checkComplex'; 
+ $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+ Storage::append( 'logfile.txt', $append );
 
 
  return view('pages.streets1',compact('streets','street'));
@@ -891,9 +891,9 @@ public function checkId($street)
 
 // log
 
-$radio = 'checkId'; 
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+ $radio = 'checkId'; 
+ $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+ Storage::append( 'logfile.txt', $append );
 
 
  return view('pages.streets1',compact('streets','street'));
@@ -980,9 +980,9 @@ public function checkErf($street)
 
 // log
 
-$radio = 'checkErf'; 
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
-Storage::append( 'logfile.txt', $append );
+ $radio = 'checkErf'; 
+ $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$street."    ".$userDB;
+ Storage::append( 'logfile.txt', $append );
 
  return view('pages.streets1',compact('streets','street'));
 
@@ -1119,9 +1119,9 @@ Storage::append( 'logfile.txt', $append );
 
 // log
 
-$radio = 'update'; 
-$append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$searchKey;
-Storage::append( 'logfile.txt', $append );
+      $radio = 'update'; 
+      $append = Auth::user()->name."    ".  \Carbon\Carbon::now()->toDateTimeString(). "    ".   'streetscontroller '.$radio ."    ".$searchKey;
+      Storage::append( 'logfile.txt', $append );
 
 
       if ($result) {
