@@ -35,7 +35,7 @@
 	</div>
 	@endif
 
-
+<div class="row">
 	<ul class="list-group">
 
 		@foreach($logs as $log)
@@ -45,7 +45,7 @@
 
 	</ul>
 
-
+</div>
 
 	@stop
 
