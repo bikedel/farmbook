@@ -12,7 +12,7 @@ use Input;
 use Storage;
 use File;
 use Response;
-
+use Exception;
 
 class LogsController extends Controller
 {
@@ -44,9 +44,9 @@ class LogsController extends Controller
         $filename = storage_path().'/app/'.'logfile.txt';
         $contents = File::get($filename);
     }
-    catch (Illuminate\Filesystem\FileNotFoundException $exception)
-    {
-        die("The file doesn't exist");
+   catch(\Exception $e){
+   
+        die("No Logfile");
     }
 
 
