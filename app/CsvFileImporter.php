@@ -42,9 +42,9 @@ class CsvFileImporter
         $destination_directory = storage_path('imports/tmp');
         if (is_dir( $destination_directory) )
         {
-            chmod($destination_directory, 0755);
+            //chmod($destination_directory, 0755);
         } else {
-            mkdir($destination_directory, 0755, true);
+            //mkdir($destination_directory, 0755, true);
         }
 
         // Get file's original name
