@@ -44,6 +44,7 @@ class CsvFileImporter
         {
             //chmod($destination_directory, 0755);
         } else {
+        
             //mkdir($destination_directory, 0755, true);
         }
 
