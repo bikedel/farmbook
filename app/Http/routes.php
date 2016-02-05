@@ -70,6 +70,10 @@ Route::post('/suburb',  'SuburbController@setSuburb' );
 Route::get('/logs',  'LogsController@index' );
 
 //
+
+Route::get('/import',  'CsvImportController@index' );
+Route::post('/import',  'CsvImportController@store' );
+
 //    grid update notes route
 //
 Route::get('/notes',  'FreeholdsController@update' );
