@@ -109,41 +109,72 @@ class CsvFileImporter
         // delete records and import
 
         $query_delete = ('TRUNCATE TABLE tblSuburbOwners');
+        $query_delete1 = ('TRUNCATE TABLE tblErfNumbers');
+        $query_delete2 = ('TRUNCATE TABLE tblFHPropertyID');
+        $query_delete3 = ('TRUNCATE TABLE tblSecurityComplexNames');
+        $query_delete4 = ('TRUNCATE TABLE tblSuburbContactNumbers');
+        $query_delete5 = ('TRUNCATE TABLE tblSuburbStreetNames');
+
 
         $query = sprintf("LOAD DATA INFILE '%s' REPLACE INTO TABLE tblSuburbOwners 
             FIELDS TERMINATED BY ','  ENCLOSED BY '\"' LINES TERMINATED BY '\n'  IGNORE 1 LINES 
             (
-             strSuburb,
-             numErf,
-             numPortion,
-             strStreetNo,
-             strStreetName,
-             strSqMeters,
-             strComplexName,
-             strComplexNo,
-             dtmRegDate,
-             strAmount,
-             strBondHolder,
-             strBondAmount,
-             strOwners,
-             strIdentity,
-             strSellers,
-             strTitleDeed  )
-             SET strKey = CONCAT(numErf,'-', numPortion)
-             ", addslashes($file_path) );
+               strSuburb,
+               numErf,
+               numPortion,
+               strStreetNo,
+               strStreetName,
+               strSqMeters,
+               strComplexNo,
+               strComplexName,
+               dtmRegDate,
+               strAmount,
+               strBondHolder,
+               strBondAmount,
+               strOwners,
+               strIdentity,
+               strSellers,
+               strTitleDeed  )
+        SET strKey = CONCAT(numErf,'-', numPortion)
+        ", addslashes($file_path) );
+
+
+        $query_makeStreets = ('INSERT INTO tblSuburbStreetNames (strStreetName) SELECT strStreetName FROM tblSuburbOwners GROUP BY strStreetName');
+
+        $query_makeComplex =  ('INSERT INTO tblSecurityComplexNames (strComplexName) SELECT strComplexName FROM tblSuburbOwners GROUP BY strComplexName');
+
+        $query_makeErfs = ('INSERT INTO tblErfNumbers (numErf) SELECT numErf FROM tblSuburbOwners GROUP BY numErf');
+
+        $query_makeMems = ('INSERT INTO tblFHPropertyID (numErf,strKey) SELECT numErf,strKey FROM tblSuburbOwners ');
 
         try {
             //delete
             $db->getpdo()->exec( $query_delete);
-            //import
+            $db->getpdo()->exec( $query_delete1);
+            $db->getpdo()->exec( $query_delete2);
+            $db->getpdo()->exec( $query_delete3);
+            $db->getpdo()->exec( $query_delete4);
+            $db->getpdo()->exec( $query_delete5);
+
+            //import owners
             $result =  $db->getpdo()->exec($query);
+            // create street
+            $db->getpdo()->exec( $query_makeStreets);
+            // make complex
+            $db->getpdo()->exec( $query_makeComplex);
+            // make Erf
+            $db->getpdo()->exec( $query_makeErfs);
+            // make Mem
+            $db->getpdo()->exec( $query_makeMems);
+
+
 
         } catch (Exception $ex) {
 
-         dd( $ex->getMessage());
-     }
+           dd( $ex->getMessage());
+       }
 
 
-     return $result;
- }
+       return $result;
+   }
 }
