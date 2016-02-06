@@ -12,6 +12,7 @@ use App\CsvFileImporter;
 use Input;
 use Redirect;
 use Session;
+use Exception;
 
 class CsvImportController extends BaseController
 {
@@ -51,8 +52,8 @@ class CsvImportController extends BaseController
     public function store()
     {
 
-    	$input = Input::all();
 
+//dd($chost,$cuser,$cpass);
 
    // dd('CsvImportController  hi hi',$input);
         // Check if form submitted a file

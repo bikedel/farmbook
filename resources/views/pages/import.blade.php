@@ -9,7 +9,7 @@
 	<h2></h2>
 	
 	<div class="row">
-		<h1>Import</h1>
+		<h1>Import CSV</h1>
 			<hr>
 	</div>
 
@@ -43,13 +43,13 @@
 
 
 <div class="form-group">
-    {!! Form::label('Import CSV') !!}
+
   
 
 {!! Form::file('csv_import', ['class' => 'csv_import form-control input-sm']) !!}
 
 <div class="form-group">
-  
+  <br>
     {!! Form::submit('Go',  array('class'=>'btn btn-info ')) !!}
 </div>
 {!! Form::close() !!}

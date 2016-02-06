@@ -44,7 +44,7 @@ class CsvFileImporter
         {
             //chmod($destination_directory, 0755);
         } else {
-        
+
             //mkdir($destination_directory, 0755, true);
         }
 
@@ -90,12 +90,53 @@ class CsvFileImporter
      */
     private function importFileContents($file_path)
     {
-        $query = sprintf("LOAD DATA INFILE '%s' REPLACE INTO TABLE file_import_contents 
-            FIELDS TERMINATED BY ','  ENCLOSED BY '\"' LINES TERMINATED BY '\n'  IGNORE 1 LINES", addslashes($file_path) );
+
+
+        $chost = config('database.connections.mysql.host');
+        $cuser = config('database.connections.mysql.username');
+        $cpass = config('database.connections.mysql.password');
+        $user = $cuser;
+        $password = $cpass;
+        $host = $chost;
+        $dbname  ='tmp';
+        $dsn = 'mysql:dbname=tmp;';
+
+         // connect to tmp database
+        $otf = new \App\Database\OTF(['database' => $dbname]);
+        $db = DB::connection($dbname);
+
+
+        // delete records and import
+
+        $query_delete = ('TRUNCATE TABLE tblSuburbOwners');
+
+        $query = sprintf("LOAD DATA INFILE '%s' REPLACE INTO TABLE tblSuburbOwners 
+            FIELDS TERMINATED BY ','  ENCLOSED BY '\"' LINES TERMINATED BY '\n'  IGNORE 1 LINES 
+            (
+             strSuburb,
+             numErf,
+             numPortion,
+             strStreetNo,
+             strStreetName,
+             strSqMeters,
+             strComplexName,
+             strComplexNo,
+             dtmRegDate,
+             strAmount,
+             strBondHolder,
+             strBondAmount,
+             strOwners,
+             strIdentity,
+             strSellers,
+             strTitleDeed  )
+             SET strKey = CONCAT(numErf,'-', numPortion)
+             ", addslashes($file_path) );
 
         try {
-
-            $result =  DB::connection()->getpdo()->exec($query);
+            //delete
+            $db->getpdo()->exec( $query_delete);
+            //import
+            $result =  $db->getpdo()->exec($query);
 
         } catch (Exception $ex) {
 
